@@ -1,6 +1,10 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace HSP_Algorithmus
+namespace Zahnraddimensionierungsprogramm.GruppeJ
 {
     class Program
     {
@@ -16,8 +20,8 @@ namespace HSP_Algorithmus
             //Kopfspiel c
             Console.WriteLine("Kopfspiel c");
             Double c = Convert.ToDouble(Console.ReadLine());
-            if((c > 0.3) && (c < 0.1) && (c == 0))
-            {Console.WriteLine("Fehler: Parameter muss zwischen 0.1 und 0.3 liegen"); }
+            if ((c > 0.3) && (c < 0.1) && (c == 0))
+            { Console.WriteLine("Fehler: Parameter muss zwischen 0.1 und 0.3 liegen"); }
             //Teilkreisdurchmesser
             Console.WriteLine("Teilkreisdurchmesser d");
             Double d = Convert.ToDouble(Console.ReadLine());
@@ -38,13 +42,12 @@ namespace HSP_Algorithmus
 
 
             //Ausgabe
-            Console.WriteLine("Zahnhöhe h =                 " + h) ;
+            Console.WriteLine("Zahnhöhe h =                 " + h);
             Console.WriteLine("Zahnfußhöhe hf =             " + hf);
             Console.WriteLine("Zahnkopfhöhe ha =            " + ha);
             Console.WriteLine("Teilung p =                  " + p);
             Console.WriteLine("Zahnzahl z=                  " + z);
             Console.WriteLine("Fußkreisdurchmesser df =     " + df);
-
         }
     }
-}Maurice ist ein geiler Typ
+}
