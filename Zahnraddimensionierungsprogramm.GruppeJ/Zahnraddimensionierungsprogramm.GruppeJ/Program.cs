@@ -28,7 +28,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             Console.WriteLine("Teilkreisdurchmesser d");
             Double d = Convert.ToDouble(Console.ReadLine());
             if (d <= 0)
-            { Console.WriteLine("Fehler: Parameter muss größer als 0 sein"); Fehler = 1; }
+            { Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein"); Fehler = 1; }
 
             if (Fehler == 0)
             {
