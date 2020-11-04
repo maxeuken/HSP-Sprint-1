@@ -14,19 +14,24 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             Console.WriteLine("Eingabe der Zahnradparameter");
             //Modul m
             Console.WriteLine("Zahnradmodul m");
-            int m = Convert.ToInt32(Console.ReadLine());
+            double m = Convert.ToDouble(Console.ReadLine());
             if (m <= 0)
-            { Console.WriteLine("Fehler: Parameter muss größer als 0 sein"); }
-            //Kopfspiel c
-            Console.WriteLine("Kopfspiel c");
-            Double c = Convert.ToDouble(Console.ReadLine());
-            if ((c > 0.3) && (c < 0.1) && (c == 0))
-            { Console.WriteLine("Fehler: Parameter muss zwischen 0.1 und 0.3 liegen"); }
+            { Console.WriteLine("Fehler: Der Modul muss größer als 0 sein"); }
             //Teilkreisdurchmesser
             Console.WriteLine("Teilkreisdurchmesser d");
-            Double d = Convert.ToDouble(Console.ReadLine());
+            double d = Convert.ToDouble(Console.ReadLine());
+            if (d <= 0)
+            { Console.WriteLine("Fehler: Der Teilkreisdurchmesser muss größer als 0 sein"); }
 
-            //Berechnungen
+
+            //Einführung der Kopfspielzahl als Konstante
+            double Kopfspielzahl = 0.167;
+
+
+            //Berechnungen:
+
+            //Kopfspiel
+            double c = Kopfspielzahl * m;
             //Zahnhöhe
             double h = 2 * m + c;
             //Zahnfußhöhe
@@ -36,18 +41,20 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             //Teilung
             double p = 3.14 * m;
             //Zahnzahl
-            double z = m / d;
+            double z = d / m;
             //Fußkreisdurchmesser
             double df = d - 2 * (m + c);
 
 
             //Ausgabe
+            Console.WriteLine("Kopfspiel c =                " + c);   
             Console.WriteLine("Zahnhöhe h =                 " + h);
             Console.WriteLine("Zahnfußhöhe hf =             " + hf);
             Console.WriteLine("Zahnkopfhöhe ha =            " + ha);
             Console.WriteLine("Teilung p =                  " + p);
-            Console.WriteLine("Zahnzahl z=                  " + z);
+            Console.WriteLine("Zahnzahl z =                  " + z);
             Console.WriteLine("Fußkreisdurchmesser df =     " + df);
+            Console.ReadLine();
         }
     }
 }
