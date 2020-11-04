@@ -10,51 +10,62 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
     {
         static void Main(string[] args)
         {
+            int Fehler = 0;
+
             //Parametereingabe mit Wertbegrenzungen
             Console.WriteLine("Eingabe der Zahnradparameter");
             //Modul m
             Console.WriteLine("Zahnradmodul m");
-            double m = Convert.ToDouble(Console.ReadLine());
+            int m = Convert.ToInt32(Console.ReadLine());
             if (m <= 0)
-            { Console.WriteLine("Fehler: Der Modul muss größer als 0 sein"); }
+            { Console.WriteLine("Fehler: Parameter muss größer als 0 sein"); Fehler = 1; }
+            //Kopfspiel c
+            Console.WriteLine("Kopfspielfaktor cf");
+            Double cf = Convert.ToDouble(Console.ReadLine());
+            if ((cf < 0.1) || (cf > 0.3)) 
+            { Console.WriteLine("Fehler: Parameter muss zwischen 0.1 und 0.3 liegen"); Fehler = 1; }
             //Teilkreisdurchmesser
             Console.WriteLine("Teilkreisdurchmesser d");
-            double d = Convert.ToDouble(Console.ReadLine());
+            Double d = Convert.ToDouble(Console.ReadLine());
             if (d <= 0)
-            { Console.WriteLine("Fehler: Der Teilkreisdurchmesser muss größer als 0 sein"); }
+            { Console.WriteLine("Fehler: Parameter muss größer als 0 sein"); Fehler = 1; }
+
+            if (Fehler == 0)
+            {
+                //Berechnungen
+                //Zahnhöhe
+                double h = 2 * m + cf;
+                //Zahnfußhöhe
+                double hf = m + cf;
+                //Zahnkopfhöhe
+                double ha = m;
+                //Teilung
+                double p = 3.14 * m;
+                //Zahnzahl
+                double z = d / m;
+                //Fußkreisdurchmesser
+                double df = d - 2 * (m + cf);
+                //Kopfspiel
+                Double c = (cf * m);
+
+                //Ausgabe
+                Console.WriteLine("Zahnhöhe h =                 " + h);
+                Console.WriteLine("Zahnfußhöhe hf =             " + hf);
+                Console.WriteLine("Zahnkopfhöhe ha =            " + ha);
+                Console.WriteLine("Teilung p =                  " + p);
+                Console.WriteLine("Zahnzahl z=                  " + z);
+                Console.WriteLine("Fußkreisdurchmesser df =     " + df);
+                Console.WriteLine("Kopfspiel c=                 " + c);
+                Console.ReadKey();
+
+            }
+            else { Console.WriteLine("Bitte Eingabe überprüfen");
+                Console.ReadKey();
+            }
 
 
-            //Einführung der Kopfspielzahl als Konstante
-            double Kopfspielzahl = 0.167;
 
 
-            //Berechnungen:
-
-            //Kopfspiel
-            double c = Kopfspielzahl * m;
-            //Zahnhöhe
-            double h = 2 * m + c;
-            //Zahnfußhöhe
-            double hf = m + c;
-            //Zahnkopfhöhe
-            double ha = m;
-            //Teilung
-            double p = 3.14 * m;
-            //Zahnzahl
-            double z = d / m;
-            //Fußkreisdurchmesser
-            double df = d - 2 * (m + c);
-
-
-            //Ausgabe
-            Console.WriteLine("Kopfspiel c =                " + c);   
-            Console.WriteLine("Zahnhöhe h =                 " + h);
-            Console.WriteLine("Zahnfußhöhe hf =             " + hf);
-            Console.WriteLine("Zahnkopfhöhe ha =            " + ha);
-            Console.WriteLine("Teilung p =                  " + p);
-            Console.WriteLine("Zahnzahl z =                  " + z);
-            Console.WriteLine("Fußkreisdurchmesser df =     " + df);
-            Console.ReadLine();
         }
     }
 }
