@@ -14,16 +14,19 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
 
             //Parametereingabe mit Wertbegrenzungen
             Console.WriteLine("Eingabe der Zahnradparameter");
+
             //Modul m
             Console.WriteLine("Zahnradmodul m");
             double m = Convert.ToDouble(Console.ReadLine());
             if (m <= 0)
             { Console.WriteLine("Fehler: Der Modul muss größer als 0 sein"); Fehler = 1; }
+
             //Kopfspiel c
             Console.WriteLine("Kopfspielfaktor cf");
             Double cf = Convert.ToDouble(Console.ReadLine());
             if ((cf < 0.1) || (cf > 0.3)) 
             { Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen"); Fehler = 1; }
+
             //Teilkreisdurchmesser
             Console.WriteLine("Teilkreisdurchmesser d");
             Double d = Convert.ToDouble(Console.ReadLine());
@@ -47,18 +50,20 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 double z = d / m;
                 //Fußkreisdurchmesser (Außenverzahnung)
                 double df = d - 2 * (m + c);
-                //Grundkreisdurchmesser
-                double db = m * z * Math.Cos(20);
+                //Grundkreisdurchmesser (cos(20°)= 0,9397)
+                double db = m * z * 0.9397;
+
 
                 //Runden der Ergebnisse
+                double Kopfspiel = Math.Round(c, 2);
                 double Zahnhöhe = Math.Round(h, 2);
                 double Zahnfußhöhe = Math.Round(hf, 2);
                 double Zahnkopfhöhe = Math.Round(ha, 2);
                 double Teilung = Math.Round(p, 2);
                 double Zahnzahl = Math.Round(z, 0);
                 double Fußkreisdurchmesser = Math.Round(df, 2);
-                double Kopfspiel = Math.Round(c, 2);
                 double Grundkreisdurchmesser = Math.Round(db, 2);
+
 
                 //Ausgabe
                 Console.WriteLine("Kopfspiel c=                 " + Kopfspiel);
@@ -70,6 +75,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 Console.WriteLine("Fußkreisdurchmesser df =     " + Fußkreisdurchmesser);
                 Console.WriteLine("Grundkreisdurchmesser db =   " + Grundkreisdurchmesser);
                 Console.ReadKey();
+
 
             }
             else { Console.WriteLine("Bitte Eingabe überprüfen");
