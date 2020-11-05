@@ -46,7 +46,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 //Zahnzahl
                 double z = d / m;
                 //Fußkreisdurchmesser (Außenverzahnung)
-                double df = d - (2 * (m + c));
+                double df = d - 2 * (m + c);
                
 
                 //Runden der Ergebnisse
