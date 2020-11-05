@@ -47,7 +47,8 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 double z = d / m;
                 //Fußkreisdurchmesser (Außenverzahnung)
                 double df = d - 2 * (m + c);
-               
+                //Grundkreisdurchmesser
+                double db = m * z * Math.Cos(20);
 
                 //Runden der Ergebnisse
                 double Zahnhöhe = Math.Round(h, 2);
@@ -57,6 +58,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 double Zahnzahl = Math.Round(z, 0);
                 double Fußkreisdurchmesser = Math.Round(df, 2);
                 double Kopfspiel = Math.Round(c, 2);
+                double Grundkreisdurchmesser = Math.Round(db, 2);
 
                 //Ausgabe
                 Console.WriteLine("Kopfspiel c=                 " + Kopfspiel);
@@ -66,6 +68,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 Console.WriteLine("Teilung p =                  " + Teilung);
                 Console.WriteLine("Zahnzahl z=                  " + Zahnzahl);
                 Console.WriteLine("Fußkreisdurchmesser df =     " + Fußkreisdurchmesser);
+                Console.WriteLine("Grundkreisdurchmesser db =   " + Grundkreisdurchmesser);
                 Console.ReadKey();
 
             }
