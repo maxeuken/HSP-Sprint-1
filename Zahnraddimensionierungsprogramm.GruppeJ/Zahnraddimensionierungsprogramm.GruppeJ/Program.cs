@@ -16,7 +16,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             Console.WriteLine("Eingabe der Zahnradparameter");
             //Modul m
             Console.WriteLine("Zahnradmodul m");
-            int m = Convert.ToInt32(Console.ReadLine());
+            double m = Convert.ToDouble(Console.ReadLine());
             if (m <= 0)
             { Console.WriteLine("Fehler: Parameter muss größer als 0 sein"); Fehler = 1; }
             //Kopfspiel c
@@ -33,29 +33,39 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             if (Fehler == 0)
             {
                 //Berechnungen
+                //Kopfspiel
+                double c = (cf * m);
                 //Zahnhöhe
-                double h = 2 * m + cf;
+                double h = 2 * m + c;
                 //Zahnfußhöhe
-                double hf = m + cf;
+                double hf = m + c;
                 //Zahnkopfhöhe
                 double ha = m;
                 //Teilung
                 double p = 3.14 * m;
                 //Zahnzahl
                 double z = d / m;
-                //Fußkreisdurchmesser
+                //Fußkreisdurchmesser (Außenverzahnung)
                 double df = d - 2 * (m + cf);
-                //Kopfspiel
-                Double c = (cf * m);
+               
+
+                //Runden der Ergebnisse
+                double Zahnhöhe = Math.Round(h, 2);
+                double Zahnfußhöhe = Math.Round(hf, 2);
+                double Zahnkopfhöhe = Math.Round(ha, 2);
+                double Teilung = Math.Round(p, 2);
+                double Zahnzahl = Math.Round(z, 0);
+                double Fußkreisdurchmesser = Math.Round(df, 2);
+                double Kopfspiel = Math.Round(c, 2);
 
                 //Ausgabe
-                Console.WriteLine("Zahnhöhe h =                 " + h);
-                Console.WriteLine("Zahnfußhöhe hf =             " + hf);
-                Console.WriteLine("Zahnkopfhöhe ha =            " + ha);
-                Console.WriteLine("Teilung p =                  " + p);
-                Console.WriteLine("Zahnzahl z=                  " + z);
-                Console.WriteLine("Fußkreisdurchmesser df =     " + df);
-                Console.WriteLine("Kopfspiel c=                 " + c);
+                Console.WriteLine("Kopfspiel c=                 " + Kopfspiel);
+                Console.WriteLine("Zahnhöhe h =                 " + Zahnhöhe);
+                Console.WriteLine("Zahnfußhöhe hf =             " + Zahnfußhöhe);
+                Console.WriteLine("Zahnkopfhöhe ha =            " + Zahnkopfhöhe);
+                Console.WriteLine("Teilung p =                  " + Teilung);
+                Console.WriteLine("Zahnzahl z=                  " + Zahnzahl);
+                Console.WriteLine("Fußkreisdurchmesser df =     " + Fußkreisdurchmesser);
                 Console.ReadKey();
 
             }
