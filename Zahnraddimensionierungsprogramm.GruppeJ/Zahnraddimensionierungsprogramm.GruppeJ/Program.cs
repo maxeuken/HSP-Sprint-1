@@ -18,12 +18,12 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             Console.WriteLine("Zahnradmodul m");
             double m = Convert.ToDouble(Console.ReadLine());
             if (m <= 0)
-            { Console.WriteLine("Fehler: Parameter muss größer als 0 sein"); Fehler = 1; }
+            { Console.WriteLine("Fehler: Der Modul muss größer als 0 sein"); Fehler = 1; }
             //Kopfspiel c
             Console.WriteLine("Kopfspielfaktor cf");
             Double cf = Convert.ToDouble(Console.ReadLine());
             if ((cf < 0.1) || (cf > 0.3)) 
-            { Console.WriteLine("Fehler: Parameter muss zwischen 0.1 und 0.3 liegen"); Fehler = 1; }
+            { Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen"); Fehler = 1; }
             //Teilkreisdurchmesser
             Console.WriteLine("Teilkreisdurchmesser d");
             Double d = Convert.ToDouble(Console.ReadLine());
