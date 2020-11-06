@@ -10,7 +10,6 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
     {
         static void Main(string[] args)
         {
-            int Fehler = 0;
 
             //Parametereingabe mit Wertbegrenzungen
             Console.WriteLine("Eingabe der Zahnradparameter");
@@ -18,26 +17,25 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             //Modul m
             Console.WriteLine("Zahnradmodul m");
             double m = Convert.ToDouble(Console.ReadLine());
-            if (m <= 0)
-            { Console.WriteLine("Fehler: Der Modul muss größer als 0 sein"); Fehler = 1; 
+            while (m <= 0)
+            { Console.WriteLine("Fehler: Der Modul muss größer als 0 sein. Bitte Eingabe korrigieren");
               m = Convert.ToDouble(Console.ReadLine()); }
 
             //Kopfspiel c
             Console.WriteLine("Kopfspielfaktor cf");
             Double cf = Convert.ToDouble(Console.ReadLine());
-            if ((cf < 0.1) || (cf > 0.3)) 
-            { Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren"); Fehler = 1;
+            while ((cf < 0.1) || (cf > 0.3)) 
+            { Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
              cf = Convert.ToDouble(Console.ReadLine());}
 
             //Teilkreisdurchmesser
             Console.WriteLine("Teilkreisdurchmesser d");
             Double d = Convert.ToDouble(Console.ReadLine());
-            if (d <= 0)
-            { Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren"); Fehler = 1;
+            while (d <= 0)
+            { Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
               d = Convert.ToDouble(Console.ReadLine());}
 
-            if (Fehler == 0)
-            {
+           
                 //Berechnungen
                 //Kopfspiel
                 double c = (cf * m);
@@ -80,8 +78,8 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 Console.ReadKey();
 
 
-            }
             
+           
 
 
 
