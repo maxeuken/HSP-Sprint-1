@@ -12,13 +12,16 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
         {
             Console.WriteLine("Für Aussenverzahnung     1   drücken");
             Console.WriteLine("Für Innenverzahnung      2   drücken");
+            Console.WriteLine(" ");
             int Verzahnung = Convert.ToInt32(Console.ReadLine());
             switch (Verzahnung)
             {
 
                 case 1:
                     //Parametereingabe mit Wertbegrenzungen
+                    Console.WriteLine(" ");
                     Console.WriteLine("Eingabe der Zahnradparameter");
+                    Console.WriteLine(" ");
 
                     //Modul m
                     Console.WriteLine("Zahnradmodul m");
@@ -64,8 +67,11 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                     double df = d - 2 * (m + c); Math.Round(df, 2);
                     //Grundkreisdurchmesser (cos(20°)= 0,9397)
                     double db = m * z * 0.9397; Math.Round(db, 2);
+                    //Kopfkreisdurchmesser
+                    double da = d + 2 * m;
 
                     //Ausgabe
+                    Console.WriteLine(" ");
                     Console.WriteLine("Kopfspiel c=                 " + c);
                     Console.WriteLine("Zahnhöhe h =                 " + h);
                     Console.WriteLine("Zahnfußhöhe hf =             " + hf);
@@ -74,11 +80,13 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                     Console.WriteLine("Zahnzahl z=                  " + z);
                     Console.WriteLine("Fußkreisdurchmesser df =     " + df);
                     Console.WriteLine("Grundkreisdurchmesser db =   " + db);
+                    Console.WriteLine("Kopfkreisdurchmesser da =    " + da);
                     break;
 
                 case 2:
                     //Parametereingabe mit Wertbegrenzungen
                     Console.WriteLine("Eingabe der Zahnradparameter");
+                    Console.WriteLine(" ");
 
                     //Modul m
                     Console.WriteLine("Zahnradmodul m");
@@ -124,8 +132,11 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                     df = d - 2 * (m + c); Math.Round(df, 2);
                     //Grundkreisdurchmesser (cos(20°)= 0,9397)
                     db = m * z * 0.9397; Math.Round(db, 2);
+                    //Kopfkreisdurchmesser
+                    da = d - 2 * m;
 
                     //Ausgabe
+                    Console.WriteLine(" ");
                     Console.WriteLine("Kopfspiel c=                 " + c);
                     Console.WriteLine("Zahnhöhe h =                 " + h);
                     Console.WriteLine("Zahnfußhöhe hf =             " + hf);
@@ -134,6 +145,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                     Console.WriteLine("Zahnzahl z=                  " + z);
                     Console.WriteLine("Fußkreisdurchmesser df =     " + df);
                     Console.WriteLine("Grundkreisdurchmesser db =   " + db);
+                    Console.WriteLine("Kopfkreisdurchmesser da =    " + da);
                     break;
 
 
@@ -141,7 +153,60 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
 
 
             }
+            int[,] Zahnradwerte = new int[31, 3];
+            //Spalte 1
+            //HB
+            Zahnradwerte[0, 0] = 190;
+            Zahnradwerte[1, 0] = 220;
+            Zahnradwerte[2, 0] = 150;
+            Zahnradwerte[3, 0] = 235;
+            Zahnradwerte[4, 0] = 180;
+            Zahnradwerte[5, 0] = 240;
+            Zahnradwerte[6, 0] = 300;
+            Zahnradwerte[7, 0] = 160;
+            Zahnradwerte[8, 0] = 180;
+            Zahnradwerte[9, 0] = 120;
+            Zahnradwerte[10, 0] = 160;
+            Zahnradwerte[11, 0] = 190;
+            Zahnradwerte[12, 0] = 190;
+            Zahnradwerte[13, 0] = 270;
+            Zahnradwerte[14, 0] = 300;
+            Zahnradwerte[15, 0] = 310;
+            Zahnradwerte[16, 0] = 320;
+            Zahnradwerte[17, 0] = 350;
+            //HRC
+            Zahnradwerte[18, 0] = 50;
+            Zahnradwerte[19, 0] = 50;
+            Zahnradwerte[20, 0] = 50;
+            Zahnradwerte[21, 0] = 50;
+            Zahnradwerte[22, 0] = 48;
+            Zahnradwerte[23, 0] = 48;
+            Zahnradwerte[24, 0] = 30;
+            Zahnradwerte[25, 0] = 45;
+            Zahnradwerte[26, 0] = 55;
+            Zahnradwerte[27, 0] = 58;
+            Zahnradwerte[26, 0] = 58;
+            Zahnradwerte[29, 0] = 58;
+            Zahnradwerte[30, 0] = 58;
+
+            Console.WriteLine(" ");
+            Console.WriteLine("Bitte Härtewert nach Brinell eingeben");
+            Console.WriteLine(" ");
+            int Hw = Convert.ToInt32(Console.ReadLine());
+            int sort = 0;
+            if (Hw > 160 && Hw < 200) { sort = 1; };
+            if (Hw > 250 && Hw < 250) { sort = 2; };
+            if (Hw > 300 && Hw < 350) { sort = 3; };
+            if (Hw > 350) { sort = 4; };
+            switch (sort)
+            {
+                case 1:
+                    Console.WriteLine("Vorgeschlagene Werkstoffe:" + Zahnradwerte[5, 0] + Zahnradwerte[9, 0]); 
+                    break;
+            }
+
             Console.ReadKey();
-        }
+        }   
+
     }
 }
