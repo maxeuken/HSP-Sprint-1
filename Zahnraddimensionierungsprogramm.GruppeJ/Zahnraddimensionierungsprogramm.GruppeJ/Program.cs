@@ -19,19 +19,22 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             Console.WriteLine("Zahnradmodul m");
             double m = Convert.ToDouble(Console.ReadLine());
             if (m <= 0)
-            { Console.WriteLine("Fehler: Der Modul muss größer als 0 sein"); Fehler = 1; }
+            { Console.WriteLine("Fehler: Der Modul muss größer als 0 sein"); Fehler = 1; 
+              m = Convert.ToDouble(Console.ReadLine()); }
 
             //Kopfspiel c
             Console.WriteLine("Kopfspielfaktor cf");
             Double cf = Convert.ToDouble(Console.ReadLine());
             if ((cf < 0.1) || (cf > 0.3)) 
-            { Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen"); Fehler = 1; }
+            { Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren"); Fehler = 1;
+             cf = Convert.ToDouble(Console.ReadLine());}
 
             //Teilkreisdurchmesser
             Console.WriteLine("Teilkreisdurchmesser d");
             Double d = Convert.ToDouble(Console.ReadLine());
             if (d <= 0)
-            { Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein"); Fehler = 1; }
+            { Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren"); Fehler = 1;
+              d = Convert.ToDouble(Console.ReadLine());}
 
             if (Fehler == 0)
             {
@@ -78,9 +81,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
 
 
             }
-            else { Console.WriteLine("Bitte Eingabe überprüfen");
-                Console.ReadKey();
-            }
+            
 
 
 
