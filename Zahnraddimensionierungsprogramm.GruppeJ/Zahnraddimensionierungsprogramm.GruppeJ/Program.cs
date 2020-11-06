@@ -36,31 +36,22 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
 
                 //Berechnungen
                 //Kopfspiel
-                double c = (cf * m);
+                double c = (cf * m);            Math.Round(c, 2);
                 //Zahnhöhe
-                double h = 2 * m + c;
+                double h = 2 * m + c;           Math.Round(h, 2);
                 //Zahnfußhöhe
-                double hf = m + c;
+                double hf = m + c;              Math.Round(hf, 2);
                 //Zahnkopfhöhe
-                double ha = m;
+                double ha = m;                  Math.Round(ha, 2);
                 //Teilung
-                double p = 3.14 * m;
+                double p = 3.14 * m;            Math.Round(p, 2);
                 //Zahnzahl
-                double z = d / m;
+                double z = d / m;               Math.Round(z, 0);
                 //Fußkreisdurchmesser (Außenverzahnung)
-                double df = d - 2 * (m + c);
+                double df = d - 2 * (m + c);    Math.Round(df, 2);
                 //Grundkreisdurchmesser (cos(20°)= 0,9397)
-                double db = m * z * 0.9397;
+                double db = m * z * 0.9397;     Math.Round(db, 2);
 
-                //Runden der Ergebnisse
-                Math.Round(c, 2);
-                Math.Round(h, 2);
-                Math.Round(hf, 2);
-                Math.Round(ha, 2);
-                Math.Round(p, 2);
-                Math.Round(z, 0);
-                Math.Round(df, 2);
-                Math.Round(db, 2);
 
                 //Ausgabe
                 Console.WriteLine("Kopfspiel c=                 " + c);
