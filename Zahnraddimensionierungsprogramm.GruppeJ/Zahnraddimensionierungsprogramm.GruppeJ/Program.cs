@@ -135,16 +135,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                     ZR2.Ausgabe();
                     break;
 
-               
-                    
-                    
-
-
-
             }
-
-
-
             Console.ReadKey();
         }
 
