@@ -97,9 +97,6 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
         }
     }
 
-
-
-
     public class Ausführung
     {
         static void Main(string[] args)
@@ -108,28 +105,64 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             Console.WriteLine("Für Innenverzahnung      2   drücken");
             Console.WriteLine(" ");
             int Verzahnung = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(" ");
             switch (Verzahnung)
             {
                 case 1:
                     Zahnrad ZR1 = new Zahnrad();
+                    //Modul
                     Console.WriteLine("Modul m:");
                     ZR1.m = Convert.ToInt32(Console.ReadLine());
+                    while (ZR1.m <= 0)
+                    {
+                        Console.WriteLine("Fehler: Der Modul muss größer als 0 sein. Bitte Eingabe korrigieren");
+                        ZR1.m = Convert.ToDouble(Console.ReadLine());
+                    }
+                    //Kopfspielfaktor
                     Console.WriteLine("Kopfspielfaktor cf:");
                     ZR1.cf = Convert.ToDouble(Console.ReadLine());
+                    while ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
+                    {
+                        Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
+                        ZR1.cf = Convert.ToDouble(Console.ReadLine());
+                    }
+                    //Teilkreisdurchmesser
                     Console.WriteLine("Teilkreisdurchmesser");
                     ZR1.d = Convert.ToInt32(Console.ReadLine());
-
+                    while (ZR1.d <= 0)
+                    {
+                        Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
+                        ZR1.d = Convert.ToDouble(Console.ReadLine());
+                    }
                     ZR1.Berechnung();
                     ZR1.Ausgabe();
                     break;
                 case 2:
                     Zahnradaussen ZR2 = new Zahnradaussen();
+                    //Modul
                     Console.WriteLine("Modul m:");
                     ZR2.m = Convert.ToInt32(Console.ReadLine());
+                    while (ZR2.m <= 0)
+                    {
+                        Console.WriteLine("Fehler: Der Modul muss größer als 0 sein. Bitte Eingabe korrigieren");
+                        ZR2.m = Convert.ToDouble(Console.ReadLine());
+                    }
+                    //Kopfspielfaktor
                     Console.WriteLine("Kopfspielfaktor cf:");
                     ZR2.cf = Convert.ToDouble(Console.ReadLine());
+                    while ((ZR2.cf < 0.1) || (ZR2.cf > 0.3))
+                    {
+                        Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
+                        ZR2.cf = Convert.ToDouble(Console.ReadLine());
+                    }
+                    //Teilkreisdurchmesser
                     Console.WriteLine("Teilkreisdurchmesser");
                     ZR2.d = Convert.ToInt32(Console.ReadLine());
+                    while (ZR2.d <= 0)
+                    {
+                        Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
+                        ZR2.d = Convert.ToDouble(Console.ReadLine());
+                    }
 
                     ZR2.Berechnung();
                     ZR2.Ausgabe();
