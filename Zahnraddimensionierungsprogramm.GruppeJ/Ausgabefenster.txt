@@ -1,0 +1,3 @@
+﻿"Zahnraddimensionierungsprogramm.GruppeJ.exe" (CLR v4.0.30319: DefaultDomain): "C:\WINDOWS\Microsoft.Net\assembly\GAC_32\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll" geladen. Das Laden von Symbolen wurde übersprungen. Das Modul ist optimiert, und die Debugoption "Nur eigenen Code" ist aktiviert.
+"Zahnraddimensionierungsprogramm.GruppeJ.exe" (CLR v4.0.30319: DefaultDomain): "C:\Users\mauri\Documents\GitHub\HSP-Sprint-1\1\HSP-Sprint-1\Zahnraddimensionierungsprogramm.GruppeJ\Zahnraddimensionierungsprogramm.GruppeJ\bin\Debug\Zahnraddimensionierungsprogramm.GruppeJ.exe" geladen. Symbole wurden geladen.
+Das Programm "[2068] Zahnraddimensionierungsprogramm.GruppeJ.exe" wurde mit Code -1073741510 (0xc000013a) beendet.
