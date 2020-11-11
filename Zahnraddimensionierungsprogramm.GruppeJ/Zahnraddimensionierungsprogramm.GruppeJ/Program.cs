@@ -39,6 +39,17 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             z = d / m; Math.Round(z, 0);                    //Zahnzahl
             db = m * z * 0.9397; Math.Round(db, 2);         //Grundkreisdurchmesser (cos(20°)= 0,9397)
         }
+        public void BerechnungSchrägverzahnt()
+        {
+            c = m * cf; Math.Round(c, 2);                   //Kopfspiel
+            h = 2 * m + c; Math.Round(h, 2);                //Zahnhöhe
+            hf = m + c; Math.Round(hf, 2);                  //Zahnfußhöhe
+            ha = m; Math.Round(ha, 2);                      //Zahnkopfhöhe
+            p = 3.14 * m; Math.Round(p, 2);                 //Teilung
+            z = d / m; Math.Round(z, 0);                    //Zahnzahl
+            db = m * z * 0.9397; Math.Round(db, 2);         //Grundkreisdurchmesser (cos(20°)= 0,9397)
+
+        }
         public void SonderrechnungAussen()
         {
             df = d - 2 * (m + c); Math.Round(df, 2);        //Fußkreisdurchmesser
@@ -73,6 +84,11 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 Console.WriteLine("Für Innenverzahnung      2   drücken");
                 Console.WriteLine(" ");
                 int Verzahnung = Convert.ToInt32(Console.ReadLine());
+                while ((Verzahnung < 1) || (Verzahnung > 2))
+                {
+                    Console.WriteLine("Fehler: Bitte Eingabe korrigieren");
+                    Verzahnung = Convert.ToInt32(Console.ReadLine());
+                }
                 Console.WriteLine(" ");
                 switch (Verzahnung)
                 {
