@@ -14,9 +14,10 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
     public class Zahnrad
     {
         //Eingangsparameter
-        public double m { get; set; }                       //Modul
-        public double cf { get; set; }                      //Kopfspielfaktor
-        public double d { get; set; }                       //Teilkreisdurchmesser
+        public double m     { get; set; }                   //Modul
+        public double cf    { get; set; }                   //Kopfspielfaktor
+        public double d     { get; set; }                   //Teilkreisdurchmesser
+        public double cos   { get; set; }                   //Winkel
         //Ausgabeparameter
         public double c { get; set; }
         public double h { get; set; }
@@ -41,27 +42,48 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
         }
         public void BerechnungSchrägverzahnt()
         {
-            c = m * cf; Math.Round(c, 2);                   //Kopfspiel
-            h = 2 * m + c; Math.Round(h, 2);                //Zahnhöhe
-            hf = m + c; Math.Round(hf, 2);                  //Zahnfußhöhe
-            ha = m; Math.Round(ha, 2);                      //Zahnkopfhöhe
-            p = 3.14 * m; Math.Round(p, 2);                 //Teilung
-            z = d / m; Math.Round(z, 0);                    //Zahnzahl
-            db = m * z * 0.9397; Math.Round(db, 2);         //Grundkreisdurchmesser (cos(20°)= 0,9397)
+            c = m * cf;                                     //Kopfspiel
+            h = 2 * m + c;                                  //Zahnhöhe
+            hf = m + c;                                     //Zahnfußhöhe
+            ha = m;                                         //Zahnkopfhöhe
+            p = 3.14 * m;                                   //Teilung
+            z = d / m;                                      //Zahnzahl
+            db = m * z * 0.9397;                            //Grundkreisdurchmesser (cos(20°)= 0,9397)
 
         }
         public void SonderrechnungAussen()
         {
-            df = d - 2 * (m + c); Math.Round(df, 2);        //Fußkreisdurchmesser
-            da = d + 2 * m; Math.Round(da, 2);              //Kopfkreisdurchmesser
+            df = d - 2 * (m + c);                           //Fußkreisdurchmesser
+            da = d + 2 * m;                                 //Kopfkreisdurchmesser
         }
         public void SonderrechnungInnen()
         {
-            df = d + 2 * (m + c); Math.Round(df, 2);        //Fußkreisdurchmesser
-            da = d - 2 * m; Math.Round(da, 2);              //Kopfkreisdurchmesser
+            df = d + 2 * (m + c);                           //Fußkreisdurchmesser
+            da = d - 2 * m;                                 //Kopfkreisdurchmesser
+        }
+        public void SonderrechnungSchrägverzahnt() 
+        {
+            c = (m/Math.Cos(cos)) * cf;                     //Kopfspiel
+            h = 2 * m + c;                                  //Zahnhöhe
+            hf = m + c;                                     //Zahnfußhöhe
+            ha = m;                                         //Zahnkopfhöhe
+            p = 3.14 * m;                                   //Teilung
+            z = d / (m/Math.Cos(cos));                      //Zahnzahl
+            db = m * z * 0.9397;                            //Grundkreisdurchmesser (cos(20°)= 0,9397)
+
         }
         public void Ausgabe()
         {
+            c = Math.Round(c, 2);
+            h = Math.Round(h, 2);
+            hf= Math.Round(hf, 2);
+            ha= Math.Round(ha, 2);
+            p = Math.Round(p, 2);
+            z = Math.Round(z, 0);
+            df= Math.Round(df, 2);
+            db= Math.Round(db, 2);
+            da= Math.Round(da, 2);
+
             Console.WriteLine(" ");
             Console.WriteLine("Kopfspiel c=                 " + c);
             Console.WriteLine("Zahnhöhe h =                 " + h);
@@ -72,6 +94,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             Console.WriteLine("Fußkreisdurchmesser df =     " + df);
             Console.WriteLine("Grundkreisdurchmesser db =   " + db);
             Console.WriteLine("Kopfkreisdurchmesser da =    " + da);
+            Console.WriteLine("EY JONGE COSINUS             " + cos);
         }
     }
 
@@ -80,12 +103,14 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
         {
             static void Main(string[] args)
             {
-                Console.WriteLine("Für Aussenverzahnung     1   drücken");
-                Console.WriteLine("Für Innenverzahnung      2   drücken");
+                Console.WriteLine("Für Aussenverzahnung         1   drücken");
+                Console.WriteLine("Für Innenverzahnung          2   drücken");
+                Console.WriteLine("Für Aussenschrägverzahnung   3   drücken");
+                Console.WriteLine("Für Innenschrägverzahnung    4   drücken");
                 Console.WriteLine(" ");
 
                 int Verzahnung = Convert.ToInt32(Console.ReadLine());
-                while ((Verzahnung < 1) || (Verzahnung > 2))
+                while ((Verzahnung < 1) || (Verzahnung > 4))
                 {
                     Console.WriteLine("Fehler: Bitte Eingabe korrigieren");
                     Verzahnung = Convert.ToInt32(Console.ReadLine());
@@ -98,32 +123,53 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 ZR1.m = Convert.ToInt32(Console.ReadLine());
                 while (ZR1.m <= 0)
                 {
-                Console.WriteLine("Fehler: Der Modul muss größer als 0 sein. Bitte Eingabe korrigieren");
-                ZR1.m = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Fehler: Der Modul muss größer als 0 sein. Bitte Eingabe korrigieren");
+                    ZR1.m = Convert.ToDouble(Console.ReadLine());
                 }
                 //Kopfspielfaktor
                 Console.WriteLine("Kopfspielfaktor cf:");
                 ZR1.cf = Convert.ToDouble(Console.ReadLine());
                 while ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
                 {
-                Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
-                ZR1.cf = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
+                    ZR1.cf = Convert.ToDouble(Console.ReadLine());
                 }
                 //Teilkreisdurchmesser
                 Console.WriteLine("Teilkreisdurchmesser");
                 ZR1.d = Convert.ToInt32(Console.ReadLine());
                 while (ZR1.d <= 0)
                 {
-                Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
-                ZR1.d = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
+                    ZR1.d = Convert.ToDouble(Console.ReadLine());
                 }
-                ZR1.Berechnung();
+                if (Verzahnung == 3 || Verzahnung == 4)
+                {
+                    Console.WriteLine("Winkel β");
+                    ZR1.cos = Convert.ToInt32(Console.ReadLine());
+                    while ((ZR1.cos <= 0) || (ZR1.cos >= 90))
+                    {
+                        Console.WriteLine("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
+                        ZR1.cos = Convert.ToDouble(Console.ReadLine());
+                    }
+                }
                 switch (Verzahnung)
                 {
                     case 1:
+                        ZR1.Berechnung();
                         ZR1.SonderrechnungAussen();
                         break;
                     case 2:
+                        ZR1.Berechnung();
+                        ZR1.SonderrechnungInnen();
+                        break;
+                    case 3:
+                        ZR1.Berechnung();
+                        ZR1.SonderrechnungSchrägverzahnt();
+                        ZR1.SonderrechnungAussen();
+                        break;
+                    case 4:
+                        ZR1.Berechnung();
+                        ZR1.SonderrechnungSchrägverzahnt();
                         ZR1.SonderrechnungInnen();
                         break;
                 }
