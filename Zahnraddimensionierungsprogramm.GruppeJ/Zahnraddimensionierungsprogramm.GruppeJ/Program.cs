@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using System.Data.SqlClient;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -18,6 +17,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
         public double cf    { get; set; }                   //Kopfspielfaktor
         public double d     { get; set; }                   //Teilkreisdurchmesser
         public double cos   { get; set; }                   //Winkel
+        public double vw    { get; set; }                   //Verzahnungswinkel
         //Ausgabeparameter
         public double c { get; set; }
         public double h { get; set; }
@@ -48,7 +48,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             ha = m;                                         //Zahnkopfhöhe
             p = 3.14 * m;                                   //Teilung
             z = d / m;                                      //Zahnzahl
-            db = m * z * 0.9397;                            //Grundkreisdurchmesser (cos(20°)= 0,9397)
+            db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
 
         }
         public void SonderrechnungAussen()
@@ -63,13 +63,13 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
         }
         public void SonderrechnungSchrägverzahnt() 
         {
-            c = m * cf;                     //Kopfspiel
+            c = m * cf;                                     //Kopfspiel
             h = 2 * m + c;                                  //Zahnhöhe
             hf = m + c;                                     //Zahnfußhöhe
             ha = m;                                         //Zahnkopfhöhe
             p = 3.14 * m;                                   //Teilung
             z = d / (m/Math.Cos(cos));                      //Zahnzahl
-            db = m * z * 0.9397;                            //Grundkreisdurchmesser (cos(20°)= 0,9397)
+            db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
 
         }
         public void Ausgabe()
@@ -142,7 +142,15 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                     Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
                     ZR1.d = Convert.ToDouble(Console.ReadLine());
                 }
-                if (Verzahnung == 3 || Verzahnung == 4)
+                //Verzahnungwinkel
+                Console.WriteLine("Verzahnungswinkel");
+                ZR1.vw = Convert.ToInt32(Console.ReadLine());
+                while ((ZR1.vw <= 0) || (ZR1.vw >= 90))
+                {
+                    Console.WriteLine("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
+                    ZR1.vw = Convert.ToDouble(Console.ReadLine());
+                }
+            if (Verzahnung == 3 || Verzahnung == 4)
                 {
                     Console.WriteLine("Winkel β");
                     ZR1.cos = Convert.ToInt32(Console.ReadLine());
