@@ -32,13 +32,13 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
         //Methoden
         public void Berechnung()
         {
-            c = m * cf; Math.Round(c, 2);                   //Kopfspiel
-            h = 2 * m + c; Math.Round(h, 2);                //Zahnhöhe
-            hf = m + c; Math.Round(hf, 2);                  //Zahnfußhöhe
-            ha = m; Math.Round(ha, 2);                      //Zahnkopfhöhe
-            p = 3.14 * m; Math.Round(p, 2);                 //Teilung
-            z = d / m; Math.Round(z, 0);                    //Zahnzahl
-            db = m * z * 0.9397; Math.Round(db, 2);         //Grundkreisdurchmesser (cos(20°)= 0,9397)
+            c = m * cf;                                     //Kopfspiel
+            h = 2 * m + c;                                  //Zahnhöhe
+            hf = m + c;                                     //Zahnfußhöhe
+            ha = m;                                         //Zahnkopfhöhe
+            p = 3.14 * m;                                   //Teilung
+            z = d / m;                                      //Zahnzahl
+            db = m * z * 0.9397;                            //Grundkreisdurchmesser (cos(20°)= 0,9397)
         }
         public void BerechnungSchrägverzahnt()
         {
@@ -63,7 +63,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
         }
         public void SonderrechnungSchrägverzahnt() 
         {
-            c = (m/Math.Cos(cos)) * cf;                     //Kopfspiel
+            c = m * cf;                     //Kopfspiel
             h = 2 * m + c;                                  //Zahnhöhe
             hf = m + c;                                     //Zahnfußhöhe
             ha = m;                                         //Zahnkopfhöhe
