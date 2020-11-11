@@ -141,14 +141,6 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 }
                 Console.ReadKey();
             }
-
-
-
-
-
-
-
-
         }
     
 }
