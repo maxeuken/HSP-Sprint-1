@@ -38,7 +38,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             ha = m;                                         //Zahnkopfhöhe
             p = 3.14 * m;                                   //Teilung
             z = d / m;                                      //Zahnzahl
-            db = m * z * 0.9397;                            //Grundkreisdurchmesser (cos(20°)= 0,9397)
+            db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser
         }
         public void BerechnungSchrägverzahnt()
         {
@@ -48,7 +48,7 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             ha = m;                                         //Zahnkopfhöhe
             p = 3.14 * m;                                   //Teilung
             z = d / m;                                      //Zahnzahl
-            db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
+            db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser
 
         }
         public void SonderrechnungAussen()
@@ -94,7 +94,6 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
             Console.WriteLine("Fußkreisdurchmesser df =     " + df);
             Console.WriteLine("Grundkreisdurchmesser db =   " + db);
             Console.WriteLine("Kopfkreisdurchmesser da =    " + da);
-            Console.WriteLine("EY JONGE COSINUS             " + cos);
         }
     }
 
@@ -152,7 +151,8 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
                 }
             if (Verzahnung == 3 || Verzahnung == 4)
                 {
-                    Console.WriteLine("Winkel β");
+                //Schrägungswinkel    
+                Console.WriteLine("Schrägungswinkel");
                     ZR1.cos = Convert.ToInt32(Console.ReadLine());
                     while ((ZR1.cos <= 0) || (ZR1.cos >= 90))
                     {
