@@ -7,12 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Background>
-        <RadialGradientBrush>
-            <GradientStop Color="Black" Offset="0"/>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#FF8B8B8B"/>
             <GradientStop Color="White" Offset="1"/>
-        </RadialGradientBrush>
+        </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <Button Name="button1" Width="100" Height="50" >Klick mich</Button>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="Button1" Width="100" Height="50" Grid.Row="1" Grid.RowSpan="2" Margin="100,50,30,40" Click="Button1_Click">Klick mich</Button>
     </Grid>
 </Window>
