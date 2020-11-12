@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:User_Interface_HSP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="#FF8B8B8B"/>
@@ -26,9 +26,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+        <StackPanel  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
             <Label>Modul m :</Label>
             <TextBox x:Name="m_txt"/>
+            <Label x:Name="m_aus"/>
             <Label>Kopfspielfaktor cf :</Label>
             <TextBox x:Name="cf_txt"/>
             <Label>Teilkreisdurchmesser d :</Label>
@@ -39,6 +40,11 @@
             <TextBox x:Name="vw_txt"/>
             <Button x:Name="bestätigen_BTN" Click="Bestätigen_BTN_Click" Margin="0,5,0,0">bestätigen</Button>
             <Label x:Name="Error_txt" Foreground="Red"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="2">
+            <Label x:Name="c_txt"/>
+            
+
         </StackPanel>
 
     </Grid>

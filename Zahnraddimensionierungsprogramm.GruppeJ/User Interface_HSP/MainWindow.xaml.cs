@@ -18,17 +18,17 @@ namespace User_Interface_HSP
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
-        public class Zahnrad 
-        {
             //Eingangsparameter
-            public double m { get; set; }                    //Modul
+            public double m { get; set; }                   //Modul
             public double cf { get; set; }                   //Kopfspielfaktor
-            public double d { get; set; }                    //Teilkreisdurchmesser
-            public double cos { get; set; }                  //Winkel
-            public double vw { get; set; }                   //Verzahnungswinkel α
-                                                             //Ausgabeparameter β
+            public double d { get; set; }                   //Teilkreisdurchmesser
+            public double cos { get; set; }                   //Verzahnungswinkel
+            public double vw { get; set; }                   //Verdrehwinkel
+                                                             //Ausgabeparameter
             public double c { get; set; }
             public double h { get; set; }
             public double hf { get; set; }
@@ -105,115 +105,54 @@ namespace User_Interface_HSP
                 Console.WriteLine("Grundkreisdurchmesser db =   " + db);
                 Console.WriteLine("Kopfkreisdurchmesser da =    " + da);
             }
+        
 
 
-        }
-
-        public class Ausführung
-        {
-            public void Methode()
-            {
-                Console.WriteLine("Für Aussenverzahnung         1   drücken");
-                Console.WriteLine("Für Innenverzahnung          2   drücken");
-                Console.WriteLine("Für Aussenschrägverzahnung   3   drücken");
-                Console.WriteLine("Für Innenschrägverzahnung    4   drücken");
-                Console.WriteLine(" ");
-
-                int Verzahnung = Convert.ToInt32(Console.ReadLine());
-                while ((Verzahnung < 1) || (Verzahnung > 4))
-                {
-                    Console.WriteLine("Fehler: Bitte Eingabe korrigieren");
-                    Verzahnung = Convert.ToInt32(Console.ReadLine());
-                }
-                Console.WriteLine(" ");
-
-                Zahnrad ZR1 = new Zahnrad();
-                //Modul
-                Console.WriteLine("Modul m:");
-                ZR1.m = Convert.ToInt32(Console.ReadLine());
-                while (ZR1.m <= 0)
-                {
-                    Console.WriteLine("Fehler: Der Modul muss größer als 0 sein. Bitte Eingabe korrigieren");
-                    ZR1.m = Convert.ToDouble(Console.ReadLine());
-                }
-                //Kopfspielfaktor
-                Console.WriteLine("Kopfspielfaktor cf:");
-                ZR1.cf = Convert.ToDouble(Console.ReadLine());
-                while ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
-                {
-                    Console.WriteLine("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
-                    ZR1.cf = Convert.ToDouble(Console.ReadLine());
-                }
-                //Teilkreisdurchmesser
-                Console.WriteLine("Teilkreisdurchmesser");
-                ZR1.d = Convert.ToInt32(Console.ReadLine());
-                while (ZR1.d <= 0)
-                {
-                    Console.WriteLine("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
-                    ZR1.d = Convert.ToDouble(Console.ReadLine());
-                }
-                //Verzahnungwinkel
-                Console.WriteLine("Verzahnungswinkel");
-                ZR1.vw = Convert.ToInt32(Console.ReadLine());
-                while ((ZR1.vw <= 0) || (ZR1.vw >= 90))
-                {
-                    Console.WriteLine("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
-                    ZR1.vw = Convert.ToDouble(Console.ReadLine());
-                }
-                if (Verzahnung == 3 || Verzahnung == 4)
-                {
-                    //Schrägungswinkel    
-                    Console.WriteLine("Schrägungswinkel");
-                    ZR1.cos = Convert.ToInt32(Console.ReadLine());
-                    while ((ZR1.cos <= 0) || (ZR1.cos >= 90))
-                    {
-                        Console.WriteLine("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
-                        ZR1.cos = Convert.ToDouble(Console.ReadLine());
-                    }
-                }
-                switch (Verzahnung)
-                {
-                    case 1:
-                        ZR1.Berechnung();
-                        ZR1.SonderrechnungAussen();
-                        break;
-                    case 2:
-                        ZR1.Berechnung();
-                        ZR1.SonderrechnungInnen();
-                        break;
-                    case 3:
-                        ZR1.Berechnung();
-                        ZR1.SonderrechnungSchrägverzahnt();
-                        ZR1.SonderrechnungAussen();
-                        break;
-                    case 4:
-                        ZR1.Berechnung();
-                        ZR1.SonderrechnungSchrägverzahnt();
-                        ZR1.SonderrechnungInnen();
-                        break;
-                }
-                ZR1.Ausgabe();
-                Console.ReadKey();
-            }
-        }
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+
         public void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
-            int message = Convert.ToInt32(m_txt.Text);
 
-            if (message == 1)
+            //Modul
+            m = Convert.ToInt32(Console.ReadLine());
+            while (m <= 0)
             {
-                Error_txt.Content = "Fehler";
+                Error_txt.Content = "Fehler: Der Modul muss größer als 0 sein. Bitte Eingabe korrigieren";
+                m = Convert.ToDouble(m_txt.Text);
             }
-            else
+            //Kopfspielfaktor
+            cf = Convert.ToDouble(Console.ReadLine());
+            while ((cf < 0.1) || (cf > 0.3))
             {
-                Error_txt.Content = "korrekte Eingabe";
+                Error_txt.Content = "Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren";
+                cf = Convert.ToDouble(cf_txt.Text);
             }
+            //Teilkreisdurchmesser
+            d = Convert.ToInt32(Console.ReadLine());
+            while (d <= 0)
+            {
+                Error_txt.Content = "Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren";
+                d = Convert.ToDouble(d_txt.Text);
+            }
+            //Verzahnungwinkel
+            vw = Convert.ToInt32(Console.ReadLine());
+            while ((vw <= 0) || (vw >= 90))
+            {
+                Error_txt.Content = "Fehler: Winkel muss zwischen 0 und 90 Grad liegen";
+                vw = Convert.ToDouble(vw_txt.Text);
+            }
+
+            Berechnung();
+
+            m_aus.Content = m;
+
+
+
         }
     }
 }
