@@ -12,7 +12,7 @@
             <GradientStop Color="White" Offset="1"/>
         </LinearGradientBrush>
     </Window.Background>
-    <Grid>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -23,6 +23,21 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="Button1" Width="100" Height="50" Grid.Row="1" Grid.RowSpan="2" Margin="100,50,30,40" Click="Button1_Click">Klick mich</Button>
+
+        <StackPanel  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+            <Label>Modul m :</Label>
+            <TextBox x:Name="m_txt" Background="Brown"/>
+            <Label>Kopfspielfaktor cf :</Label>
+            <TextBox x:Name="cf_txt"/>
+            <Label>Teilkreisdurchmesser d :</Label>
+            <TextBox x:Name="d_txt"/>
+            <Label>Verzahnungswinkel α :</Label>
+            <TextBox x:Name="cos_txt"/>
+            <Label>Verdrehswinkel β :</Label>
+            <TextBox x:Name="vw_txt"/>
+            <Label x:Name="Prüffeld" Background="Beige"></Label>
+            <Button x:Name="bestätigen_BTN" Click="Bestätigen_BTN_Click" Margin="0,10">bestätigen</Button>
+        </StackPanel>
+
     </Grid>
 </Window>

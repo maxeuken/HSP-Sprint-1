@@ -23,12 +23,12 @@ namespace User_Interface_HSP
         public class Zahnrad 
         {
             //Eingangsparameter
-            public double m { get; set; }                   //Modul
+            public double m { get; set; }                    //Modul
             public double cf { get; set; }                   //Kopfspielfaktor
-            public double d { get; set; }                   //Teilkreisdurchmesser
-            public double cos { get; set; }                   //Winkel
-            public double vw { get; set; }                   //Verzahnungswinkel
-                                                             //Ausgabeparameter
+            public double d { get; set; }                    //Teilkreisdurchmesser
+            public double cos { get; set; }                  //Winkel
+            public double vw { get; set; }                   //Verzahnungswinkel α
+                                                             //Ausgabeparameter β
             public double c { get; set; }
             public double h { get; set; }
             public double hf { get; set; }
@@ -200,17 +200,12 @@ namespace User_Interface_HSP
         public MainWindow()
         {
             InitializeComponent();
-            Button1.Content = "Hallo Welt!";
-        }
-
-        private void Button1_Click(object sender, RoutedEventArgs e)
-        {
-            Button1.Content = "was geht";
         }
 
         private void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
-
+            int message = Convert.ToInt32(m_txt.Text);
+            Prüffeld.Content = message;
         }
     }
 }
