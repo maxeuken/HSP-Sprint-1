@@ -202,10 +202,18 @@ namespace User_Interface_HSP
             InitializeComponent();
         }
 
-        private void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
+        public void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
             int message = Convert.ToInt32(m_txt.Text);
-            Prüffeld.Content = message;
+
+            if (message == 1)
+            {
+                Error_txt.Content = "Fehler";
+            }
+            else
+            {
+                Error_txt.Content = "korrekte Eingabe";
+            }
         }
     }
 }
