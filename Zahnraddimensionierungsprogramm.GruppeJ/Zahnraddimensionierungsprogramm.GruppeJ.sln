@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zahnraddimensionierungsprogramm.GruppeJ", "Zahnraddimensionierungsprogramm.GruppeJ\Zahnraddimensionierungsprogramm.GruppeJ.csproj", "{3C87F983-CEE9-468D-AD32-5FF34741D978}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User Interface_HSP", "User Interface_HSP\User Interface_HSP.csproj", "{740A3913-C2D6-4A49-A1B5-2846AFB002EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3C87F983-CEE9-468D-AD32-5FF34741D978}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C87F983-CEE9-468D-AD32-5FF34741D978}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C87F983-CEE9-468D-AD32-5FF34741D978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{740A3913-C2D6-4A49-A1B5-2846AFB002EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740A3913-C2D6-4A49-A1B5-2846AFB002EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740A3913-C2D6-4A49-A1B5-2846AFB002EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740A3913-C2D6-4A49-A1B5-2846AFB002EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
