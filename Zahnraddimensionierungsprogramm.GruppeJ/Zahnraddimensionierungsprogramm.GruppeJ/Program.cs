@@ -16,8 +16,8 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
         public double m     { get; set; }                   //Modul
         public double cf    { get; set; }                   //Kopfspielfaktor
         public double d     { get; set; }                   //Teilkreisdurchmesser
-        public double cos   { get; set; }                   //Winkel
-        public double vw    { get; set; }                   //Verzahnungswinkel
+        public double cos   { get; set; }                   //Verzahnungswinkel
+        public double vw    { get; set; }                   //Verdrehwinkel
         //Ausgabeparameter
         public double c { get; set; }
         public double h { get; set; }

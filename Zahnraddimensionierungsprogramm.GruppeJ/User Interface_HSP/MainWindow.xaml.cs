@@ -207,5 +207,10 @@ namespace User_Interface_HSP
         {
             Button1.Content = "was geht";
         }
+
+        private void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
