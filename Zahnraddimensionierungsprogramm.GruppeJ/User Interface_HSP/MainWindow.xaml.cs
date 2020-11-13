@@ -22,6 +22,8 @@ namespace User_Interface_HSP
 
     public partial class MainWindow : Window
     {
+        public class Zahnrad
+        {
             //Eingangsparameter
             public double m { get; set; }                   //Modul
             public double cf { get; set; }                  //Kopfspielfaktor
@@ -105,7 +107,7 @@ namespace User_Interface_HSP
                 Console.WriteLine("Grundkreisdurchmesser db =   " + db);
                 Console.WriteLine("Kopfkreisdurchmesser da =    " + da);
             }
-        
+        }
 
 
 
@@ -117,9 +119,9 @@ namespace User_Interface_HSP
 
         public void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
-
+            Zahnrad ZR1 = new Zahnrad();
             //Modul
-            m = Convert.ToInt32(Console.ReadLine());
+            ZR1.m = Convert.ToInt32(Console.ReadLine());
             while (m <= 0)
             {
                 Error_txt.Content = "Fehler: Der Modul muss größer als 0 sein. Bitte Eingabe korrigieren";
