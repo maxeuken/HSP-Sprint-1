@@ -24,11 +24,11 @@ namespace User_Interface_HSP
     {
             //Eingangsparameter
             public double m { get; set; }                   //Modul
-            public double cf { get; set; }                   //Kopfspielfaktor
+            public double cf { get; set; }                  //Kopfspielfaktor
             public double d { get; set; }                   //Teilkreisdurchmesser
-            public double cos { get; set; }                   //Verzahnungswinkel
-            public double vw { get; set; }                   //Verdrehwinkel
-                                                             //Ausgabeparameter
+            public double cos { get; set; }                 //Verzahnungswinkel
+            public double vw { get; set; }                  //Verdrehwinkel
+                                                            //Ausgabeparameter
             public double c { get; set; }
             public double h { get; set; }
             public double hf { get; set; }
