@@ -13,11 +13,11 @@ namespace Zahnraddimensionierungsprogramm.GruppeJ
     public class Zahnrad
     {
         //Eingangsparameter
-        public double m     { get; set; }                   //Modul
-        public double cf    { get; set; }                   //Kopfspielfaktor
-        public double d     { get; set; }                   //Teilkreisdurchmesser
-        public double cos   { get; set; }                   //Verzahnungswinkel
-        public double vw    { get; set; }                   //Verdrehwinkel
+        public double m;                                    //Modul
+        public double cf;                                   //Kopfspielfaktor
+        public double d;                                    //Teilkreisdurchmesser
+        public double cos;                                  //Verzahnungswinkel
+        public double vw;                                   //Verdrehwinkel
         //Ausgabeparameter
         public double c { get; set; }
         public double h { get; set; }
