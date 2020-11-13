@@ -111,34 +111,27 @@ namespace User_Interface_HSP
             Zahnrad ZR1 = new Zahnrad();
 
             //Modul
-            ZR1.m = Convert.ToInt32(Console.ReadLine());
-            while (ZR1.m <= 0)
+            ZR1.m = Convert.ToDouble(CB1);
+            if (ZR1.m <= 1)
             {
-                Error_txt.Content = "Fehler: Der Modul muss größer als 0 sein. Bitte Eingabe korrigieren";
-                ZR1.m = Convert.ToDouble(Console.ReadLine());
+                Error_txt.Content = "Error";
+               
             }
             //Kopfspielfaktor
             ZR1.cf = Convert.ToDouble(cf_txt.Text);
-            while ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
-            {
-                Error_txt.Content= "Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren";
-                ZR1.cf = Convert.ToDouble(cf_txt.Text);
-            }
+
             //Teilkreisdurchmesser
             ZR1.d = Convert.ToInt32(d_txt.Text);
-            while (ZR1.d <= 0)
-            {
-                Error_txt.Content= "Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren";
-                ZR1.d = Convert.ToDouble(d_txt.Text);
-            }
+
             //Verzahnungwinkel
             ZR1.vw = Convert.ToInt32(vw_txt.Text);
-            while ((ZR1.vw <= 0) || (ZR1.vw >= 90))
-            {
-                Error_txt.Content= "Fehler: Winkel muss zwischen 0 und 90 Grad liegen";
-                ZR1.vw = Convert.ToDouble(vw_txt.Text);
-            }
+
             ZR1.Ausgabe();
+        }
+
+        private void ComboBox_Selected(object sender, RoutedEventArgs e)
+        {
+         
         }
     }
 }

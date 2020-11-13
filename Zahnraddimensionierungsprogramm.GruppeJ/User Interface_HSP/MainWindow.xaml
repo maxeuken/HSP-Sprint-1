@@ -31,15 +31,15 @@
 
         <Image Source="Bild.png"></Image>
 
-        <TextBlock Background="DarkGray" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="20" Grid.RowSpan="3">Hier könnte ihre Werbung stehen!</TextBlock>
+        <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="20" Grid.RowSpan="3">Hier könnte ihre Werbung stehen!</TextBlock>
         <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="20,100" Grid.RowSpan="3">Hier könnte ihre Werbung stehen!</TextBlock>
         <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="20,180,20,0" Grid.RowSpan="2">Hier könnte ihre Werbung stehen!</TextBlock>
 
         <StackPanel  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="0,0,20,0">
             <Label>Modul m :</Label>
-            <ComboBox Margin="5,0,-15,0">
-                <ComboBoxItem>0,9</ComboBoxItem>
-                <ComboBoxItem>1</ComboBoxItem>
+            <ComboBox Margin="5,0,-15,0" Selected="ComboBox_Selected">
+                <ComboBoxItem x:Name="CB1">0,9</ComboBoxItem>
+                <ComboBoxItem x:Name="CB2" IsSelected="True">1</ComboBoxItem>
                 <ComboBoxItem>1,25</ComboBoxItem>
                 <ComboBoxItem>1,5</ComboBoxItem>
                 <ComboBoxItem>2</ComboBoxItem>
@@ -71,10 +71,11 @@
 
 
         <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="444" Width="488">
-            <TabItem Header="TabItem">
+            <TabItem Header="Aussenverzahnung">
                 <Grid Background="#FFE5E5E5"/>
+                
             </TabItem>
-            <TabItem Header="TabItem">
+            <TabItem Header="Innenverzahnung">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
