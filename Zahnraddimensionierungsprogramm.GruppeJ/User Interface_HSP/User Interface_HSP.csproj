@@ -97,5 +97,17 @@
   <ItemGroup>
     <Resource Include="Bild.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Innenverzahnung2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Aussenverzahnung.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Innenverzahnung.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Drawing1.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -111,7 +111,7 @@ namespace User_Interface_HSP
             Zahnrad ZR1 = new Zahnrad();
 
             //Modul
-            ZR1.m = Convert.ToDouble(CB1);
+            ZR1.m = Convert.ToDouble(CB2);
             if (ZR1.m <= 1)
             {
                 Error_txt.Content = "Error";
@@ -129,9 +129,5 @@ namespace User_Interface_HSP
             ZR1.Ausgabe();
         }
 
-        private void ComboBox_Selected(object sender, RoutedEventArgs e)
-        {
-         
-        }
     }
 }
