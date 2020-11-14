@@ -40,6 +40,8 @@ namespace User_Interface_HSP
             public double df;
             public double db;
             public double da;
+            public int Verzahnung = 0;
+
 
             //Methoden
             public void Berechnung()
@@ -84,7 +86,7 @@ namespace User_Interface_HSP
                 db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
 
             }
-            public void Ausgabe()
+            public void Rundung()
             {
                 c = Math.Round(c, 2);
                 h = Math.Round(h, 2);
@@ -109,7 +111,6 @@ namespace User_Interface_HSP
         private void bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
             Zahnrad ZR1 = new Zahnrad();
-            int Fehler = 0;
 
             //Modul
             ZR1.m = Convert.ToDouble(Modul_Dropbox.Text);
@@ -120,23 +121,119 @@ namespace User_Interface_HSP
             {
                MessageBox.Show ("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
             }
-            else { h_aus.Content = ZR1.cf; };
 
             //Teilkreisdurchmesser
             ZR1.d = Convert.ToInt32(d_txt.Text);
-            if (ZR1.cos == 0) 
+            if (ZR1.d == 0) 
             {
-                Innenverzahnung_Tab.Visibility = Visibility.Hidden;
-                h_aus.Content = ZR1.d;
+                MessageBox.Show("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
             }
 
             //Verzahnungwinkel
-            ZR1.vw = Convert.ToInt32(vw_txt.Text);
+            ZR1.vw =Convert.ToInt32(vw_txt.Text);
+            if ((ZR1.vw <= 0) || (ZR1.vw >= 90))
+            {
+                MessageBox.Show("Fehler: Verzahnungswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
+            }
 
-            c_aus.Content = ZR1.m;
-            
+            ZR1.Berechnung();
+            ZR1.Rundung();
+
+
+            if (rb_IV.IsChecked == true)
+            {
+                if (CB_SV.IsChecked == true) 
+                {
+                    ZR1.SonderrechnungSchrägverzahnt();
+
+                    ZR1.SonderrechnungInnen();
+                    df_aus_Innen.Content = ZR1.df;
+                    da_aus_Innen.Content = ZR1.da;
+                    c_aus_Innen.Content = ZR1.c;
+                    h_aus_Innen.Content = ZR1.h;
+                    hf_aus_Innen.Content = ZR1.hf;
+                    ha_aus_Innen.Content = ZR1.ha;
+                    p_aus_Innen.Content = ZR1.p;
+                    db_aus_Innen.Content = ZR1.db;
+                    z_aus_Innen.Content = ZR1.z;
+                }
+                else 
+                {
+                    ZR1.SonderrechnungInnen();
+                    df_aus_Innen.Content = ZR1.df;
+                    da_aus_Innen.Content = ZR1.da;
+                    c_aus_Innen.Content = ZR1.c;
+                    h_aus_Innen.Content = ZR1.h;
+                    hf_aus_Innen.Content = ZR1.hf;
+                    ha_aus_Innen.Content = ZR1.ha;
+                    p_aus_Innen.Content = ZR1.p;
+                    db_aus_Innen.Content = ZR1.db;
+                    z_aus_Innen.Content = ZR1.z;
+                }
+            }
+            else 
+            {
+                if (CB_SV.IsChecked == true)
+                {
+                    ZR1.SonderrechnungSchrägverzahnt();
+
+                    ZR1.SonderrechnungAussen();
+                    c_aus.Content = ZR1.c;
+                    h_aus.Content = ZR1.h;
+                    hf_aus.Content = ZR1.hf;
+                    ha_aus.Content = ZR1.ha;
+                    p_aus.Content = ZR1.p;
+                    db_aus.Content = ZR1.db;
+                    z_aus.Content = ZR1.z;
+                    df_aus.Content = ZR1.df;
+                    da_aus.Content = ZR1.da;
+                }
+                else 
+                {
+                    ZR1.SonderrechnungAussen();
+                    c_aus.Content = ZR1.c;
+                    h_aus.Content = ZR1.h;
+                    hf_aus.Content = ZR1.hf;
+                    ha_aus.Content = ZR1.ha;
+                    p_aus.Content = ZR1.p;
+                    db_aus.Content = ZR1.db;
+                    z_aus.Content = ZR1.z;
+                    df_aus.Content = ZR1.df;
+                    da_aus.Content = ZR1.da;
+                }
+            }
 
         }
 
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void CheckBox_Unchecked_1(object sender, RoutedEventArgs e)
+        {
+            cos_txt.IsEnabled = true;
+        }
+
+        private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
+        {
+            cos_txt.IsEnabled = false;
+            cos_txt.Text = Convert.ToString(20);
+        }
+
+        private void CheckBox_Unchecked_2(object sender, RoutedEventArgs e)
+        {
+            vw_txt.IsEnabled = true;
+        }
+
+        private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
+        {
+            vw_txt.IsEnabled = false;
+        }
     }
 }
