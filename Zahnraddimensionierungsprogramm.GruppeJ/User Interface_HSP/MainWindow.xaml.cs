@@ -109,24 +109,33 @@ namespace User_Interface_HSP
         private void bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
             Zahnrad ZR1 = new Zahnrad();
+            int Fehler = 0;
 
             //Modul
-            ZR1.m = Convert.ToDouble(CB2);
-            if (ZR1.m <= 1)
-            {
-                Error_txt.Content = "Error";
-               
-            }
+            ZR1.m = Convert.ToDouble(Modul_Dropbox.Text);
+
             //Kopfspielfaktor
             ZR1.cf = Convert.ToDouble(cf_txt.Text);
+            if ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
+            {
+                Error_txt.Content= "Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren";
+            }
+            else { h_aus.Content = ZR1.cf; };
 
             //Teilkreisdurchmesser
             ZR1.d = Convert.ToInt32(d_txt.Text);
+            if (ZR1.cos == 0) 
+            {
+                Innenverzahnung_Tab.Visibility = Visibility.Hidden;
+                h_aus.Content = ZR1.d;
+            }
 
             //Verzahnungwinkel
             ZR1.vw = Convert.ToInt32(vw_txt.Text);
 
-            ZR1.Ausgabe();
+            c_aus.Content = ZR1.m;
+            
+
         }
 
     }

@@ -37,7 +37,7 @@
 
         <StackPanel  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="0,0,20,0">
             <Label>Modul m :</Label>
-            <ComboBox Margin="5,0,-15,0">
+            <ComboBox Margin="5,0,-15,0" x:Name="Modul_Dropbox">
 
                 <ComboBoxItem x:Name="CB2" IsSelected="True">1</ComboBoxItem>
                 <ComboBoxItem>1,25</ComboBoxItem>
@@ -95,7 +95,7 @@
                         <Label x:Name="db_txt_aus">Ø Grundkreis db: </Label>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,20" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
-                        <Label x:Name="c_aus">1 </Label>
+                        <Label x:Name="c_aus"></Label>
                         <Label x:Name="h_aus">2 </Label>
                         <Label x:Name="hf_aus">3</Label>
                         <Label x:Name="ha_aus">4</Label>
@@ -107,7 +107,8 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Innenverzahnung">
+            
+            <TabItem Header="Innenverzahnung" x:Name="Innenverzahnung_Tab">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
