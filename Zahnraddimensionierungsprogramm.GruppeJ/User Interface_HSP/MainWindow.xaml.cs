@@ -118,7 +118,7 @@ namespace User_Interface_HSP
             ZR1.cf = Convert.ToDouble(cf_txt.Text);
             if ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
             {
-                Error_txt.Content= "Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren";
+               MessageBox.Show ("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
             }
             else { h_aus.Content = ZR1.cf; };
 

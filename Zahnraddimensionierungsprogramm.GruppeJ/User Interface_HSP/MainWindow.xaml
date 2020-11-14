@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:User_Interface_HSP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="500" Width="550">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="#FF8B8B8B"/>
@@ -19,24 +19,24 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="140*"/>
-            <ColumnDefinition Width="105*"/>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="205*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="170*"/>
             <ColumnDefinition Width="155*"/>
-            <ColumnDefinition Width="155*"/>
+
 
 
         </Grid.ColumnDefinitions>
 
-        <Image Source="Bild.png"></Image>
+        <Image Source="Bild.png" Margin="0,0,10,0"></Image>
 
         <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="20" Grid.RowSpan="3">Hier könnte ihre Werbung stehen!</TextBlock>
         <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="20,100" Grid.RowSpan="3">Hier könnte ihre Werbung stehen!</TextBlock>
         <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="20,180,20,0" Grid.RowSpan="2">Hier könnte ihre Werbung stehen!</TextBlock>
 
         <StackPanel  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="0,0,20,0">
-            <Label>Modul m :</Label>
+            <Label>Modul m</Label>
             <ComboBox Margin="5,0,-15,0" x:Name="Modul_Dropbox">
 
                 <ComboBoxItem x:Name="CB2" IsSelected="True">1</ComboBoxItem>
@@ -51,13 +51,13 @@
                 <ComboBoxItem>8</ComboBoxItem>
 
             </ComboBox>
-            <Label Margin="0,0,-50,0">Kopfspielfaktor cf :</Label>
+            <Label Margin="0,0,-50,0">Kopfspielfaktor cf</Label>
             <TextBox x:Name="cf_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0"/>
-            <Label Margin="0,0,-60,0">Teilkreisdurchmesser d :</Label>
+            <Label Margin="0,0,-60,0">Ø Teilkreis d</Label>
             <TextBox x:Name="d_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0"/>
-            <Label Margin="0,0,-50,0">Verzahnungswinkel α :</Label>
+            <Label Margin="0,0,-60,0">Verzahnungswinkel α</Label>
             <TextBox x:Name="cos_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0"/>
-            <Label Margin="0,0,-50,0">Verdrehwinkel β :</Label>
+            <Label Margin="0,0,-50,0">Verdrehwinkel β</Label>
             <TextBox x:Name="vw_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0"/>
             <Button x:Name="bestätigen_BTN" Click="bestätigen_BTN_Click" Margin="5,5,-15,5">Bestätigen</Button>
             <Label x:Name="Error_txt" Foreground="Red" Margin="5,0,-15,0"/>
@@ -68,14 +68,12 @@
         <CheckBox Content="" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,55" />
 
 
-        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="444" Width="488">
+        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="444" Width="220">
             <TabItem Header="Aussenverzahnung">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -83,39 +81,35 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Image Source="Aussenverzahnung.png" Grid.ColumnSpan="2" Margin="10,10,110,120" Grid.RowSpan="2"/>
+                    <Image Source="Aussenverzahnung.png" Grid.ColumnSpan="2" Margin="10,10,85,110" Grid.RowSpan="2"/>
 
                     <StackPanel Grid.Column="0" Grid.Row ="1" Margin="0,20" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
-                        <Label x:Name="c_txt_aus">Modul m:          </Label>
-                        <Label x:Name="h_txt_aus">Zahnhöhe h:       </Label>
-                        <Label x:Name="hf_txt_aus">Zahnfußhöhe hf:  </Label>
-                        <Label x:Name="ha_txt_aus">Zahnkopfhöhe ha: </Label>
-                        <Label x:Name="p_txt_aus">Zahnteilung p:    </Label>
-                        <Label x:Name="z_txt_aus">Zahnfußhöhe hf:   </Label>
-                        <Label x:Name="db_txt_aus">Ø Grundkreis db: </Label>
+                        <Label x:Name="c_txt_aus">Modul m:</Label>
+                        <Label x:Name="h_txt_aus">Zahnhöhe h:</Label>
+                        <Label x:Name="hf_txt_aus">Zahnfußhöhe hf:</Label>
+                        <Label x:Name="ha_txt_aus">Zahnkopfhöhe ha:</Label>
+                        <Label x:Name="p_txt_aus">Zahnteilung p:</Label>
+                        <Label x:Name="z_txt_aus">Zahnfußhöhe hf:</Label>
+                        <Label x:Name="db_txt_aus">Ø Grundkreis db:</Label>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,20" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="c_aus"></Label>
-                        <Label x:Name="h_aus">2 </Label>
-                        <Label x:Name="hf_aus">3</Label>
-                        <Label x:Name="ha_aus">4</Label>
-                        <Label x:Name="p_aus">5 </Label>
-                        <Label x:Name="z_aus">6 </Label>
-                        <Label x:Name="db_aus">7</Label>
+                        <Label x:Name="h_aus"></Label>
+                        <Label x:Name="hf_aus"></Label>
+                        <Label x:Name="ha_aus"></Label>
+                        <Label x:Name="p_aus"></Label>
+                        <Label x:Name="z_aus"></Label>
+                        <Label x:Name="db_aus"></Label>
                     </StackPanel>
-                    <Image Source="Drawing1.jpg" Height="300" Width="200" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top"></Image>
                 </Grid>
 
             </TabItem>
-            
+
             <TabItem Header="Innenverzahnung" x:Name="Innenverzahnung_Tab">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -123,25 +117,25 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Image Source="Innenverzahnung.png" Width="600" Height="350" Grid.ColumnSpan="4" Margin="-230,-95,110,20" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.633"/>
-                    <StackPanel Grid.Column="0" Grid.Row ="1" Margin="0,20" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left"> 
-                        <Label x:Name="c_txt_aus_Innen">Modul m:                      </Label>
-                        <Label x:Name="c_aus_Innen">                                  </Label>
-                        <Label x:Name="h_txt_aus_Innen">Zahnhöhe h:                   </Label>
-                        <Label x:Name="h_aus_Innen">                                  </Label>
-                        <Label x:Name="hf_txt_aus_Innen"> Zahnfußhöhe hf:             </Label>
-                        <Label x:Name="hf_aus_Innen">                                 </Label>
-                        <Label x:Name="ha_txt_aus_Innen">Zahnkopfhöhe ha:             </Label>
-                        <Label x:Name="ha_aus_Innen">                                 </Label>
-                        <Label x:Name="p_txt_aus_Innen">Zahnteilung p:                </Label>
-                        <Label x:Name="p_aus_Innen">                                  </Label>
-                        <Label x:Name="z_txt_aus_Innen">Zahnfußhöhe hf:               </Label>
-                        <Label x:Name="z_aus_Innen">                                  </Label>
-                        <Label x:Name="db_txt_aus_Innen">Ø Grundkreis db:             </Label>
-                        <Label x:Name="db_aus_Innen">                                 </Label>
+                    <Image Source="Innenverzahnung.png" Width="600" Height="350" Margin="-237,-96,-169,10" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.633"/>
+                    <StackPanel Grid.Column="0" Grid.Row ="1" Margin="0,20" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                        <Label x:Name="c_txt_aus_Innen">Modul m:</Label>
+                        <Label x:Name="h_txt_aus_Innen">Zahnhöhe h:</Label>
+                        <Label x:Name="hf_txt_aus_Innen">Zahnfußhöhe hf:</Label>
+                        <Label x:Name="ha_txt_aus_Innen">Zahnkopfhöhe ha:</Label>
+                        <Label x:Name="p_txt_aus_Innen">Zahnteilung p:</Label>
+                        <Label x:Name="z_txt_aus_Innen">Zahnfußhöhe hf:</Label>
+                        <Label x:Name="db_txt_aus_Innen">Ø Grundkreis db:</Label>
                     </StackPanel>
-                    
-                    <Image Source="Drawing1.jpg" Height="300" Width="200" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top"></Image>
+                    <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,20" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                        <Label x:Name="c_aus_Innen"></Label>
+                        <Label x:Name="h_aus_Innen"></Label>
+                        <Label x:Name="hf_aus_Innen"></Label>
+                        <Label x:Name="ha_aus_Innen"></Label>
+                        <Label x:Name="p_aus_Innen"></Label>
+                        <Label x:Name="z_aus_Innen"></Label>
+                        <Label x:Name="db_aus_Innen"></Label>
+                    </StackPanel>
 
                 </Grid>
 
