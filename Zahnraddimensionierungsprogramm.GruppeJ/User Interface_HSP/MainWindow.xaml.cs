@@ -54,17 +54,6 @@ namespace User_Interface_HSP
                 z = d / m;                                      //Zahnzahl
                 db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser
             }
-            public void BerechnungSchrägverzahnt()
-            {
-                c = m * cf;                                     //Kopfspiel
-                h = 2 * m + c;                                  //Zahnhöhe
-                hf = m + c;                                     //Zahnfußhöhe
-                ha = m;                                         //Zahnkopfhöhe
-                p = 3.14 * m;                                   //Teilung
-                z = d / m;                                      //Zahnzahl
-                db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser
-
-            }
             public void SonderrechnungAussen()
             {
                 df = d - 2 * (m + c);                           //Fußkreisdurchmesser
@@ -108,6 +97,7 @@ namespace User_Interface_HSP
             InitializeComponent();
         }
 
+        //Bestätigungsbutton Event
         private void bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
             Zahnrad ZR1 = new Zahnrad();
@@ -130,22 +120,30 @@ namespace User_Interface_HSP
             }
 
             //Verzahnungwinkel
-            ZR1.vw =Convert.ToInt32(vw_txt.Text);
-            if ((ZR1.vw <= 0) || (ZR1.vw >= 90))
+            ZR1.vw = Convert.ToInt32(vw_txt.Text);
+            if ((ZR1.vw < 0) || (ZR1.vw >= 90))
             {
                 MessageBox.Show("Fehler: Verzahnungswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
             }
+            //Schrägungswinkel    
+            ZR1.cos = Convert.ToInt32(cos_txt.Text);
+            ZR1.cos = Convert.ToInt32(Console.ReadLine());
+            if ((ZR1.cos < 0) || (ZR1.cos >= 90))
+            {
+                MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
+
+            }
 
             ZR1.Berechnung();
-            ZR1.Rundung();
 
-
+            //Ausgabe
+            //Innenverzahnung schrägverzahnt
             if (rb_IV.IsChecked == true)
             {
                 if (CB_SV.IsChecked == true) 
                 {
                     ZR1.SonderrechnungSchrägverzahnt();
-
+                    ZR1.Rundung();
                     ZR1.SonderrechnungInnen();
                     df_aus_Innen.Content = ZR1.df;
                     da_aus_Innen.Content = ZR1.da;
@@ -157,9 +155,11 @@ namespace User_Interface_HSP
                     db_aus_Innen.Content = ZR1.db;
                     z_aus_Innen.Content = ZR1.z;
                 }
+            //Innenverzahnt geradverzahnt
                 else 
                 {
                     ZR1.SonderrechnungInnen();
+                    ZR1.Rundung();
                     df_aus_Innen.Content = ZR1.df;
                     da_aus_Innen.Content = ZR1.da;
                     c_aus_Innen.Content = ZR1.c;
@@ -173,10 +173,11 @@ namespace User_Interface_HSP
             }
             else 
             {
+            //Aussenverzahnt schrägverzahnt
                 if (CB_SV.IsChecked == true)
                 {
                     ZR1.SonderrechnungSchrägverzahnt();
-
+                    ZR1.Rundung();
                     ZR1.SonderrechnungAussen();
                     c_aus.Content = ZR1.c;
                     h_aus.Content = ZR1.h;
@@ -188,9 +189,11 @@ namespace User_Interface_HSP
                     df_aus.Content = ZR1.df;
                     da_aus.Content = ZR1.da;
                 }
+            //Aussenverzahnt geradverzahnt
                 else 
                 {
                     ZR1.SonderrechnungAussen();
+                    ZR1.Rundung();
                     c_aus.Content = ZR1.c;
                     h_aus.Content = ZR1.h;
                     hf_aus.Content = ZR1.hf;
@@ -205,35 +208,26 @@ namespace User_Interface_HSP
 
         }
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
+        //Verzahnnungswinkel Checkbox
         private void CheckBox_Unchecked_1(object sender, RoutedEventArgs e)
-        {
-            cos_txt.IsEnabled = true;
-        }
-
-        private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
-        {
-            cos_txt.IsEnabled = false;
-            cos_txt.Text = Convert.ToString(20);
-        }
-
-        private void CheckBox_Unchecked_2(object sender, RoutedEventArgs e)
         {
             vw_txt.IsEnabled = true;
         }
-
-        private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
+        private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
         {
             vw_txt.IsEnabled = false;
+            vw_txt.Text = Convert.ToString(20);
+        }
+
+        //Verdrehwinkel Checkbox
+        private void CheckBox_Unchecked_2(object sender, RoutedEventArgs e)
+        {
+            cos_txt.IsEnabled = true;
+        }
+        private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
+        {
+            cos_txt.IsEnabled = false;
+            cos_txt.Text = Convert.ToString(0);
         }
     }
 }

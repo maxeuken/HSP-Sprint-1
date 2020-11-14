@@ -56,12 +56,12 @@
             <Label          Margin="0,0,-60,0"      >Ø Teilkreis d</Label>
             <TextBox        x:Name="d_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0"/>
             <Label          Margin="0,0,-60,0">Verzahnungswinkel α</Label>
-            <TextBox        x:Name="cos_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
-            <Label          Margin="0,0,-50,0">Verdrehwinkel β</Label>
             <TextBox        x:Name="vw_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
+            <Label          Margin="0,0,-50,0">Verdrehwinkel β</Label>
+            <TextBox        x:Name="cos_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
             <RadioButton    Margin="0,0,-50,0" GroupName="Verzahnung" IsChecked="True" x:Name="rb_AV" >Aussenverzahnung </RadioButton>
             <RadioButton    Margin="0,0,-50,0" GroupName="Verzahnung"                  x:Name="rb_IV" >Innenverzahnung  </RadioButton>
-            <CheckBox       Margin="0,0,-50,0" Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked" x:Name="CB_SV">Schrägverzahnt</CheckBox>
+            <CheckBox       Margin="0,0,-50,0" x:Name="CB_SV">Schrägverzahnt</CheckBox>
             <Button         x:Name="bestätigen_BTN" Click="bestätigen_BTN_Click" Margin="5,5,-15,5">Bestätigen</Button>
 
         </StackPanel>
