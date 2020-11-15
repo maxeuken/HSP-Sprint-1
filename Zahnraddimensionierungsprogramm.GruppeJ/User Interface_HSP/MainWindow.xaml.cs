@@ -131,7 +131,6 @@ namespace User_Interface_HSP
             if ((ZR1.cos < 0) || (ZR1.cos >= 90))
             {
                 MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
-
             }
 
             ZR1.Berechnung();
@@ -229,5 +228,14 @@ namespace User_Interface_HSP
             cos_txt.IsEnabled = false;
             cos_txt.Text = Convert.ToString(0);
         }
+
+        //Info Button Event
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            User_Interface_HSP.Window1 window1 = new Window1();
+            window1.Show();
+
+        }
+
     }
 }
