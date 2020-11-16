@@ -41,6 +41,7 @@ namespace User_Interface_HSP
             public double db;
             public double da;
             public int Verzahnung = 0;
+            public int hlp = 0;
 
 
             //Methoden
@@ -97,6 +98,7 @@ namespace User_Interface_HSP
             InitializeComponent();
         }
 
+
         //Bestätigungsbutton Event
         private void bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
@@ -127,7 +129,6 @@ namespace User_Interface_HSP
             }
             //Schrägungswinkel    
             ZR1.cos = Convert.ToInt32(cos_txt.Text);
-            ZR1.cos = Convert.ToInt32(Console.ReadLine());
             if ((ZR1.cos < 0) || (ZR1.cos >= 90))
             {
                 MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
@@ -136,6 +137,7 @@ namespace User_Interface_HSP
             ZR1.Berechnung();
 
             //Ausgabe
+
             //Innenverzahnung schrägverzahnt
             if (rb_IV.IsChecked == true)
             {
@@ -234,7 +236,34 @@ namespace User_Interface_HSP
         {
             User_Interface_HSP.Window1 window1 = new Window1();
             window1.Show();
+        }
 
+
+        //Schrägverzahnt Checkbox Visibility Check
+        private void CB_SV_Unchecked(object sender, RoutedEventArgs e)
+        {
+            cos_txt.Visibility = Visibility.Hidden;
+            cos_lbl.Visibility = Visibility.Hidden;
+            CB_cos.Visibility = Visibility.Hidden;
+        }
+
+        private void CB_SV_Checked(object sender, RoutedEventArgs e)
+        {
+            cos_txt.Visibility = Visibility.Visible;
+            cos_lbl.Visibility = Visibility.Visible;
+            CB_cos.Visibility = Visibility.Visible;
+        }
+
+        //Checkbox Kopfspielfaktor
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            cf_txt.IsEnabled = false;
+            cf_txt.Text = Convert.ToString(0.167);
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            cf_txt.IsEnabled = true;
         }
 
     }
