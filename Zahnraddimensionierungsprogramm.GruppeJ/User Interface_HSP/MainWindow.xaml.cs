@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace User_Interface_HSP
 {
@@ -22,7 +11,7 @@ namespace User_Interface_HSP
 
     public partial class MainWindow : Window
     {
-        public class Zahnrad
+        private class Zahnrad
         {
             //Eingangsparameter
             public double m;                                    //Modul
@@ -41,11 +30,9 @@ namespace User_Interface_HSP
             public double db;
             public double da;
             public int Verzahnung = 0;
-            public int hlp = 0;
-
 
             //Methoden
-            public void Berechnung()
+            internal void Berechnung()
             {
                 c = m * cf;                                     //Kopfspiel
                 h = 2 * m + c;                                  //Zahnhöhe
@@ -55,17 +42,17 @@ namespace User_Interface_HSP
                 z = d / m;                                      //Zahnzahl
                 db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser
             }
-            public void SonderrechnungAussen()
+            internal void SonderrechnungAussen()
             {
                 df = d - 2 * (m + c);                           //Fußkreisdurchmesser
                 da = d + 2 * m;                                 //Kopfkreisdurchmesser
             }
-            public void SonderrechnungInnen()
+            internal void SonderrechnungInnen()
             {
                 df = d + 2 * (m + c);                           //Fußkreisdurchmesser
                 da = d - 2 * m;                                 //Kopfkreisdurchmesser
             }
-            public void SonderrechnungSchrägverzahnt()
+            internal void SonderrechnungSchrägverzahnt()
             {
                 c = m * cf;                                     //Kopfspiel
                 h = 2 * m + c;                                  //Zahnhöhe
@@ -76,7 +63,7 @@ namespace User_Interface_HSP
                 db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
 
             }
-            public void Rundung()
+            internal void Rundung()
             {
                 c = Math.Round(c, 2);
                 h = Math.Round(h, 2);
@@ -127,21 +114,30 @@ namespace User_Interface_HSP
             {
                 MessageBox.Show("Fehler: Verzahnungswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
             }
+
             //Schrägungswinkel    
             ZR1.cos = Convert.ToInt32(cos_txt.Text);
             if ((ZR1.cos < 0) || (ZR1.cos >= 90))
             {
-                MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
+                MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");;
             }
 
             ZR1.Berechnung();
+
+            
+
+            //Zahnzahl Fehlerbox
+            if (ZR1.z <= 4)
+            {
+                MessageBox.Show("Fehler: Durch eingegebene Parameter ist die Zahnzahl unter/gleich 4");
+            }
 
             //Ausgabe
 
             //Innenverzahnung schrägverzahnt
             if (rb_IV.IsChecked == true)
             {
-                if (CB_SV.IsChecked == true) 
+                if (CB_SV.IsChecked == true)
                 {
                     ZR1.SonderrechnungSchrägverzahnt();
                     ZR1.Rundung();
@@ -156,8 +152,8 @@ namespace User_Interface_HSP
                     db_aus_Innen.Content = ZR1.db;
                     z_aus_Innen.Content = ZR1.z;
                 }
-            //Innenverzahnt geradverzahnt
-                else 
+                //Innenverzahnt geradverzahnt
+                else
                 {
                     ZR1.SonderrechnungInnen();
                     ZR1.Rundung();
@@ -172,11 +168,13 @@ namespace User_Interface_HSP
                     z_aus_Innen.Content = ZR1.z;
                 }
             }
-            else 
+            else
             {
-            //Aussenverzahnt schrägverzahnt
-                if (CB_SV.IsChecked == true)
-                {
+                //Aussenverzahnt schrägverzahnt
+
+                
+               if (CB_SV.IsChecked == true)
+               {
                     ZR1.SonderrechnungSchrägverzahnt();
                     ZR1.Rundung();
                     ZR1.SonderrechnungAussen();
@@ -189,10 +187,10 @@ namespace User_Interface_HSP
                     z_aus.Content = ZR1.z;
                     df_aus.Content = ZR1.df;
                     da_aus.Content = ZR1.da;
-                }
-            //Aussenverzahnt geradverzahnt
-                else 
-                {
+               }
+               //Aussenverzahnt geradverzahnt
+               else
+               {
                     ZR1.SonderrechnungAussen();
                     ZR1.Rundung();
                     c_aus.Content = ZR1.c;
@@ -204,7 +202,8 @@ namespace User_Interface_HSP
                     z_aus.Content = ZR1.z;
                     df_aus.Content = ZR1.df;
                     da_aus.Content = ZR1.da;
-                }
+               }
+                 
             }
 
         }
