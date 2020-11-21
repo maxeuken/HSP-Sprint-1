@@ -30,6 +30,7 @@ namespace User_Interface_HSP
             public double db;
             public double da;
             public int Verzahnung = 0;
+            public double Dicke;
 
             //Methoden
             internal void Berechnung()
@@ -122,6 +123,14 @@ namespace User_Interface_HSP
                 MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");;
             }
 
+            //Dicke
+
+            ZR1.Dicke = Convert.ToDouble(Dicke_txt.Text);
+            if (ZR1.Dicke < 0)
+            {
+                 MessageBox.Show("Dicke muss über 0 liegen");
+            }
+            
             ZR1.Berechnung();
 
             
@@ -244,6 +253,7 @@ namespace User_Interface_HSP
             cos_txt.Visibility = Visibility.Hidden;
             cos_lbl.Visibility = Visibility.Hidden;
             CB_cos.Visibility = Visibility.Hidden;
+
         }
 
         private void CB_SV_Checked(object sender, RoutedEventArgs e)
@@ -256,13 +266,58 @@ namespace User_Interface_HSP
         //Checkbox Kopfspielfaktor
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            cf_txt.IsEnabled = false;
-            cf_txt.Text = Convert.ToString(0.167);
+            cf_txt.IsEnabled = true;
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            cf_txt.IsEnabled = true;
+            cf_txt.IsEnabled = false;
+            cf_txt.Text = Convert.ToString(0.167);
+        }
+
+        //Checkbox Modul
+        private void Modul_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Modul_Dropbox.IsEnabled = true;
+        }
+
+        private void Modul_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Modul_Dropbox.IsEnabled = false;
+        }
+
+        //Checkbox Teilkreisdurchmesser
+        private void Teilkreis_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            d_txt.IsEnabled = true;
+        }
+
+        private void Teilkreis_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            d_txt.IsEnabled = false;
+        }
+
+        //Checkbox Zahnzahl
+        private void Zahnzahl_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            z_txt.IsEnabled = true;
+        }
+
+        private void Zahnzahl_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            z_txt.IsEnabled = false;
+        }
+
+        //Checkbox Verzahnungswinkel
+        private void Verzahnungswinkel_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            vw_txt.IsEnabled = true;
+        }
+
+        private void Verzahnungswinkel_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            vw_txt.IsEnabled = false;
+            vw_txt.Text = Convert.ToString("20");
         }
 
     }
