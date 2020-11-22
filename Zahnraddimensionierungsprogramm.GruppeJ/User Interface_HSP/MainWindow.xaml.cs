@@ -105,45 +105,107 @@ namespace User_Interface_HSP
             ZR1.m = Convert.ToDouble(Modul_Dropbox.Text);
 
             //Kopfspielfaktor
-            ZR1.cf = Convert.ToDouble(cf_txt.Text);
-            if ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
+            string Zahlencheck = d_txt.Text;
+            if (Zahlprüfung(Zahlencheck) == true)
             {
-               MessageBox.Show ("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
+                ZR1.cf = Convert.ToDouble(cf_txt.Text);
+                if ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
+                {
+                    MessageBox.Show("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
+                }
             }
-
-            //Teilkreisdurchmesser
-            ZR1.d = Convert.ToInt32(d_txt.Text);
-            if (ZR1.d == 0) 
+            else
             {
-                MessageBox.Show("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
+                MessageBox.Show("Bitte Eingabe überprüfen");
+            }
+            //Teilkreisdurchmesser
+            Zahlencheck = d_txt.Text;
+            if (Zahlprüfung(Zahlencheck) == true)
+            {
+                ZR1.d = Convert.ToInt32(d_txt.Text);
+                if (ZR1.d == 0)
+                {
+                    MessageBox.Show("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte Eingabe überprüfen");
             }
 
             //Verzahnungwinkel
-            ZR1.vw = Convert.ToInt32(vw_txt.Text);
-            if ((ZR1.vw < 0) || (ZR1.vw >= 90))
+            Zahlencheck = vw_txt.Text;
+            if (Zahlprüfung(Zahlencheck) == true)
             {
-                MessageBox.Show("Fehler: Verzahnungswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
+                ZR1.vw = Convert.ToInt32(vw_txt.Text);
+                if ((ZR1.vw < 0) || (ZR1.vw >= 90))
+                {
+                    MessageBox.Show("Fehler: Verzahnungswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte Eingabe überprüfen");
             }
 
-            //Schrägungswinkel    
-            ZR1.cos = Convert.ToInt32(cos_txt.Text);
-            if ((ZR1.cos < 0) || (ZR1.cos >= 90))
+            //Schrägungswinkel   
+            Zahlencheck = cos_txt.Text;
+            if (Zahlprüfung(Zahlencheck) == true)
             {
-                MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");;
+                ZR1.cos = Convert.ToInt32(cos_txt.Text);
+                if ((ZR1.cos < 0) || (ZR1.cos >= 90))
+                {
+                    MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen"); ;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte Eingabe überprüfen");
             }
 
             //Bohrungsdurchmesser
-            ZR1.BD = Convert.ToDouble(BD_txt.Text);
-            if (ZR1.BD < 0)
+            Zahlencheck = BD_txt.Text;
+            if (Zahlprüfung(Zahlencheck) == true)
             {
-                MessageBox.Show("Fehler: Bohrungsdurchmesser darf nicht 0 oder mehr als Kopfkreisdurchmesser betragen");
+                ZR1.BD = Convert.ToDouble(BD_txt.Text);
+                if (ZR1.BD < 0)
+                {
+                    MessageBox.Show("Fehler: Bohrungsdurchmesser darf nicht 0 oder mehr als Kopfkreisdurchmesser betragen");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte Eingabe überprüfen");
             }
 
             //Dicke
-            ZR1.Dicke = Convert.ToDouble(Dicke_txt.Text);
-            if (ZR1.Dicke < 0)
+            Zahlencheck = Dicke_txt.Text;
+            if (Zahlprüfung(Zahlencheck) == true)
             {
-                 MessageBox.Show("Dicke muss über 0 liegen");
+                ZR1.Dicke = Convert.ToDouble(Dicke_txt.Text);
+                if (ZR1.Dicke < 0)
+                {
+                    MessageBox.Show("Dicke muss über 0 liegen");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte Eingabe überprüfen");
+            }
+
+            //Zähnezahl
+            Zahlencheck = z_txt.Text;
+            if (Zahlprüfung(Zahlencheck) == true)
+            {
+                ZR1.z = Convert.ToDouble(z_txt.Text);
+                if (ZR1.z < 0)
+                {
+                    MessageBox.Show("Zähnezahl muss über 0 liegen");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte Eingabe überprüfen");
             }
 
             //Material
@@ -191,7 +253,8 @@ namespace User_Interface_HSP
                     p_aus_Innen.Content = ZR1.p;
                     db_aus_Innen.Content = ZR1.db;
                     z_aus_Innen.Content = ZR1.z;
-                    ZR1.Volumenberechnung();
+                    d_aus_Innen.Content = ZR1.d;
+                    m_aus_Innen.Content = ZR1.m;
                     v_txt_aus.Content = ZR1.V;
                 }
                 //Innenverzahnt geradverzahnt
@@ -208,7 +271,8 @@ namespace User_Interface_HSP
                     p_aus_Innen.Content = ZR1.p;
                     db_aus_Innen.Content = ZR1.db;
                     z_aus_Innen.Content = ZR1.z;
-                    ZR1.Volumenberechnung();
+                    d_aus_Innen.Content = ZR1.d;
+                    m_aus_Innen.Content = ZR1.m;
                     v_txt_aus.Content = ZR1.V;
                 }
                 
@@ -232,7 +296,8 @@ namespace User_Interface_HSP
                     z_aus.Content = ZR1.z;
                     df_aus.Content = ZR1.df;
                     da_aus.Content = ZR1.da;
-                    ZR1.Volumenberechnung();
+                    d_aus.Content = ZR1.d;
+                    m_aus.Content = ZR1.m;
                     v_txt_aus.Content = ZR1.V;
                }
                //Aussenverzahnt geradverzahnt
@@ -249,12 +314,27 @@ namespace User_Interface_HSP
                     z_aus.Content = ZR1.z;
                     df_aus.Content = ZR1.df;
                     da_aus.Content = ZR1.da;
-                    ZR1.Volumenberechnung();
+                    d_aus.Content = ZR1.d;
+                    m_aus.Content = ZR1.m;
                     v_txt_aus.Content = ZR1.V;
                }
 
             }
 
+        }
+
+        //Zahlüberprüfung
+        private bool Zahlprüfung(string Zahlcheck)
+        {
+            try
+            {
+                double doublezahl = double.Parse(Zahlcheck);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
 
         //Verzahnnungswinkel Checkbox

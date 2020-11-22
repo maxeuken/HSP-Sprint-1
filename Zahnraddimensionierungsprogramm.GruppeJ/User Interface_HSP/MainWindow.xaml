@@ -119,7 +119,7 @@
                         <Label x:Name="da_txt_aus">Ø Kopfkreis da:</Label>
                         <Label x:Name="v_txt_aus">Volumen v:</Label>
                     </StackPanel>
-                    <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                    <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_aus"></Label>
                         <Label x:Name="d_aus"></Label>
                         <Label x:Name="c_aus"></Label>
@@ -165,7 +165,7 @@
                         <Label x:Name="v_txt_aus_Innen">Volumen v:</Label>
 
                     </StackPanel>
-                    <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                    <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_aus_Innen"></Label>
                         <Label x:Name="d_aus_Innen"></Label>
                         <Label x:Name="c_aus_Innen"></Label>
