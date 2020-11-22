@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:User_Interface_HSP"
         mc:Ignorable="d"
-        Title="Zahnraddimensionierungsprogramm" Height="530" Width="550" Icon="Bild.ico">
+        Title="Zahnraddimensionierungsprogramm" Height="555" Width="550" Icon="Bild.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="#FF8B8B8B"/>
@@ -64,13 +64,15 @@
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung" IsChecked="True" x:Name="rb_AV" >Aussenverzahnung</RadioButton>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung"                  x:Name="rb_IV" >Innenverzahnung</RadioButton>
             <CheckBox       Margin="5,0,-50,0" x:Name="CB_SV" Unchecked="CB_SV_Unchecked" Checked="CB_SV_Checked">Schrägverzahnt</CheckBox>
+            <Label Margin="0,0,-50,0"                  >Ø Bohrung</Label>
+            <TextBox        x:Name="BD_txt" Margin="5,0,-5,0"></TextBox>
             <Label                  >Dicke</Label>
-            <TextBox        x:Name="Dicke_txt" Margin="5,0,-15,0"></TextBox>
+            <TextBox        x:Name="Dicke_txt" Margin="5,0,-5,0"></TextBox>
             <Label Margin="5,0,5,0">Material</Label>
             <ComboBox Margin="5,0,5,0" x:Name="Material_Dropbox">
-                <ComboBoxItem x:Name="Stahl" IsSelected="True">Stahl</ComboBoxItem>
-                <ComboBoxItem x:Name="Messing">Messing</ComboBoxItem>
-                <ComboBoxItem x:Name="Plastik">Plastik</ComboBoxItem>
+                <ComboBoxItem x:Name="Stahl" IsSelected="True">1</ComboBoxItem>
+                <ComboBoxItem x:Name="Messing">2</ComboBoxItem>
+                <ComboBoxItem x:Name="Plastik">3</ComboBoxItem>
             </ComboBox>
             <Button         x:Name="bestätigen_BTN" Click="bestätigen_BTN_Click" Margin="5,5,-15,5">Bestätigen</Button>
 
@@ -82,13 +84,13 @@
         <CheckBox x:Name="Teilkreis_CB"         Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,120"    Checked="Teilkreis_CB_Checked"          Unchecked="Teilkreis_CB_Unchecked"          IsChecked="true"/>
         <CheckBox x:Name="Zahnzahl_CB"          Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,0"      Checked="Zahnzahl_CB_Checked"           Unchecked="Zahnzahl_CB_Unchecked"           IsChecked="False"/>
         <CheckBox x:Name="Verzahnungswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,45"     Checked="Verzahnungswinkel_CB_Checked"  Unchecked="Verzahnungswinkel_CB_Unchecked"  IsChecked="False"/>
-        <CheckBox Content="" x:Name="CB_cos" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,95" Unchecked="CheckBox_Unchecked_2" Checked="CheckBox_Checked_2" IsChecked="True" Visibility="Hidden" />
+        <CheckBox Content="" x:Name="CB_cos" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,85" Unchecked="CheckBox_Unchecked_2" Checked="CheckBox_Checked_2" IsChecked="True" Visibility="Hidden" />
         
         <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,10" Click="Button_Click">Info</Button>
 
         
         
-        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="474" Width="220">
+        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="504" Width="220">
             <TabItem x:Name="Tab_AV" Header="Aussenverzahnung">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>

@@ -31,6 +31,10 @@ namespace User_Interface_HSP
             public double da;
             public int Verzahnung = 0;
             public double Dicke;
+            public double BD;
+            public double V;
+            public int Material;
+            public double MTL_hlp;
 
             //Methoden
             internal void Berechnung()
@@ -76,6 +80,11 @@ namespace User_Interface_HSP
                 db = Math.Round(db, 2);
                 da = Math.Round(da, 2);
 
+            }
+            public void Volumenberechnung()
+            {
+                V = ((3.14 / 4) * (Math.Pow(da, 2) - Math.Pow(BD, 2))-((3.14*m*h*z)/2))*Dicke;
+                V = Math.Round(V, 2);
             }
         }
 
@@ -123,14 +132,36 @@ namespace User_Interface_HSP
                 MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");;
             }
 
-            //Dicke
+            //Bohrungsdurchmesser
+            ZR1.BD = Convert.ToDouble(BD_txt.Text);
+            if (ZR1.BD < 0)
+            {
+                MessageBox.Show("Fehler: Bohrungsdurchmesser darf nicht 0 oder mehr als Kopfkreisdurchmesser betragen");
+            }
 
+            //Dicke
             ZR1.Dicke = Convert.ToDouble(Dicke_txt.Text);
             if (ZR1.Dicke < 0)
             {
                  MessageBox.Show("Dicke muss über 0 liegen");
             }
-            
+
+            //Material
+            ZR1.Material = Convert.ToInt32(Material_Dropbox.Text);
+            switch (ZR1.Material)
+            {
+                case 1:
+                    ZR1.MTL_hlp = 0.0785;
+                    break;
+                case 2:
+                    ZR1.MTL_hlp = 0.087;
+                    break;
+                case 3:
+                    ZR1.MTL_hlp = 0.000022;
+                    break;
+            }
+
+
             ZR1.Berechnung();
 
             
@@ -160,6 +191,8 @@ namespace User_Interface_HSP
                     p_aus_Innen.Content = ZR1.p;
                     db_aus_Innen.Content = ZR1.db;
                     z_aus_Innen.Content = ZR1.z;
+                    ZR1.Volumenberechnung();
+                    v_txt_aus.Content = ZR1.V;
                 }
                 //Innenverzahnt geradverzahnt
                 else
@@ -175,7 +208,10 @@ namespace User_Interface_HSP
                     p_aus_Innen.Content = ZR1.p;
                     db_aus_Innen.Content = ZR1.db;
                     z_aus_Innen.Content = ZR1.z;
+                    ZR1.Volumenberechnung();
+                    v_txt_aus.Content = ZR1.V;
                 }
+                
             }
             else
             {
@@ -196,6 +232,8 @@ namespace User_Interface_HSP
                     z_aus.Content = ZR1.z;
                     df_aus.Content = ZR1.df;
                     da_aus.Content = ZR1.da;
+                    ZR1.Volumenberechnung();
+                    v_txt_aus.Content = ZR1.V;
                }
                //Aussenverzahnt geradverzahnt
                else
@@ -211,8 +249,10 @@ namespace User_Interface_HSP
                     z_aus.Content = ZR1.z;
                     df_aus.Content = ZR1.df;
                     da_aus.Content = ZR1.da;
+                    ZR1.Volumenberechnung();
+                    v_txt_aus.Content = ZR1.V;
                }
-                 
+
             }
 
         }
