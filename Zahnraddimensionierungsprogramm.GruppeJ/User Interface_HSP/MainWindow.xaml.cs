@@ -46,6 +46,9 @@ namespace User_Interface_HSP
                 p = 3.14 * m;                                   //Teilung
                 z = d / m;                                      //Zahnzahl
                 db = m * z * Math.Cos(ew);                      //Grundkreisdurchmesser
+                //Volumen
+                V = ((3.14 / 4) * (Math.Pow(da, 2) - Math.Pow(BD, 2)) - ((3.14 * m * h * z) / 2)) * Zahnbreite;
+                V = Math.Round(V, 2);
             }
             internal void SonderrechnungAussen()
             {
@@ -81,11 +84,7 @@ namespace User_Interface_HSP
                 da = Math.Round(da, 2);
 
             }
-            public void Volumenberechnung()
-            {
-                V = ((3.14 / 4) * (Math.Pow(da, 2) - Math.Pow(BD, 2))-((3.14*m*h*z)/2))*Zahnbreite;
-                V = Math.Round(V, 2);
-            }
+  
         }
 
 
