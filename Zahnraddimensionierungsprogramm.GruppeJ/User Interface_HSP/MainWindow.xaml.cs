@@ -35,6 +35,7 @@ namespace User_Interface_HSP
             public double V;                                    //Volumen
             public string Material;                             //Zahnradmaterial
             public double MTL_hlp;                              //Dichte
+            public double A;                                    //Fläche
 
             //Methoden
             internal void Berechnung()
@@ -44,21 +45,27 @@ namespace User_Interface_HSP
                 hf = m + c;                                     //Zahnfußhöhe
                 ha = m;                                         //Zahnkopfhöhe
                 p = 3.14 * m;                                   //Teilung
-                z = d / m;                                      //Zahnzahl
+                z = Math.Round(d / m, 2);                       //Zahnzahl
                 db = m * z * Math.Cos(ew);                      //Grundkreisdurchmesser
-                //Volumen
-                V = ((3.14 / 4) * (Math.Pow(da, 2) - Math.Pow(BD, 2)) - ((3.14 * m * h * z) / 2)) * Zahnbreite;
-                V = Math.Round(V, 2);
+
             }
             internal void SonderrechnungAussen()
             {
                 df = d - 2 * (m + c);                           //Fußkreisdurchmesser
                 da = d + 2 * m;                                 //Kopfkreisdurchmesser
+                //Volumen
+                A = ((3.14 * ((da * da) - (BD * BD)) / 4) - (3.14 * m * h * z) / 2);
+                V = A * Zahnbreite;
+                V = Math.Round(V, 2);
             }
             internal void SonderrechnungInnen()
             {
                 df = d + 2 * (m + c);                           //Fußkreisdurchmesser
                 da = d - 2 * m;                                 //Kopfkreisdurchmesser
+                //Volumen
+                A = ((3.14 * ((da * da) - (BD * BD)) / 4) - (3.14 * m * h * z) / 2);
+                V = A * Zahnbreite;
+                V = Math.Round(V, 2);
             }
             internal void SonderrechnungSchrägverzahnt()
             {
@@ -254,7 +261,7 @@ namespace User_Interface_HSP
                     z_aus_Innen.Content = ZR1.z;
                     d_aus_Innen.Content = ZR1.d;
                     m_aus_Innen.Content = ZR1.m;
-                    V_aus.Content = ZR1.V;
+                    V_aus_Innen.Content = ZR1.V;
                 }
                 //Innenverzahnt geradverzahnt
                 else
@@ -272,7 +279,7 @@ namespace User_Interface_HSP
                     z_aus_Innen.Content = ZR1.z;
                     d_aus_Innen.Content = ZR1.d;
                     m_aus_Innen.Content = ZR1.m;
-                    V_aus.Content = ZR1.V;
+                    V_aus_Innen.Content = ZR1.V;
                 }
                 
             }
