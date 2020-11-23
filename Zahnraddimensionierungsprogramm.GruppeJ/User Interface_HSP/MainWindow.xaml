@@ -57,8 +57,8 @@
             <TextBox        x:Name="d_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0"/>
             <Label          Margin="0,0,-60,0"      >Zahnzahl z</Label>
             <TextBox        x:Name="z_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
-            <Label          Margin="0,0,-60,0">Verzahnungswinkel α</Label>
-            <TextBox        x:Name="vw_txt" Text="20" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
+            <Label          Margin="0,0,-60,0" Content="Eingriffswinkel α"/>
+            <TextBox        x:Name="ew_txt" Text="20" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
             <Label          Margin="0,0,-50,0" x:Name="cos_lbl" Visibility="Hidden">Verdrehwinkel β</Label>
             <TextBox        x:Name="cos_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False" Visibility="Hidden"/>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung" IsChecked="True" x:Name="rb_AV" >Aussenverzahnung</RadioButton>
@@ -70,9 +70,9 @@
             <TextBox        x:Name="Zahnbreite_txt" Margin="5,0,-5,0"></TextBox>
             <Label Margin="5,0,5,0">Material</Label>
             <ComboBox Margin="5,0,5,0" x:Name="Material_Dropbox">
-                <ComboBoxItem x:Name="Stahl" IsSelected="True">1</ComboBoxItem>
-                <ComboBoxItem x:Name="Messing">2</ComboBoxItem>
-                <ComboBoxItem x:Name="Plastik">3</ComboBoxItem>
+                <ComboBoxItem x:Name="Stahl" IsSelected="True" Content="Stahl"/>
+                <ComboBoxItem x:Name="Messing" Content="Messing"/>
+                <ComboBoxItem x:Name="Kunststoff" Content="Kunststoff"/>
             </ComboBox>
             <Button         x:Name="bestätigen_BTN" Click="bestätigen_BTN_Click" Margin="5,5,-15,5">Bestätigen</Button>
 
@@ -83,7 +83,7 @@
         <CheckBox x:Name="Kopfspielfaktor_CB"   Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,75"     Checked="CheckBox_Checked"              Unchecked="CheckBox_Unchecked"              IsChecked="False"/>
         <CheckBox x:Name="Teilkreis_CB"         Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,120"    Checked="Teilkreis_CB_Checked"          Unchecked="Teilkreis_CB_Unchecked"          IsChecked="true"/>
         <CheckBox x:Name="Zahnzahl_CB"          Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,0"      Checked="Zahnzahl_CB_Checked"           Unchecked="Zahnzahl_CB_Unchecked"           IsChecked="False"/>
-        <CheckBox x:Name="Verzahnungswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,45"     Checked="Verzahnungswinkel_CB_Checked"  Unchecked="Verzahnungswinkel_CB_Unchecked"  IsChecked="False"/>
+        <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,45"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
         <CheckBox Content="" x:Name="CB_cos" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,85" Unchecked="CheckBox_Unchecked_2" Checked="CheckBox_Checked_2" IsChecked="True" Visibility="Hidden" />
         
         <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,10" Click="Button_Click">Info</Button>
@@ -117,7 +117,7 @@
                         <Label x:Name="df_txt_aus">Ø Fußkreis hf:</Label>
                         <Label x:Name="db_txt_aus">Ø Grundkreis db:</Label>
                         <Label x:Name="da_txt_aus">Ø Kopfkreis da:</Label>
-                        <Label x:Name="v_txt_aus">Volumen v:</Label>
+                        <Label x:Name="V_txt_aus" Content="Volumen V:"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_aus"></Label>
@@ -131,7 +131,7 @@
                         <Label x:Name="df_aus"></Label>
                         <Label x:Name="db_aus"></Label>
                         <Label x:Name="da_aus"></Label>
-                        <Label x:Name="v_aus"></Label>
+                        <Label x:Name="V_aus"></Label>
                     </StackPanel>
                 </Grid>
 
@@ -162,7 +162,7 @@
                         <Label x:Name="df_txt_aus_Innen">Ø Fußkreis hf:</Label>
                         <Label x:Name="db_txt_aus_Innen">Ø Grundkreis db:</Label>
                         <Label x:Name="da_txt_aus_Innen">Ø Kopfkreis da:</Label>
-                        <Label x:Name="v_txt_aus_Innen">Volumen v:</Label>
+                        <Label x:Name="V_txt_aus_Innen">Volumen V:</Label>
 
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
@@ -177,7 +177,7 @@
                         <Label x:Name="df_aus_Innen"></Label>
                         <Label x:Name="db_aus_Innen"></Label>
                         <Label x:Name="da_aus_Innen"></Label>
-                        <Label x:Name="v_aus_Innen"></Label>
+                        <Label x:Name="V_aus_Innen"></Label>
                     </StackPanel>
 
                 </Grid>

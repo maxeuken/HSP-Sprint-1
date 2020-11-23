@@ -18,7 +18,7 @@ namespace User_Interface_HSP
             public double cf;                                   //Kopfspielfaktor
             public double d;                                    //Teilkreisdurchmesser
             public double cos;                                  //Verzahnungswinkel
-            public double vw;                                   //Verdrehwinkel
+            public double ew;                                   //Eingriffswinkel (In der Regel 20°)
             //Ausgabeparameter
             public double c;                                    //Kopfspiel
             public double h;                                    //Zahnhöhe
@@ -33,7 +33,7 @@ namespace User_Interface_HSP
             public double Zahnbreite;                           //Zahnbreite
             public double BD;                                   //Bohrungsdurchmesser
             public double V;                                    //Volumen
-            public int Material;                                //Zahnradmaterial
+            public string Material;                                //Zahnradmaterial
             public double MTL_hlp;
 
             //Methoden
@@ -45,7 +45,7 @@ namespace User_Interface_HSP
                 ha = m;                                         //Zahnkopfhöhe
                 p = 3.14 * m;                                   //Teilung
                 z = d / m;                                      //Zahnzahl
-                db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser
+                db = m * z * Math.Cos(ew);                      //Grundkreisdurchmesser
             }
             internal void SonderrechnungAussen()
             {
@@ -65,7 +65,7 @@ namespace User_Interface_HSP
                 ha = m;                                         //Zahnkopfhöhe
                 p = 3.14 * m;                                   //Teilung
                 z = d / (m / Math.Cos(cos));                    //Zahnzahl
-                db = m * z * Math.Cos(vw);                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
+                db = m * z * Math.Cos(ew);                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
 
             }
             internal void Rundung()
@@ -133,19 +133,19 @@ namespace User_Interface_HSP
                 MessageBox.Show("Bitte Eingabe zum Teilkreisdurchmesser überprüfen");
             }
 
-            //Verzahnungwinkel
-            Zahlencheck = vw_txt.Text;
+            //Eingriffswinkel
+            Zahlencheck = ew_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
             {
-                ZR1.vw = Convert.ToInt32(vw_txt.Text);
-                if ((ZR1.vw < 0) || (ZR1.vw >= 90))
+                ZR1.ew = Convert.ToInt32(ew_txt.Text);
+                if ((ZR1.ew < 0) || (ZR1.ew >= 90))
                 {
-                    MessageBox.Show("Fehler: Verzahnungswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
+                    MessageBox.Show("Fehler: Der Eingriffswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
                 }
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe zum Verzahnungswinkel überprüfen");
+                MessageBox.Show("Bitte Eingabe zum Eingriffsswinkel überprüfen");
             }
 
             //Schrägungswinkel   
@@ -209,16 +209,16 @@ namespace User_Interface_HSP
             }
 
             //Material
-            ZR1.Material = Convert.ToInt32(Material_Dropbox.Text);
+            ZR1.Material = Convert.ToString(Material_Dropbox.Text);
             switch (ZR1.Material)
             {
-                case 1:
+                case "Stahl":
                     ZR1.MTL_hlp = 0.0785;
                     break;
-                case 2:
+                case "Messing":
                     ZR1.MTL_hlp = 0.087;
                     break;
-                case 3:
+                case "Kunststoff":
                     ZR1.MTL_hlp = 0.000022;
                     break;
             }
@@ -255,7 +255,7 @@ namespace User_Interface_HSP
                     z_aus_Innen.Content = ZR1.z;
                     d_aus_Innen.Content = ZR1.d;
                     m_aus_Innen.Content = ZR1.m;
-                    v_txt_aus.Content = ZR1.V;
+                    V_txt_aus.Content = ZR1.V;
                 }
                 //Innenverzahnt geradverzahnt
                 else
@@ -273,7 +273,7 @@ namespace User_Interface_HSP
                     z_aus_Innen.Content = ZR1.z;
                     d_aus_Innen.Content = ZR1.d;
                     m_aus_Innen.Content = ZR1.m;
-                    v_txt_aus.Content = ZR1.V;
+                    V_txt_aus.Content = ZR1.V;
                 }
                 
             }
@@ -298,7 +298,7 @@ namespace User_Interface_HSP
                     da_aus.Content = ZR1.da;
                     d_aus.Content = ZR1.d;
                     m_aus.Content = ZR1.m;
-                    v_txt_aus.Content = ZR1.V;
+                    V_txt_aus.Content = ZR1.V;
                }
                //Aussenverzahnt geradverzahnt
                else
@@ -316,7 +316,7 @@ namespace User_Interface_HSP
                     da_aus.Content = ZR1.da;
                     d_aus.Content = ZR1.d;
                     m_aus.Content = ZR1.m;
-                    v_txt_aus.Content = ZR1.V;
+                    V_txt_aus.Content = ZR1.V;
                }
 
             }
@@ -337,15 +337,15 @@ namespace User_Interface_HSP
             }
         }
 
-        //Verzahnnungswinkel Checkbox
+        //Eingriffswinkel Checkbox
         private void CheckBox_Unchecked_1(object sender, RoutedEventArgs e)
         {
-            vw_txt.IsEnabled = true;
+            ew_txt.IsEnabled = true;
         }
         private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
         {
-            vw_txt.IsEnabled = false;
-            vw_txt.Text = Convert.ToString(20);
+            ew_txt.IsEnabled = false;
+            ew_txt.Text = Convert.ToString(20);
         }
 
         //Verdrehwinkel Checkbox
@@ -428,16 +428,16 @@ namespace User_Interface_HSP
             z_txt.IsEnabled = false;
         }
 
-        //Checkbox Verzahnungswinkel
-        private void Verzahnungswinkel_CB_Checked(object sender, RoutedEventArgs e)
+        //Checkbox Eingriffsswinkel
+        private void Eingriffswinkel_CB_Checked(object sender, RoutedEventArgs e)
         {
-            vw_txt.IsEnabled = true;
+            ew_txt.IsEnabled = true;
         }
 
-        private void Verzahnungswinkel_CB_Unchecked(object sender, RoutedEventArgs e)
+        private void Eingriffswinkel_CB_Unchecked(object sender, RoutedEventArgs e)
         {
-            vw_txt.IsEnabled = false;
-            vw_txt.Text = Convert.ToString("20");
+            ew_txt.IsEnabled = false;
+            ew_txt.Text = Convert.ToString("20");
         }
 
     }
