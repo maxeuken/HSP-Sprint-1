@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:User_Interface_HSP"
         mc:Ignorable="d"
-        Title="Zahnraddimensionierungsprogramm" Height="555" Width="550" Icon="Bild.ico">
+        Title="Zahnraddimensionierungsprogramm" Height="570" Width="550" Icon="Bild.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="#FF8B8B8B"/>
@@ -14,9 +14,9 @@
     </Window.Background>
     <Grid Margin="10,0,10,10">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="176*"/>
+            <RowDefinition Height="176"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200*"/>
@@ -85,12 +85,12 @@
         <CheckBox x:Name="Zahnzahl_CB"          Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,0"      Checked="Zahnzahl_CB_Checked"           Unchecked="Zahnzahl_CB_Unchecked"           IsChecked="False"/>
         <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,45"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
         <CheckBox Content="" x:Name="CB_cos" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,85" Unchecked="CheckBox_Unchecked_2" Checked="CheckBox_Checked_2" IsChecked="True" Visibility="Hidden" />
-        
+
         <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,10" Click="Button_Click">Info</Button>
 
-        
-        
-        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="504" Width="220">
+
+
+        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="520" Width="220" SelectionChanged="TabControl_SelectionChanged">
             <TabItem x:Name="Tab_AV" Header="Aussenverzahnung">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -105,7 +105,7 @@
                     </Grid.RowDefinitions>
                     <Image Source="Aussenverzahnung.png" Grid.ColumnSpan="2" Margin="5,-16,90,136" Grid.RowSpan="2"/>
 
-                    <StackPanel Grid.Column="0" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="2" Grid.ColumnSpan="3" Width="150" HorizontalAlignment="Left">
+                    <StackPanel Grid.Column="0" Margin="0,148,0,-26" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_txt_aus">Modul m:</Label>
                         <Label x:Name="d_txt_aus">Ø Teilkreis:</Label>
                         <Label x:Name="c_txt_aus">Kopfspiel c:</Label>
@@ -118,6 +118,7 @@
                         <Label x:Name="db_txt_aus">Ø Grundkreis db:</Label>
                         <Label x:Name="da_txt_aus">Ø Kopfkreis da:</Label>
                         <Label x:Name="V_txt_aus" Content="Volumen V:"/>
+                        <Label x:Name="Masse_txt_aus" Content="Masse m:"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_aus"></Label>
@@ -132,6 +133,7 @@
                         <Label x:Name="db_aus"></Label>
                         <Label x:Name="da_aus"></Label>
                         <Label x:Name="V_aus"></Label>
+                        <Label x:Name="Masse_aus"></Label>
                     </StackPanel>
                 </Grid>
 
@@ -163,6 +165,7 @@
                         <Label x:Name="db_txt_aus_Innen">Ø Grundkreis db:</Label>
                         <Label x:Name="da_txt_aus_Innen">Ø Kopfkreis da:</Label>
                         <Label x:Name="V_txt_aus_Innen">Volumen V:</Label>
+                        <Label x:Name="Masse_txt_aus_Innen">Volumen V:</Label>
 
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
@@ -178,12 +181,14 @@
                         <Label x:Name="db_aus_Innen"></Label>
                         <Label x:Name="da_aus_Innen"></Label>
                         <Label x:Name="V_aus_Innen"></Label>
+                        <Label x:Name="Masse_aus_Innen"></Label>
                     </StackPanel>
 
                 </Grid>
 
             </TabItem>
         </TabControl>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="-267,160,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
 
 

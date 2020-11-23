@@ -32,10 +32,11 @@ namespace User_Interface_HSP
             public int Verzahnung = 0;
             public double Zahnbreite;                           //Zahnbreite
             public double BD;                                   //Bohrungsdurchmesser
+            public double A;                                    //Fläche
             public double V;                                    //Volumen
             public string Material;                             //Zahnradmaterial
             public double MTL_hlp;                              //Dichte
-            public double A;                                    //Fläche
+            public double Masse;                                //Masse
 
             //Methoden
             internal void Berechnung()
@@ -57,6 +58,8 @@ namespace User_Interface_HSP
                 A = ((3.14 * ((da * da) - (BD * BD)) / 4) - (3.14 * m * h * z) / 2);
                 V = A * Zahnbreite;
                 V = Math.Round(V, 2);
+                //Masse
+                Masse = V * MTL_hlp;
             }
             internal void SonderrechnungInnen()
             {
@@ -66,6 +69,8 @@ namespace User_Interface_HSP
                 A = ((3.14 * ((da * da) - (BD * BD)) / 4) - (3.14 * m * h * z) / 2);
                 V = A * Zahnbreite;
                 V = Math.Round(V, 2);
+                //Masse
+                Masse = V * MTL_hlp;
             }
             internal void SonderrechnungSchrägverzahnt()
             {
@@ -89,6 +94,8 @@ namespace User_Interface_HSP
                 df = Math.Round(df, 2);
                 db = Math.Round(db, 2);
                 da = Math.Round(da, 2);
+                V = Math.Round(V, 2);
+                Masse = Math.Round(Masse, 2);
 
             }
   
@@ -262,6 +269,7 @@ namespace User_Interface_HSP
                     d_aus_Innen.Content = ZR1.d+" mm";
                     m_aus_Innen.Content = ZR1.m+" mm";
                     V_aus_Innen.Content = ZR1.V+" mm^3";
+                    Masse_aus_Innen.Content = ZR1.Masse + " Kg";
                 }
                 //Innenverzahnt geradverzahnt
                 else
@@ -280,6 +288,7 @@ namespace User_Interface_HSP
                     d_aus_Innen.Content = ZR1.d + " mm";
                     m_aus_Innen.Content = ZR1.m + " mm";
                     V_aus_Innen.Content = ZR1.V+" mm^3";
+                    Masse_aus_Innen.Content = ZR1.Masse + " Kg";
                 }
                 
             }
@@ -305,6 +314,7 @@ namespace User_Interface_HSP
                     d_aus.Content = ZR1.d + " mm";
                     m_aus.Content = ZR1.m + " mm";
                     V_aus.Content = ZR1.V+" mm^3";
+                    Masse_aus.Content = ZR1.Masse + " Kg";
                }
                //Aussenverzahnt geradverzahnt
                else
@@ -323,6 +333,7 @@ namespace User_Interface_HSP
                     d_aus.Content = ZR1.d + " mm";
                     m_aus.Content = ZR1.m + " mm";
                     V_aus.Content = ZR1.V+" mm^3";
+                    Masse_aus.Content = ZR1.Masse + " Kg";
                }
 
             }
@@ -446,5 +457,9 @@ namespace User_Interface_HSP
             ew_txt.Text = Convert.ToString("20");
         }
 
+        private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
