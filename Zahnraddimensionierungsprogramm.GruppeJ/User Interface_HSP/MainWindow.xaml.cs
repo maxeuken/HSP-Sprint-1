@@ -116,7 +116,7 @@ namespace User_Interface_HSP
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe überprüfen");
+                MessageBox.Show("Bitte Eingabe zum Kopfspielfaktor überprüfen");
             }
             //Teilkreisdurchmesser
             Zahlencheck = d_txt.Text;
@@ -130,7 +130,7 @@ namespace User_Interface_HSP
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe überprüfen");
+                MessageBox.Show("Bitte Eingabe zum Teilkreisdurchmesser überprüfen");
             }
 
             //Verzahnungwinkel
@@ -145,7 +145,7 @@ namespace User_Interface_HSP
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe überprüfen");
+                MessageBox.Show("Bitte Eingabe zum Verzahnungswinkel überprüfen");
             }
 
             //Schrägungswinkel   
@@ -160,7 +160,7 @@ namespace User_Interface_HSP
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe überprüfen");
+                MessageBox.Show("Bitte Eingabe zum Schrägungswinkel überprüfen");
             }
 
             //Bohrungsdurchmesser
@@ -175,7 +175,7 @@ namespace User_Interface_HSP
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe überprüfen");
+                MessageBox.Show("Bitte Eingabe zum Bohrungsdurchmesser überprüfen");
             }
 
             //Dicke
@@ -190,7 +190,7 @@ namespace User_Interface_HSP
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe überprüfen");
+                MessageBox.Show("Bitte Eingabe zur Dicke überprüfen");
             }
 
             //Zähnezahl
@@ -205,7 +205,7 @@ namespace User_Interface_HSP
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe überprüfen");
+                MessageBox.Show("Bitte Eingabe zur Zähnezahl überprüfen");
             }
 
             //Material
