@@ -250,36 +250,36 @@ namespace User_Interface_HSP
                     ZR1.SonderrechnungSchrägverzahnt();
                     ZR1.Rundung();
                     ZR1.SonderrechnungInnen();
-                    df_aus_Innen.Content = ZR1.df;
-                    da_aus_Innen.Content = ZR1.da;
-                    c_aus_Innen.Content = ZR1.c;
-                    h_aus_Innen.Content = ZR1.h;
-                    hf_aus_Innen.Content = ZR1.hf;
-                    ha_aus_Innen.Content = ZR1.ha;
-                    p_aus_Innen.Content = ZR1.p;
-                    db_aus_Innen.Content = ZR1.db;
+                    df_aus_Innen.Content = ZR1.df+" mm";
+                    da_aus_Innen.Content = ZR1.da+" mm";
+                    c_aus_Innen.Content = ZR1.c+" mm";
+                    h_aus_Innen.Content = ZR1.h+" mm";
+                    hf_aus_Innen.Content = ZR1.hf+" mm";
+                    ha_aus_Innen.Content = ZR1.ha+" mm";
+                    p_aus_Innen.Content = ZR1.p+" mm";
+                    db_aus_Innen.Content = ZR1.db+" mm";
                     z_aus_Innen.Content = ZR1.z;
-                    d_aus_Innen.Content = ZR1.d;
-                    m_aus_Innen.Content = ZR1.m;
-                    V_aus_Innen.Content = ZR1.V;
+                    d_aus_Innen.Content = ZR1.d+" mm";
+                    m_aus_Innen.Content = ZR1.m+" mm";
+                    V_aus_Innen.Content = ZR1.V+" mm^3";
                 }
                 //Innenverzahnt geradverzahnt
                 else
                 {
                     ZR1.SonderrechnungInnen();
                     ZR1.Rundung();
-                    df_aus_Innen.Content = ZR1.df;
-                    da_aus_Innen.Content = ZR1.da;
-                    c_aus_Innen.Content = ZR1.c;
-                    h_aus_Innen.Content = ZR1.h;
-                    hf_aus_Innen.Content = ZR1.hf;
-                    ha_aus_Innen.Content = ZR1.ha;
-                    p_aus_Innen.Content = ZR1.p;
-                    db_aus_Innen.Content = ZR1.db;
+                    df_aus_Innen.Content = ZR1.df+" mm";
+                    da_aus_Innen.Content = ZR1.da + " mm";
+                    c_aus_Innen.Content = ZR1.c + " mm";
+                    h_aus_Innen.Content = ZR1.h + " mm";
+                    hf_aus_Innen.Content = ZR1.hf + " mm";
+                    ha_aus_Innen.Content = ZR1.ha + " mm";
+                    p_aus_Innen.Content = ZR1.p + " mm";
+                    db_aus_Innen.Content = ZR1.db + " mm";
                     z_aus_Innen.Content = ZR1.z;
-                    d_aus_Innen.Content = ZR1.d;
-                    m_aus_Innen.Content = ZR1.m;
-                    V_aus_Innen.Content = ZR1.V;
+                    d_aus_Innen.Content = ZR1.d + " mm";
+                    m_aus_Innen.Content = ZR1.m + " mm";
+                    V_aus_Innen.Content = ZR1.V+" mm^3";
                 }
                 
             }
@@ -293,36 +293,36 @@ namespace User_Interface_HSP
                     ZR1.SonderrechnungSchrägverzahnt();
                     ZR1.Rundung();
                     ZR1.SonderrechnungAussen();
-                    c_aus.Content = ZR1.c;
-                    h_aus.Content = ZR1.h;
-                    hf_aus.Content = ZR1.hf;
-                    ha_aus.Content = ZR1.ha;
-                    p_aus.Content = ZR1.p;
-                    db_aus.Content = ZR1.db;
+                    c_aus.Content = ZR1.c + " mm";
+                    h_aus.Content = ZR1.h + " mm";
+                    hf_aus.Content = ZR1.hf + " mm";
+                    ha_aus.Content = ZR1.ha + " mm";
+                    p_aus.Content = ZR1.p + " mm";
+                    db_aus.Content = ZR1.db + " mm";
                     z_aus.Content = ZR1.z;
-                    df_aus.Content = ZR1.df;
-                    da_aus.Content = ZR1.da;
-                    d_aus.Content = ZR1.d;
-                    m_aus.Content = ZR1.m;
-                    V_aus.Content = ZR1.V;
+                    df_aus.Content = ZR1.df + " mm";
+                    da_aus.Content = ZR1.da + " mm";
+                    d_aus.Content = ZR1.d + " mm";
+                    m_aus.Content = ZR1.m + " mm";
+                    V_aus.Content = ZR1.V+" mm^3";
                }
                //Aussenverzahnt geradverzahnt
                else
                {
                     ZR1.SonderrechnungAussen();
                     ZR1.Rundung();
-                    c_aus.Content = ZR1.c;
-                    h_aus.Content = ZR1.h;
-                    hf_aus.Content = ZR1.hf;
-                    ha_aus.Content = ZR1.ha;
-                    p_aus.Content = ZR1.p;
-                    db_aus.Content = ZR1.db;
+                    c_aus.Content = ZR1.c + " mm";
+                    h_aus.Content = ZR1.h + " mm";
+                    hf_aus.Content = ZR1.hf + " mm";
+                    ha_aus.Content = ZR1.ha + " mm";
+                    p_aus.Content = ZR1.p + " mm";
+                    db_aus.Content = ZR1.db + " mm";
                     z_aus.Content = ZR1.z;
-                    df_aus.Content = ZR1.df;
-                    da_aus.Content = ZR1.da;
-                    d_aus.Content = ZR1.d;
-                    m_aus.Content = ZR1.m;
-                    V_aus.Content = ZR1.V;
+                    df_aus.Content = ZR1.df + " mm";
+                    da_aus.Content = ZR1.da + " mm";
+                    d_aus.Content = ZR1.d + " mm";
+                    m_aus.Content = ZR1.m + " mm";
+                    V_aus.Content = ZR1.V+" mm^3";
                }
 
             }
