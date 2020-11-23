@@ -30,7 +30,7 @@ namespace User_Interface_HSP
             public double db;                                   //Grundkreisdurchmesser
             public double da;                                   //Kopfkreisdurchmesser
             public int Verzahnung = 0;
-            public double Dicke;                                //Zahnbreite
+            public double Zahnbreite;                           //Zahnbreite
             public double BD;                                   //Bohrungsdurchmesser
             public double V;                                    //Volumen
             public int Material;                                //Zahnradmaterial
@@ -83,7 +83,7 @@ namespace User_Interface_HSP
             }
             public void Volumenberechnung()
             {
-                V = ((3.14 / 4) * (Math.Pow(da, 2) - Math.Pow(BD, 2))-((3.14*m*h*z)/2))*Dicke;
+                V = ((3.14 / 4) * (Math.Pow(da, 2) - Math.Pow(BD, 2))-((3.14*m*h*z)/2))*Zahnbreite;
                 V = Math.Round(V, 2);
             }
         }
@@ -178,19 +178,19 @@ namespace User_Interface_HSP
                 MessageBox.Show("Bitte Eingabe zum Bohrungsdurchmesser überprüfen");
             }
 
-            //Dicke
-            Zahlencheck = Dicke_txt.Text;
+            //Zahnbreite
+            Zahlencheck = Zahnbreite_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
             {
-                ZR1.Dicke = Convert.ToDouble(Dicke_txt.Text);
-                if (ZR1.Dicke < 0)
+                ZR1.Zahnbreite = Convert.ToDouble(Zahnbreite_txt.Text);
+                if (ZR1.Zahnbreite < 0)
                 {
-                    MessageBox.Show("Dicke muss über 0 liegen");
+                    MessageBox.Show("Zahnbreite muss über 0 liegen");
                 }
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe zur Dicke überprüfen");
+                MessageBox.Show("Bitte Eingabe zur Zahnbreite überprüfen");
             }
 
             //Zähnezahl
