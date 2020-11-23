@@ -20,20 +20,20 @@ namespace User_Interface_HSP
             public double cos;                                  //Verzahnungswinkel
             public double vw;                                   //Verdrehwinkel
             //Ausgabeparameter
-            public double c;
-            public double h;
-            public double hf;
-            public double ha;
-            public double p;
-            public double z;
-            public double df;
-            public double db;
-            public double da;
+            public double c;                                    //Kopfspiel
+            public double h;                                    //Zahnhöhe
+            public double hf;                                   //Zahnfußhöhe
+            public double ha;                                   //Zahnkopfhöhe
+            public double p;                                    //Teilung
+            public double z;                                    //Zahnzahl
+            public double df;                                   //Fußkreisdurchmesser
+            public double db;                                   //Grundkreisdurchmesser
+            public double da;                                   //Kopfkreisdurchmesser
             public int Verzahnung = 0;
-            public double Dicke;
-            public double BD;
-            public double V;
-            public int Material;
+            public double Dicke;                                //Zahnbreite
+            public double BD;                                   //Bohrungsdurchmesser
+            public double V;                                    //Volumen
+            public int Material;                                //Zahnradmaterial
             public double MTL_hlp;
 
             //Methoden
