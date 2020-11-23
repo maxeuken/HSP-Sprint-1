@@ -61,8 +61,8 @@
             <TextBox        x:Name="z_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
             <Label          Margin="0,0,-60,0" Content="Eingriffswinkel α"/>
             <TextBox        x:Name="ew_txt" Text="20" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
-            <Label          Margin="0,0,-50,0" x:Name="cos_lbl" Visibility="Hidden">Schrägungswinkel β</Label>
-            <TextBox        x:Name="cos_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False" Visibility="Hidden"/>
+            <Label          Margin="0,0,-50,0" x:Name="sw_lbl" Visibility="Hidden">Schrägungswinkel β</Label>
+            <TextBox        x:Name="sw_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False" Visibility="Hidden"/>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung" IsChecked="True" x:Name="rb_AV" >Aussenverzahnung</RadioButton>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung"                  x:Name="rb_IV" >Innenverzahnung</RadioButton>
             <CheckBox       Margin="5,0,-50,0" x:Name="CB_SV" Unchecked="CB_SV_Unchecked" Checked="CB_SV_Checked">Schrägverzahnt</CheckBox>
@@ -86,7 +86,7 @@
         <CheckBox x:Name="Teilkreis_CB"         Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,120"    Checked="Teilkreis_CB_Checked"          Unchecked="Teilkreis_CB_Unchecked"          IsChecked="true"/>
         <CheckBox x:Name="Zahnzahl_CB"          Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,0"      Checked="Zahnzahl_CB_Checked"           Unchecked="Zahnzahl_CB_Unchecked"           IsChecked="False"/>
         <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,45"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
-        <CheckBox Content="" x:Name="CB_cos" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,85" Unchecked="CheckBox_Unchecked_2" Checked="CheckBox_Checked_2" IsChecked="True" Visibility="Hidden" />
+        <CheckBox Content="" x:Name="CB_sw" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,85" Unchecked="CheckBox_Unchecked_2" Checked="CheckBox_Checked_2" IsChecked="True" Visibility="Hidden" />
 
         <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,10" Click="Button_Click">Info</Button>
 
@@ -109,7 +109,7 @@
 
                     <StackPanel Grid.Column="0" Margin="0,148,0,-26" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_txt_aus">Modul m:</Label>
-                        <Label x:Name="d_txt_aus">Ø Teilkreis:</Label>
+                        <Label x:Name="drz_txt_aus">Ø Teilkreis:</Label>
                         <Label x:Name="c_txt_aus">Kopfspiel c:</Label>
                         <Label x:Name="h_txt_aus">Zahnhöhe h:</Label>
                         <Label x:Name="hf_txt_aus">Zahnfußhöhe hf:</Label>
@@ -124,7 +124,7 @@
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_aus"></Label>
-                        <Label x:Name="d_aus"></Label>
+                        <Label x:Name="drz_aus"></Label>
                         <Label x:Name="c_aus"></Label>
                         <Label x:Name="h_aus"></Label>
                         <Label x:Name="hf_aus"></Label>
@@ -156,7 +156,7 @@
                     <Image Source="Innenverzahnung.png" Width="600" Height="350" Margin="-240,-109,-146,43" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.633" Grid.ColumnSpan="2"/>
                     <StackPanel Grid.Column="0" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_txt_aus_Innen">Modul m:</Label>
-                        <Label x:Name="d_txt_aus_Innen">Ø Teilkreis:</Label>
+                        <Label x:Name="drz_txt_aus_Innen">Ø Teilkreis:</Label>
                         <Label x:Name="c_txt_aus_Innen">Kopfspiel c:</Label>
                         <Label x:Name="h_txt_aus_Innen">Zahnhöhe h:</Label>
                         <Label x:Name="hf_txt_aus_Innen">Zahnfußhöhe hf:</Label>
@@ -172,7 +172,7 @@
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_aus_Innen"></Label>
-                        <Label x:Name="d_aus_Innen"></Label>
+                        <Label x:Name="drz_aus_Innen"></Label>
                         <Label x:Name="c_aus_Innen"></Label>
                         <Label x:Name="h_aus_Innen"></Label>
                         <Label x:Name="hf_aus_Innen"></Label>

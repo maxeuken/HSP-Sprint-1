@@ -14,78 +14,88 @@ namespace User_Interface_HSP
         private class Zahnrad
         {
             //Eingangsparameter
-            public double m;                                    //Modul
-            public double cf;                                   //Kopfspielfaktor
-            public double d;                                    //Teilkreisdurchmesser
-            public double cos;                                  //Verzahnungswinkel
-            public double ew;                                   //Eingriffswinkel (In der Regel 20°)
+            public double m;                                                        //Modul
+            public double cf;                                                       //Kopfspielfaktor
+            public double d;                                                        //Teilkreisdurchmesser
+            public double sw;                                                       //Schrägungswinkel (meist zwischen 8° und 25°)
+            public double ew;                                                       //Eingriffswinkel (In der Regel 20°)
             //Ausgabeparameter
-            public double c;                                    //Kopfspiel
-            public double h;                                    //Zahnhöhe
-            public double hf;                                   //Zahnfußhöhe
-            public double ha;                                   //Zahnkopfhöhe
-            public double p;                                    //Teilung
-            public double z;                                    //Zahnzahl
-            public double df;                                   //Fußkreisdurchmesser
-            public double db;                                   //Grundkreisdurchmesser
-            public double da;                                   //Kopfkreisdurchmesser
+            public double drz;                                                      //Teilkreisdurchmesser nach Rundung von z
+            public double c;                                                        //Kopfspiel
+            public double h;                                                        //Zahnhöhe
+            public double hf;                                                       //Zahnfußhöhe
+            public double ha;                                                       //Zahnkopfhöhe
+            public double p;                                                        //Teilung
+            public double z;                                                        //Zahnzahl
+            public double df;                                                       //Fußkreisdurchmesser
+            public double db;                                                       //Grundkreisdurchmesser
+            public double da;                                                       //Kopfkreisdurchmesser
+
+            public double mt;                                                       //Stirnmodul
+            public double pt;                                                       //Stirnteilung
+            public double alphat;                                                   //Stirneingriffswinkel
+
             public int Verzahnung = 0;
-            public double Zahnbreite;                           //Zahnbreite
-            public double BD;                                   //Bohrungsdurchmesser
-            public double A;                                    //Fläche
-            public double V;                                    //Volumen
-            public string Material;                             //Zahnradmaterial
-            public double MTL_hlp;                              //Dichte
-            public double Masse;                                //Masse
+            public double Zahnbreite;                                               //Zahnbreite
+            public double BD;                                                       //Bohrungsdurchmesser
+            public double A;                                                        //Fläche
+            public double V;                                                        //Volumen
+            public string Material;                                                 //Zahnradmaterial
+            public double MTL_hlp;                                                  //Dichte
+            public double Masse;                                                    //Masse
 
             //Methoden
             internal void Berechnung()
             {
-                c = m * cf;                                     //Kopfspiel
-                h = 2 * m + c;                                  //Zahnhöhe
-                hf = m + c;                                     //Zahnfußhöhe
-                ha = m;                                         //Zahnkopfhöhe
-                p = 3.14 * m;                                   //Teilung
-                z = Math.Round(d / m, 2);                       //Zahnzahl
-                db = m * z * Math.Cos(ew);                      //Grundkreisdurchmesser
+                c = m * cf;                                                         //Kopfspiel
+                h = 2 * m + c;                                                      //Zahnhöhe
+                hf = m + c;                                                         //Zahnfußhöhe
+                ha = m;                                                             //Zahnkopfhöhe
+                p = Math.PI * m;                                                     //Teilung
+                z = Math.Round(d / m, 0);                                           //Zahnzahl
+                drz = z * m;                                                        //angepasster Teilkreisdurchmesser nach Rundung von z
+                db = drz * Math.Cos(ew);                                            //Grundkreisdurchmesser
 
             }
             internal void SonderrechnungAussen()
             {
-                df = d - 2 * (m + c);                           //Fußkreisdurchmesser
-                da = d + 2 * m;                                 //Kopfkreisdurchmesser
-                //Volumen
-                A = ((3.14 * ((da * da) - (BD * BD)) / 4) - (3.14 * m * h * z) / 2);
-                V = A * Zahnbreite;
-                V = Math.Round(V, 2);
-                //Masse
-                Masse = V * MTL_hlp;
+                df = d - 2 * (m + c);                                               //Fußkreisdurchmesser
+                da = d + 2 * m;                                                     //Kopfkreisdurchmesser
+                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);//Fläche
+                V = A * Zahnbreite;                                                 //Volumen
+                Masse = V * MTL_hlp;                                                //Masse
             }
             internal void SonderrechnungInnen()
             {
-                df = d + 2 * (m + c);                           //Fußkreisdurchmesser
-                da = d - 2 * m;                                 //Kopfkreisdurchmesser
-                //Volumen
-                A = ((3.14 * ((da * da) - (BD * BD)) / 4) - (3.14 * m * h * z) / 2);
-                V = A * Zahnbreite;
-                V = Math.Round(V, 2);
-                //Masse
-                Masse = V * MTL_hlp;
+                df = d + 2 * (m + c);                                               //Fußkreisdurchmesser
+                da = d - 2 * m;                                                     //Kopfkreisdurchmesser
+                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);//Fläche
+                V = A * Zahnbreite;                                                 //Volumen
+                Masse = V * MTL_hlp;                                                 //Masse
             }
             internal void SonderrechnungSchrägverzahnt()
             {
-                c = m * cf;                                     //Kopfspiel
-                h = 2 * m + c;                                  //Zahnhöhe
-                hf = m + c;                                     //Zahnfußhöhe
-                ha = m;                                         //Zahnkopfhöhe
-                p = 3.14 * m;                                   //Teilung
-                z = d / (m / Math.Cos(cos));                    //Zahnzahl
-                db = m * z * Math.Cos(ew);                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
+                mt = m / Math.Cos(sw);                                             //Stirnmodul
+                p = m * Math.PI;                                                   //Teilung
+                pt = p / Math.Cos(sw);                                             //Stirnteilung
+                c = m * cf;                                                         //Kopfspiel
+                h = 2 * m + c;                                                      //Zahnhöhe
+                hf = m + c;                                                         //Zahnfußhöhe
+                ha = m;                                                             //Zahnkopfhöhe
+                z = d / mt;                                                         //Zahnzahl
+                drz = mt * Math.Round(z, 0);                                        //angepasster Teilkreisdurchmesser nach Rundung von z
+                alphat = Math.Atan((Math.Tan(ew) / Math.Cos(sw)));                   //Stirneingriffswinkel
+                db = drz*Math.Cos(alphat);                                          //Grundkreisdurchmesser (cos(20°)= 0,9397)
+                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);//Fläche
+                V = A * Zahnbreite;                                                 //Volumen
+               Masse = V * MTL_hlp;                                                 //Masse
 
             }
             internal void Rundung()
             {
                 c = Math.Round(c, 2);
+                d = Math.Round(d, 2);
+                drz = Math.Round(drz, 2);
                 h = Math.Round(h, 2);
                 hf = Math.Round(hf, 2);
                 ha = Math.Round(ha, 2);
@@ -96,6 +106,8 @@ namespace User_Interface_HSP
                 da = Math.Round(da, 2);
                 V = Math.Round(V, 2);
                 Masse = Math.Round(Masse, 2);
+                alphat = Math.Round(alphat, 2);
+                mt = Math.Round(mt, 2);
 
             }
   
@@ -118,7 +130,7 @@ namespace User_Interface_HSP
             ZR1.m = Convert.ToDouble(Modul_Dropbox.Text);
 
             //Kopfspielfaktor
-            string Zahlencheck = d_txt.Text;
+            string Zahlencheck = cf_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
             {
                 ZR1.cf = Convert.ToDouble(cf_txt.Text);
@@ -162,11 +174,11 @@ namespace User_Interface_HSP
             }
 
             //Schrägungswinkel   
-            Zahlencheck = cos_txt.Text;
+            Zahlencheck = sw_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
             {
-                ZR1.cos = Convert.ToInt32(cos_txt.Text);
-                if ((ZR1.cos < 0) || (ZR1.cos >= 90))
+                ZR1.sw = Convert.ToInt32(sw_txt.Text);
+                if ((ZR1.sw < 0) || (ZR1.sw >= 90))
                 {
                     MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen"); ;
                 }
@@ -266,7 +278,7 @@ namespace User_Interface_HSP
                     p_aus_Innen.Content = ZR1.p+" mm";
                     db_aus_Innen.Content = ZR1.db+" mm";
                     z_aus_Innen.Content = ZR1.z;
-                    d_aus_Innen.Content = ZR1.d+" mm";
+                    drz_aus_Innen.Content = ZR1.drz+" mm";
                     m_aus_Innen.Content = ZR1.m+" mm";
                     V_aus_Innen.Content = ZR1.V+" mm^3";
                     Masse_aus_Innen.Content = ZR1.Masse + " Kg";
@@ -285,7 +297,7 @@ namespace User_Interface_HSP
                     p_aus_Innen.Content = ZR1.p + " mm";
                     db_aus_Innen.Content = ZR1.db + " mm";
                     z_aus_Innen.Content = ZR1.z;
-                    d_aus_Innen.Content = ZR1.d + " mm";
+                    drz_aus_Innen.Content = ZR1.drz + " mm";
                     m_aus_Innen.Content = ZR1.m + " mm";
                     V_aus_Innen.Content = ZR1.V+" mm^3";
                     Masse_aus_Innen.Content = ZR1.Masse + " Kg";
@@ -311,7 +323,7 @@ namespace User_Interface_HSP
                     z_aus.Content = ZR1.z;
                     df_aus.Content = ZR1.df + " mm";
                     da_aus.Content = ZR1.da + " mm";
-                    d_aus.Content = ZR1.d + " mm";
+                    drz_aus.Content = ZR1.drz + " mm";
                     m_aus.Content = ZR1.m + " mm";
                     V_aus.Content = ZR1.V+" mm^3";
                     Masse_aus.Content = ZR1.Masse + " Kg";
@@ -330,7 +342,7 @@ namespace User_Interface_HSP
                     z_aus.Content = ZR1.z;
                     df_aus.Content = ZR1.df + " mm";
                     da_aus.Content = ZR1.da + " mm";
-                    d_aus.Content = ZR1.d + " mm";
+                    drz_aus.Content = ZR1.drz + " mm";
                     m_aus.Content = ZR1.m + " mm";
                     V_aus.Content = ZR1.V+" mm^3";
                     Masse_aus.Content = ZR1.Masse + " Kg";
@@ -368,12 +380,13 @@ namespace User_Interface_HSP
         //Schrägungswinkel Checkbox
         private void CheckBox_Unchecked_2(object sender, RoutedEventArgs e)
         {
-            cos_txt.IsEnabled = true;
+            sw_txt.IsEnabled = false;
+            sw_txt.Text = Convert.ToString(0);
         }
         private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
         {
-            cos_txt.IsEnabled = false;
-            cos_txt.Text = Convert.ToString(0);
+            sw_txt.IsEnabled = true;
+            
         }
 
         //Info Button Event
@@ -387,17 +400,17 @@ namespace User_Interface_HSP
         //Schrägverzahnt Checkbox Visibility Check
         private void CB_SV_Unchecked(object sender, RoutedEventArgs e)
         {
-            cos_txt.Visibility = Visibility.Hidden;
-            cos_lbl.Visibility = Visibility.Hidden;
-            CB_cos.Visibility = Visibility.Hidden;
+            sw_txt.Visibility = Visibility.Hidden;
+            sw_lbl.Visibility = Visibility.Hidden;
+            CB_sw.Visibility = Visibility.Hidden;
 
         }
 
         private void CB_SV_Checked(object sender, RoutedEventArgs e)
         {
-            cos_txt.Visibility = Visibility.Visible;
-            cos_lbl.Visibility = Visibility.Visible;
-            CB_cos.Visibility = Visibility.Visible;
+            sw_txt.Visibility = Visibility.Visible;
+            sw_lbl.Visibility = Visibility.Visible;
+            CB_sw.Visibility = Visibility.Visible;
         }
 
         //Checkbox Kopfspielfaktor
