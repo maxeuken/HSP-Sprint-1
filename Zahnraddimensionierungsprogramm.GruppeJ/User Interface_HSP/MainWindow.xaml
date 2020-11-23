@@ -31,9 +31,11 @@
 
         <Image Source="Bild.png" Margin="0,0,10,0"></Image>
 
-        <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,10" Grid.RowSpan="3">Hier könnte ihre Werbung stehen!</TextBlock>
-        <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,100" Grid.RowSpan="3">Hier könnte ihre Werbung stehen!</TextBlock>
-        <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,180,20,0" Grid.RowSpan="2">Hier könnte ihre Werbung stehen!</TextBlock>
+        <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,10" Grid.RowSpan="3">Infobox:</TextBlock>
+        <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,45,10,100" Grid.RowSpan="2">Der Faktor zur Berechnung des Kopfspiels c liegt immer zwischen 0,1 und 0,3. 
+            Häufig beträgt er 0,167.</TextBlock>
+        <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,180,20,0" Grid.RowSpan="2">Der Schrägungswinkel liegt meist zwischen 8° und 25°, 
+            theoretisch kann er zwischen 0° und 90° liegen</TextBlock>
 
         <StackPanel  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Margin="0,0,20,0">
             <Label>Modul m</Label>
@@ -59,7 +61,7 @@
             <TextBox        x:Name="z_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
             <Label          Margin="0,0,-60,0" Content="Eingriffswinkel α"/>
             <TextBox        x:Name="ew_txt" Text="20" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
-            <Label          Margin="0,0,-50,0" x:Name="cos_lbl" Visibility="Hidden">Verdrehwinkel β</Label>
+            <Label          Margin="0,0,-50,0" x:Name="cos_lbl" Visibility="Hidden">Schrägungswinkel β</Label>
             <TextBox        x:Name="cos_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False" Visibility="Hidden"/>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung" IsChecked="True" x:Name="rb_AV" >Aussenverzahnung</RadioButton>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung"                  x:Name="rb_IV" >Innenverzahnung</RadioButton>

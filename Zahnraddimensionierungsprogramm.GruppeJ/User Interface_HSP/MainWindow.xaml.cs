@@ -365,7 +365,7 @@ namespace User_Interface_HSP
             ew_txt.Text = Convert.ToString(20);
         }
 
-        //Verdrehwinkel Checkbox
+        //Schrägungswinkel Checkbox
         private void CheckBox_Unchecked_2(object sender, RoutedEventArgs e)
         {
             cos_txt.IsEnabled = true;
