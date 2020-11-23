@@ -33,8 +33,8 @@ namespace User_Interface_HSP
             public double Zahnbreite;                           //Zahnbreite
             public double BD;                                   //Bohrungsdurchmesser
             public double V;                                    //Volumen
-            public string Material;                                //Zahnradmaterial
-            public double MTL_hlp;
+            public string Material;                             //Zahnradmaterial
+            public double MTL_hlp;                              //Dichte
 
             //Methoden
             internal void Berechnung()
@@ -213,13 +213,13 @@ namespace User_Interface_HSP
             switch (ZR1.Material)
             {
                 case "Stahl":
-                    ZR1.MTL_hlp = 0.0785;
+                    ZR1.MTL_hlp = 0.00000785;
                     break;
                 case "Messing":
-                    ZR1.MTL_hlp = 0.087;
+                    ZR1.MTL_hlp = 0.0000084;
                     break;
                 case "Kunststoff":
-                    ZR1.MTL_hlp = 0.000022;
+                    ZR1.MTL_hlp = 0.00000022;
                     break;
             }
 
@@ -255,7 +255,7 @@ namespace User_Interface_HSP
                     z_aus_Innen.Content = ZR1.z;
                     d_aus_Innen.Content = ZR1.d;
                     m_aus_Innen.Content = ZR1.m;
-                    V_txt_aus.Content = ZR1.V;
+                    V_aus.Content = ZR1.V;
                 }
                 //Innenverzahnt geradverzahnt
                 else
@@ -273,7 +273,7 @@ namespace User_Interface_HSP
                     z_aus_Innen.Content = ZR1.z;
                     d_aus_Innen.Content = ZR1.d;
                     m_aus_Innen.Content = ZR1.m;
-                    V_txt_aus.Content = ZR1.V;
+                    V_aus.Content = ZR1.V;
                 }
                 
             }
@@ -298,7 +298,7 @@ namespace User_Interface_HSP
                     da_aus.Content = ZR1.da;
                     d_aus.Content = ZR1.d;
                     m_aus.Content = ZR1.m;
-                    V_txt_aus.Content = ZR1.V;
+                    V_aus.Content = ZR1.V;
                }
                //Aussenverzahnt geradverzahnt
                else
@@ -316,7 +316,7 @@ namespace User_Interface_HSP
                     da_aus.Content = ZR1.da;
                     d_aus.Content = ZR1.d;
                     m_aus.Content = ZR1.m;
-                    V_txt_aus.Content = ZR1.V;
+                    V_aus.Content = ZR1.V;
                }
 
             }
