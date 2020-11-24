@@ -76,7 +76,7 @@
                 <ComboBoxItem x:Name="Messing" Content="Messing"/>
                 <ComboBoxItem x:Name="Kunststoff" Content="Kunststoff"/>
             </ComboBox>
-            <Button         x:Name="bestätigen_BTN" Click="bestätigen_BTN_Click" Margin="5,5,-15,5">Bestätigen</Button>
+            <Button         x:Name="Bestätigen_BTN" Click="Bestätigen_BTN_Click" Margin="5,5,-15,5">Bestätigen</Button>
 
 
         </StackPanel>
@@ -119,8 +119,8 @@
                         <Label x:Name="df_txt_aus">Ø Fußkreis hf:</Label>
                         <Label x:Name="db_txt_aus">Ø Grundkreis db:</Label>
                         <Label x:Name="da_txt_aus">Ø Kopfkreis da:</Label>
-                        <Label x:Name="V_txt_aus" Content="Volumen V:"/>
-                        <Label x:Name="Masse_txt_aus" Content="Masse m:"/>
+                        <Label x:Name="V_txt_aus">Volumen V:</Label>
+                        <Label x:Name="Masse_txt_aus">Masse:</Label>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_aus"></Label>

@@ -62,16 +62,16 @@ namespace User_Interface_HSP
                 df = d - 2 * (m + c);                                                           //Fußkreisdurchmesser
                 da = d + 2 * m;                                                                 //Kopfkreisdurchmesser
                 A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);      //Fläche
-                V = A * Zahnbreite;                                                             //Volumen
-                Masse = V * MTL_hlp;                                                            //Masse
+                V = Math.Round(A * Zahnbreite, 2);                                              //Volumen
+                Masse = Math.Round(V * MTL_hlp, 2);                                             //Masse
             }
             internal void SonderrechnungInnen()
             {
                 df = d + 2 * (m + c);                                                           //Fußkreisdurchmesser
                 da = d - 2 * m;                                                                 //Kopfkreisdurchmesser
                 A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);      //Fläche
-                V = A * Zahnbreite;                                                             //Volumen
-                Masse = V * MTL_hlp;                                                            //Masse
+                V = Math.Round(A * Zahnbreite, 2);                                              //Volumen
+                Masse = Math.Round(V * MTL_hlp, 2);                                             //Masse
             }
             internal void SonderrechnungSchrägverzahnt()
             {
@@ -84,13 +84,11 @@ namespace User_Interface_HSP
                 ha = m;                                                                         //Zahnkopfhöhe
                 z = d / mt;                                                                     //Zahnzahl
                 drz = mt * Math.Round(z, 0);                                                    //angepasster Teilkreisdurchmesser nach Rundung von z
-                alphat = Math.Atan((Math.Tan(ew*(Math.PI/180)) / Math.Cos(sw*(Math.PI/180))));                   //Stirneingriffswinkel
+                alphat = Math.Atan((Math.Tan(ew*(Math.PI/180)) / Math.Cos(sw*(Math.PI/180))));  //Stirneingriffswinkel
                 db = drz*Math.Cos(alphat);                                                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
                 A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);      //Fläche
-                V = A * Zahnbreite;                                                             //Volumen
-               Masse = V * MTL_hlp;                                                             //Masse
-                V = Math.Round(V, 2);
-                Masse = Math.Round(Masse, 2);
+                V = Math.Round(A * Zahnbreite, 2);                                              //Volumen
+               Masse = Math.Round(V * MTL_hlp, 2);                                              //Masse
 
             }
             internal void Rundung()
@@ -106,8 +104,6 @@ namespace User_Interface_HSP
                 df = Math.Round(df, 2);
                 db = Math.Round(db, 2);
                 da = Math.Round(da, 2);
-                V = Math.Round(V, 2);
-                Masse = Math.Round(Masse, 2);
                 alphat = Math.Round(alphat, 2);
                 mt = Math.Round(mt, 2);
 
@@ -124,12 +120,14 @@ namespace User_Interface_HSP
 
 
         //Bestätigungsbutton Event
-        private void bestätigen_BTN_Click(object sender, RoutedEventArgs e)
+        private void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
-            Zahnrad ZR1 = new Zahnrad();
+            Zahnrad ZR1 = new Zahnrad
+            {
 
-            //Modul
-            ZR1.m = Convert.ToDouble(Modul_Dropbox.Text);
+                //Modul
+                m = Convert.ToDouble(Modul_Dropbox.Text)
+            };
 
             //Kopfspielfaktor
             string Zahlencheck = cf_txt.Text;
