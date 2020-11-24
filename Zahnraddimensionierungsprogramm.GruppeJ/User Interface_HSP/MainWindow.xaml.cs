@@ -89,6 +89,8 @@ namespace User_Interface_HSP
                 A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);      //Fläche
                 V = A * Zahnbreite;                                                             //Volumen
                Masse = V * MTL_hlp;                                                             //Masse
+                V = Math.Round(V, 2);
+                Masse = Math.Round(Masse, 2);
 
             }
             internal void Rundung()
