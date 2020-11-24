@@ -82,7 +82,7 @@
         </StackPanel>
 
         <CheckBox x:Name="Modul_CB"             Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,30"     Checked="Modul_CB_Checked"              Unchecked="Modul_CB_Unchecked"              IsChecked="true"/>
-        <CheckBox x:Name="Kopfspielfaktor_CB"   Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,75"     Checked="CheckBox_Checked"              Unchecked="CheckBox_Unchecked"              IsChecked="False"/>
+        <CheckBox x:Name="Kopfspielfaktor_CB"   Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,75"     Checked="CheckBox_Checked"              Unchecked="CheckBox_Unchecked"              IsChecked="False" HorizontalAlignment="Right" Width="15"/>
         <CheckBox x:Name="Teilkreis_CB"         Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,120"    Checked="Teilkreis_CB_Checked"          Unchecked="Teilkreis_CB_Unchecked"          IsChecked="true"/>
         <CheckBox x:Name="Zahnzahl_CB"          Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,0"      Checked="Zahnzahl_CB_Checked"           Unchecked="Zahnzahl_CB_Unchecked"           IsChecked="False"/>
         <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,45"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
@@ -116,7 +116,7 @@
                         <Label x:Name="ha_txt_aus">Zahnkopfhöhe ha:</Label>
                         <Label x:Name="p_txt_aus">Zahnteilung p:</Label>
                         <Label x:Name="z_txt_aus">Zahnzahl z:</Label>
-                        <Label x:Name="df_txt_aus">Ø Fußkreis hf:</Label>
+                        <Label x:Name="df_txt_aus">Ø Fußkreis df:</Label>
                         <Label x:Name="db_txt_aus">Ø Grundkreis db:</Label>
                         <Label x:Name="da_txt_aus">Ø Kopfkreis da:</Label>
                         <Label x:Name="V_txt_aus">Volumen V:</Label>

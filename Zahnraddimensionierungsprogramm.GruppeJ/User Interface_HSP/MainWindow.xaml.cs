@@ -14,101 +14,190 @@ namespace User_Interface_HSP
         private class Zahnrad
         {
             //Eingangsparameter
-            public double m;                                                                    //Modul
-            public double cf;                                                                   //Kopfspielfaktor
-            public double d;                                                                    //Teilkreisdurchmesser
-            public double sw;                                                                   //Schrägungswinkel (meist zwischen 8° und 25°)
-            public double ew;                                                                   //Eingriffswinkel (In der Regel 20°)
+            public double m;                                                                            //Modul
+            public double cf;                                                                           //Kopfspielfaktor(0,1-0,3: häufig 0,167)
+            public double d;                                                                            //Teilkreisdurchmesser
+            public double sw;                                                                           //Schrägungswinkel (meist zwischen 8° und 25°)
+            public double ew;                                                                           //Eingriffswinkel (In der Regel 20°)
             //Ausgabeparameter
-            public double drz;                                                                  //Teilkreisdurchmesser nach Rundung von z
-            public double c;                                                                    //Kopfspiel
-            public double h;                                                                    //Zahnhöhe
-            public double hf;                                                                   //Zahnfußhöhe
-            public double ha;                                                                   //Zahnkopfhöhe
-            public double p;                                                                    //Teilung
-            public double z;                                                                    //Zahnzahl
-            public double df;                                                                   //Fußkreisdurchmesser
-            public double db;                                                                   //Grundkreisdurchmesser
-            public double da;                                                                   //Kopfkreisdurchmesser
+            public double drz;                                                                          //Teilkreisdurchmesser nach Rundung von z
+            public double c;                                                                            //Kopfspiel
+            public double h;                                                                            //Zahnhöhe
+            public double hf;                                                                           //Zahnfußhöhe
+            public double ha;                                                                           //Zahnkopfhöhe
+            public double p;                                                                            //Teilung
+            public double z;                                                                            //Zahnzahl
+            public double df;                                                                           //Fußkreisdurchmesser
+            public double db;                                                                           //Grundkreisdurchmesser
+            public double da;                                                                           //Kopfkreisdurchmesser
+            public double dm;                                                                           //Mindestaußendurchmesser Hohlrad
 
-            public double mt;                                                                   //Stirnmodul
-            public double pt;                                                                   //Stirnteilung
-            public double alphat;                                                               //Stirneingriffswinkel
+            public double mt;                                                                           //Stirnmodul
+            public double pt;                                                                           //Stirnteilung
+            public double alphat;                                                                       //Stirneingriffswinkel
 
             public int Verzahnung = 0;
-            public double Zahnbreite;                                                           //Zahnbreite
-            public double BD;                                                                   //Bohrungsdurchmesser
-            public double A;                                                                    //Fläche
-            public double V;                                                                    //Volumen
-            public string Material;                                                             //Zahnradmaterial
-            public double MTL_hlp;                                                              //Dichte
-            public double Masse;                                                                //Masse
+            public double Zahnbreite;                                                                   //Zahnbreite
+            public double BD;                                                                           //Bohrungsdurchmesser
+            public double A;                                                                            //Fläche
+            public double V;                                                                            //Volumen
+            public string Material;                                                                     //Zahnradmaterial
+            public double MTL_hlp;                                                                      //Dichte
+            public double Masse;                                                                        //Masse
 
-            //Methoden
-            internal void Berechnung()
-            {
-                c = m * cf;                                                                     //Kopfspiel
-                h = 2 * m + c;                                                                  //Zahnhöhe
-                hf = m + c;                                                                     //Zahnfußhöhe
-                ha = m;                                                                         //Zahnkopfhöhe
-                p = Math.PI * m;                                                                //Teilung
-                z = Math.Round(d / m, 0);                                                       //Zahnzahl
-                drz = z * m;                                                                    //angepasster Teilkreisdurchmesser nach Rundung von z
-                db = drz * Math.Cos(ew*(Math.PI/180));                                          //Grundkreisdurchmesser
+            int dezimal = 2;                                                                            //Rundungsvariable
 
-            }
-            internal void SonderrechnungAussen()
-            {
-                df = d - 2 * (m + c);                                                           //Fußkreisdurchmesser
-                da = d + 2 * m;                                                                 //Kopfkreisdurchmesser
-                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);      //Fläche
-                V = Math.Round(A * Zahnbreite, 2);                                              //Volumen
-                Masse = Math.Round(V * MTL_hlp, 2);                                             //Masse
-            }
-            internal void SonderrechnungInnen()
-            {
-                df = d + 2 * (m + c);                                                           //Fußkreisdurchmesser
-                da = d - 2 * m;                                                                 //Kopfkreisdurchmesser
-                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);      //Fläche
-                V = Math.Round(A * Zahnbreite, 2);                                              //Volumen
-                Masse = Math.Round(V * MTL_hlp, 2);                                             //Masse
-            }
-            internal void SonderrechnungSchrägverzahnt()
-            {
-                mt = m / Math.Cos(sw*(Math.PI/180));                                            //Stirnmodul
-                p = m * Math.PI;                                                                //Teilung
-                pt = p / Math.Cos(sw*(Math.PI/180));                                            //Stirnteilung
-                c = m * cf;                                                                     //Kopfspiel
-                h = 2 * m + c;                                                                  //Zahnhöhe
-                hf = m + c;                                                                     //Zahnfußhöhe
-                ha = m;                                                                         //Zahnkopfhöhe
-                z = d / mt;                                                                     //Zahnzahl
-                drz = mt * Math.Round(z, 0);                                                    //angepasster Teilkreisdurchmesser nach Rundung von z
-                alphat = Math.Atan((Math.Tan(ew*(Math.PI/180)) / Math.Cos(sw*(Math.PI/180))));  //Stirneingriffswinkel
-                db = drz*Math.Cos(alphat);                                                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
-                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);      //Fläche
-                V = Math.Round(A * Zahnbreite, 2);                                              //Volumen
-               Masse = Math.Round(V * MTL_hlp, 2);                                              //Masse
+            //Berechnungsmethoden(Max):
+            internal void Berechnung_geradverzahnt_Außenverzahnung_m_und_d()
+            { 
+                z = Math.Round((d / m), 0);                                                             //Zahnzahl
+                p = Math.Round((Math.PI * m), dezimal);                                                 //Teilung
+                c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
+                ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
+                hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
+                h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
+                drz = Math.Round((z * m), dezimal);                                                     //Teilkreisdurchmesser nach Rundung von z
+                da = Math.Round((drz + 2 * m), dezimal);                                                //Kopfkreisdurchmesser
+                df = Math.Round((drz - (2 * (m + c))), dezimal);                                        //Fußkreisdurchmesser
+                db = Math.Round((drz * Math.Cos(ew * (Math.PI / 180))), dezimal);                       //Grundkreisdurchmesser
+                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
+                V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
+                Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
 
             }
-            internal void Rundung()
+
+            internal void Berechnung_geradverzahnt_Außenverzahnung_m_und_z() 
             {
-                c = Math.Round(c, 2);
-                d = Math.Round(d, 2);
-                drz = Math.Round(drz, 2);
-                h = Math.Round(h, 2);
-                hf = Math.Round(hf, 2);
-                ha = Math.Round(ha, 2);
-                p = Math.Round(p, 2);
-                z = Math.Round(z, 0);
-                df = Math.Round(df, 2);
-                db = Math.Round(db, 2);
-                da = Math.Round(da, 2);
-                alphat = Math.Round(alphat, 2);
-                mt = Math.Round(mt, 2);
+                d = Math.Round((m * z), dezimal);                                                       //Teilkreisdurchmesser
+                p = Math.Round((Math.PI * m), dezimal);                                                 //Teilung
+                c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
+                ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
+                hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
+                h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
+                da = Math.Round((m * (z + 2)), dezimal);                                                //Kopfkreisdurchmesser
+                df = Math.Round((d - (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
+                db = Math.Round((d * Math.Cos(ew * (Math.PI / 180))), dezimal);                         //Grundkreisdurchmesser
+                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
+                V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
+                Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
 
             }
-  
+
+            internal void Berechnung_geradverzahnt_Innenverzahnung_m_und_d() 
+            {
+                z = Math.Round((d / m), 0);                                                             //Zahnzahl
+                p = Math.Round((Math.PI * m), dezimal);                                                 //Teilung
+                c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
+                ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
+                hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
+                h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
+                drz = Math.Round((z * m), dezimal);                                                     //Teilkreisdurchmesser nach Rundung von z
+                da = Math.Round((drz - 2 * m), dezimal);                                                //Kopfkreisdurchmesser
+                df = Math.Round((drz + (2 * (m + c))), dezimal);                                        //Fußkreisdurchmesser
+                db = Math.Round((drz * Math.Cos(ew * (Math.PI / 180))), dezimal);                       //Grundkreisdurchmesser
+                dm = Math.Round((drz * 1.4), dezimal);                                                  //Mindestaußendurchmesser Hohlrad
+                A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
+                V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
+                Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+            }
+
+            internal void Berechnung_geradverzahnt_Innenverzahnung_m_und_z() 
+            {
+                d = Math.Round((m * z), dezimal);                                                       //Teilkreisdurchmesser
+                p = Math.Round((Math.PI * m), dezimal);                                                 //Teilung
+                c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
+                ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
+                hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
+                h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
+                da = Math.Round((m * (z - 2)), dezimal);                                                //Kopfkreisdurchmesser
+                df = Math.Round((d + (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
+                db = Math.Round((d * Math.Cos(ew * (Math.PI / 180))), dezimal);                         //Grundkreisdurchmesser
+                dm = Math.Round((drz * 1.4), dezimal);                                                  //Mindestaußendurchmesser Hohlrad
+                A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
+                V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
+                Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+            }
+
+            internal void Berechnung_schrägverzahnt_Außenverzahnung_m_und_d() 
+            {
+                mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
+                pt = Math.Round((p / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnteilung
+                z = Math.Round((d / mt), 0);                                                            //Zahnzahl
+                c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
+                ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
+                hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
+                h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
+                drz = Math.Round((z * m), dezimal);                                                     //Teilkreisdurchmesser nach Rundung von z
+                da = Math.Round((drz + 2 * m), dezimal);                                                //Kopfkreisdurchmesser
+                df = Math.Round((drz - (2 * (m + c))), dezimal);                                        //Fußkreisdurchmesser
+                alphat = Math.Atan(Math.Tan(ew * (Math.PI / 180)) / Math.Cos(sw * (Math.PI / 180)));    //Stirneingriffswinkel
+                db = Math.Round((drz * Math.Cos(alphat)), dezimal);                                     //Grundkreisdurchmesser
+                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
+                V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
+                Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+
+            }
+
+            internal void Berechnung_schrägverzahnt_Außenverzahnung_m_und_z() 
+            {
+                mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
+                pt = Math.Round((p / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnteilung
+                d = Math.Round((mt * z), dezimal);                                                      //Teilkreisdurchmesser
+                c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
+                ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
+                hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
+                h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
+                da = Math.Round((d + 2 * m), dezimal);                                                  //Kopfkreisdurchmesser
+                df = Math.Round((d - (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
+                alphat = Math.Atan(Math.Tan(ew * (Math.PI / 180)) / Math.Cos(sw * (Math.PI / 180)));  //Stirneingriffswinkel
+                db = Math.Round((d * Math.Cos(alphat)), dezimal);                                       //Grundkreisdurchmesser
+                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
+                V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
+                Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+
+            }
+
+            internal void Berechnung_schrägverzahnt_Innenverzahnung_m_und_d() 
+            {
+                mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
+                pt = Math.Round((p / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnteilung
+                z = Math.Round((d / mt), 0);                                                            //Zahnzahl
+                c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
+                ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
+                hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
+                h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
+                drz = Math.Round((z * m), dezimal);                                                     //Teilkreisdurchmesser nach Rundung von z
+                da = Math.Round((drz - 2 * m), dezimal);                                                //Kopfkreisdurchmesser
+                df = Math.Round((drz + (2 * (m + c))), dezimal);                                        //Fußkreisdurchmesser
+                alphat = Math.Atan((Math.Tan(ew * (Math.PI / 180)) / Math.Cos(sw * (Math.PI / 180))));  //Stirneingriffswinkel
+                db = Math.Round((drz * Math.Cos(alphat)), dezimal);                                     //Grundkreisdurchmesser
+                dm = Math.Round((drz * 1.4), dezimal);                                                  //Mindestaußendurchmesser Hohlrad
+                A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
+                V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
+                Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+            }
+
+            internal void Berechnung_schrägverzahnt_Innenverzahnung_m_und_z() 
+            {
+                mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
+                pt = Math.Round((p / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnteilung
+                d = Math.Round((mt * z), dezimal);                                                      //Teilkreisdurchmesser
+                c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
+                ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
+                hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
+                h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
+                da = Math.Round((d - 2 * m), dezimal);                                                  //Kopfkreisdurchmesser
+                df = Math.Round((d + (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
+                alphat = Math.Atan((Math.Tan(ew * (Math.PI / 180)) / Math.Cos(sw * (Math.PI / 180))));  //Stirneingriffswinkel
+                db = Math.Round((d * Math.Cos(alphat)), dezimal);                                       //Grundkreisdurchmesser
+                dm = Math.Round((drz * 1.4), dezimal);                                                  //Mindestaußendurchmesser Hohlrad
+                A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
+                V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
+                Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+
+
+            }
+
         }
 
 
@@ -249,9 +338,6 @@ namespace User_Interface_HSP
             }
 
 
-            ZR1.Berechnung();
-
-            
 
             //Zahnzahl Fehlerbox
             if (ZR1.z <= 4)
@@ -261,95 +347,175 @@ namespace User_Interface_HSP
 
             //Ausgabe
 
-            //Innenverzahnung schrägverzahnt
-            if (rb_IV.IsChecked == true)
+            if (rb_AV.IsChecked == true)                                                    //Berechnung Außenverzahnung
             {
-                if (CB_SV.IsChecked == true)
+                if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Außenverzahnung
                 {
-                    ZR1.SonderrechnungSchrägverzahnt();
-                    ZR1.Rundung();
-                    ZR1.SonderrechnungInnen();
-                    df_aus_Innen.Content = ZR1.df+" mm";
-                    da_aus_Innen.Content = ZR1.da+" mm";
-                    c_aus_Innen.Content = ZR1.c+" mm";
-                    h_aus_Innen.Content = ZR1.h+" mm";
-                    hf_aus_Innen.Content = ZR1.hf+" mm";
-                    ha_aus_Innen.Content = ZR1.ha+" mm";
-                    p_aus_Innen.Content = ZR1.p+" mm";
-                    db_aus_Innen.Content = ZR1.db+" mm";
-                    z_aus_Innen.Content = ZR1.z;
-                    drz_aus_Innen.Content = ZR1.drz+" mm";
-                    m_aus_Innen.Content = ZR1.m+" mm";
-                    V_aus_Innen.Content = ZR1.V+" mm^3";
-                    Masse_aus_Innen.Content = ZR1.Masse + " Kg";
+                    if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)       //Berechnung geradverzahnt Außenverzahnung m und d
+                    {
+                        ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_d();
+                        df_aus_Innen.Content = ZR1.df + " mm";
+                        da_aus_Innen.Content = ZR1.da + " mm";
+                        c_aus_Innen.Content = ZR1.c + " mm";
+                        h_aus_Innen.Content = ZR1.h + " mm";
+                        hf_aus_Innen.Content = ZR1.hf + " mm";
+                        ha_aus_Innen.Content = ZR1.ha + " mm";
+                        p_aus_Innen.Content = ZR1.p + " mm";
+                        db_aus_Innen.Content = ZR1.db + " mm";
+                        z_aus_Innen.Content = ZR1.z;
+                        drz_aus_Innen.Content = ZR1.drz + " mm";
+                        m_aus_Innen.Content = ZR1.m + " mm";
+                        V_aus_Innen.Content = ZR1.V + " mm^3";
+                        Masse_aus_Innen.Content = ZR1.Masse + " Kg";
+                    }
+                    else
+
+                    if (Modul_CB.IsChecked == true && Zahnzahl_CB.IsChecked == true)        //Berechnung geradverzahnt Außenverzahnung m und z
+                    {
+                        ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_z();
+                        c_aus.Content = ZR1.c + " mm";
+                        h_aus.Content = ZR1.h + " mm";
+                        hf_aus.Content = ZR1.hf + " mm";
+                        ha_aus.Content = ZR1.ha + " mm";
+                        p_aus.Content = ZR1.p + " mm";
+                        db_aus.Content = ZR1.db + " mm";
+                        df_aus.Content = ZR1.df + " mm";
+                        da_aus.Content = ZR1.da + " mm";
+                        drz_aus.Content = ZR1.drz + " mm";
+                        m_aus.Content = ZR1.m + " mm";
+                        V_aus.Content = ZR1.V + " mm^3";
+                        Masse_aus.Content = ZR1.Masse + " Kg";
+                    }
+
                 }
-                //Innenverzahnt geradverzahnt
                 else
+
+                if (CB_SV.IsChecked == true)                                                   //Berechnung schrägverzahnt Außenverzahnung
                 {
-                    ZR1.SonderrechnungInnen();
-                    ZR1.Rundung();
-                    df_aus_Innen.Content = ZR1.df+" mm";
-                    da_aus_Innen.Content = ZR1.da + " mm";
-                    c_aus_Innen.Content = ZR1.c + " mm";
-                    h_aus_Innen.Content = ZR1.h + " mm";
-                    hf_aus_Innen.Content = ZR1.hf + " mm";
-                    ha_aus_Innen.Content = ZR1.ha + " mm";
-                    p_aus_Innen.Content = ZR1.p + " mm";
-                    db_aus_Innen.Content = ZR1.db + " mm";
-                    z_aus_Innen.Content = ZR1.z;
-                    drz_aus_Innen.Content = ZR1.drz + " mm";
-                    m_aus_Innen.Content = ZR1.m + " mm";
-                    V_aus_Innen.Content = ZR1.V+" mm^3";
-                    Masse_aus_Innen.Content = ZR1.Masse + " Kg";
+                    if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)            //Berechnung schrägverzahnt Außenverzahnung m und d
+                    {
+                        ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_d();
+                        c_aus.Content = ZR1.c + " mm";
+                        h_aus.Content = ZR1.h + " mm";
+                        hf_aus.Content = ZR1.hf + " mm";
+                        ha_aus.Content = ZR1.ha + " mm";
+                        p_aus.Content = ZR1.p + " mm";
+                        db_aus.Content = ZR1.db + " mm";
+                        z_aus.Content = ZR1.z;
+                        df_aus.Content = ZR1.df + " mm";
+                        da_aus.Content = ZR1.da + " mm";
+                        drz_aus.Content = ZR1.drz + " mm";
+                        m_aus.Content = ZR1.m + " mm";
+                        V_aus.Content = ZR1.V + " mm^3";
+                        Masse_aus.Content = ZR1.Masse + " Kg";
+                    }
+                    else
+
+                    if (Modul_CB.IsChecked == true && Zahnzahl_CB.IsChecked == true)             //Berechnung schrägverzahnt Außenverzahnung m und z
+                    {
+                        ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_z();
+                        c_aus.Content = ZR1.c + " mm";
+                        h_aus.Content = ZR1.h + " mm";
+                        hf_aus.Content = ZR1.hf + " mm";
+                        ha_aus.Content = ZR1.ha + " mm";
+                        p_aus.Content = ZR1.p + " mm";
+                        db_aus.Content = ZR1.db + " mm";
+                        z_aus.Content = ZR1.z;
+                        df_aus.Content = ZR1.df + " mm";
+                        da_aus.Content = ZR1.da + " mm";
+                        drz_aus.Content = ZR1.drz + " mm";
+                        m_aus.Content = ZR1.m + " mm";
+                        V_aus.Content = ZR1.V + " mm^3";
+                        Masse_aus.Content = ZR1.Masse + " Kg";
+                    }
+
                 }
-                
+                if (rb_IV.IsChecked == true)                                                       //Berechnung Innenverzahnung
+                {
+                    if (CB_SV.IsChecked == false)                                              //Berechnung geradverzahnt Innenverzahnung
+                    {
+                        if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)        //Berechnung geradverzahnt Innenverzahnung m und d
+                        {
+                            ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_d();
+                            c_aus.Content = ZR1.c + " mm";
+                            h_aus.Content = ZR1.h + " mm";
+                            hf_aus.Content = ZR1.hf + " mm";
+                            ha_aus.Content = ZR1.ha + " mm";
+                            p_aus.Content = ZR1.p + " mm";
+                            db_aus.Content = ZR1.db + " mm";
+                            z_aus.Content = ZR1.z;
+                            df_aus.Content = ZR1.df + " mm";
+                            da_aus.Content = ZR1.da + " mm";
+                            drz_aus.Content = ZR1.drz + " mm";
+                            m_aus.Content = ZR1.m + " mm";
+                            V_aus.Content = ZR1.V + " mm^3";
+                            Masse_aus.Content = ZR1.Masse + " Kg";
+                        }
+                        else
+
+                        if (Modul_CB.IsChecked == true && Zahnzahl_CB.IsChecked == true)            //Berechnung geradverzahnt Innenverzahnung m und z
+                        {
+                            ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_z();
+                            c_aus.Content = ZR1.c + " mm";
+                            h_aus.Content = ZR1.h + " mm";
+                            hf_aus.Content = ZR1.hf + " mm";
+                            ha_aus.Content = ZR1.ha + " mm";
+                            p_aus.Content = ZR1.p + " mm";
+                            db_aus.Content = ZR1.db + " mm";
+                            z_aus.Content = ZR1.z;
+                            df_aus.Content = ZR1.df + " mm";
+                            da_aus.Content = ZR1.da + " mm";
+                            drz_aus.Content = ZR1.drz + " mm";
+                            m_aus.Content = ZR1.m + " mm";
+                            V_aus.Content = ZR1.V + " mm^3";
+                            Masse_aus.Content = ZR1.Masse + " Kg";
+
+                        }
+                    }
+                    else
+
+                    if (CB_SV.IsChecked == true)                                                   //Berechnung schrägverzahnt Innenverzahnung
+                    {
+                        if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)            //Berechnung schrägverzahnt Innenverzahnung m und d
+                        {
+                            ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_d();
+                            c_aus.Content = ZR1.c + " mm";
+                            h_aus.Content = ZR1.h + " mm";
+                            hf_aus.Content = ZR1.hf + " mm";
+                            ha_aus.Content = ZR1.ha + " mm";
+                            p_aus.Content = ZR1.p + " mm";
+                            db_aus.Content = ZR1.db + " mm";
+                            z_aus.Content = ZR1.z;
+                            df_aus.Content = ZR1.df + " mm";
+                            da_aus.Content = ZR1.da + " mm";
+                            drz_aus.Content = ZR1.drz + " mm";
+                            m_aus.Content = ZR1.m + " mm";
+                            V_aus.Content = ZR1.V + " mm^3";
+                            Masse_aus.Content = ZR1.Masse + " Kg";
+                        }
+                        else
+
+                        if (Modul_CB.IsChecked == true && Zahnzahl_CB.IsChecked == true)             //Berechnung schrägverzahnt Innenverzahnung m und z
+                        {
+                            ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_z();
+                            c_aus.Content = ZR1.c + " mm";
+                            h_aus.Content = ZR1.h + " mm";
+                            hf_aus.Content = ZR1.hf + " mm";
+                            ha_aus.Content = ZR1.ha + " mm";
+                            p_aus.Content = ZR1.p + " mm";
+                            db_aus.Content = ZR1.db + " mm";
+                            z_aus.Content = ZR1.z;
+                            df_aus.Content = ZR1.df + " mm";
+                            da_aus.Content = ZR1.da + " mm";
+                            drz_aus.Content = ZR1.drz + " mm";
+                            m_aus.Content = ZR1.m + " mm";
+                            V_aus.Content = ZR1.V + " mm^3";
+                            Masse_aus.Content = ZR1.Masse + " Kg";
+
+                        }
+                    }
+                }
             }
-            else
-            {
-                //Aussenverzahnt schrägverzahnt
-
-                
-               if (CB_SV.IsChecked == true)
-               {
-                    ZR1.SonderrechnungSchrägverzahnt();
-                    ZR1.Rundung();
-                    ZR1.SonderrechnungAussen();
-                    c_aus.Content = ZR1.c + " mm";
-                    h_aus.Content = ZR1.h + " mm";
-                    hf_aus.Content = ZR1.hf + " mm";
-                    ha_aus.Content = ZR1.ha + " mm";
-                    p_aus.Content = ZR1.p + " mm";
-                    db_aus.Content = ZR1.db + " mm";
-                    z_aus.Content = ZR1.z;
-                    df_aus.Content = ZR1.df + " mm";
-                    da_aus.Content = ZR1.da + " mm";
-                    drz_aus.Content = ZR1.drz + " mm";
-                    m_aus.Content = ZR1.m + " mm";
-                    V_aus.Content = ZR1.V+" mm^3";
-                    Masse_aus.Content = ZR1.Masse + " Kg";
-               }
-               //Aussenverzahnt geradverzahnt
-               else
-               {
-                    ZR1.SonderrechnungAussen();
-                    ZR1.Rundung();
-                    c_aus.Content = ZR1.c + " mm";
-                    h_aus.Content = ZR1.h + " mm";
-                    hf_aus.Content = ZR1.hf + " mm";
-                    ha_aus.Content = ZR1.ha + " mm";
-                    p_aus.Content = ZR1.p + " mm";
-                    db_aus.Content = ZR1.db + " mm";
-                    z_aus.Content = ZR1.z;
-                    df_aus.Content = ZR1.df + " mm";
-                    da_aus.Content = ZR1.da + " mm";
-                    drz_aus.Content = ZR1.drz + " mm";
-                    m_aus.Content = ZR1.m + " mm";
-                    V_aus.Content = ZR1.V+" mm^3";
-                    Masse_aus.Content = ZR1.Masse + " Kg";
-               }
-
-            }
-
         }
 
         //Zahlüberprüfung
