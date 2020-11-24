@@ -14,81 +14,81 @@ namespace User_Interface_HSP
         private class Zahnrad
         {
             //Eingangsparameter
-            public double m;                                                        //Modul
-            public double cf;                                                       //Kopfspielfaktor
-            public double d;                                                        //Teilkreisdurchmesser
-            public double sw;                                                       //Schrägungswinkel (meist zwischen 8° und 25°)
-            public double ew;                                                       //Eingriffswinkel (In der Regel 20°)
+            public double m;                                                                    //Modul
+            public double cf;                                                                   //Kopfspielfaktor
+            public double d;                                                                    //Teilkreisdurchmesser
+            public double sw;                                                                   //Schrägungswinkel (meist zwischen 8° und 25°)
+            public double ew;                                                                   //Eingriffswinkel (In der Regel 20°)
             //Ausgabeparameter
-            public double drz;                                                      //Teilkreisdurchmesser nach Rundung von z
-            public double c;                                                        //Kopfspiel
-            public double h;                                                        //Zahnhöhe
-            public double hf;                                                       //Zahnfußhöhe
-            public double ha;                                                       //Zahnkopfhöhe
-            public double p;                                                        //Teilung
-            public double z;                                                        //Zahnzahl
-            public double df;                                                       //Fußkreisdurchmesser
-            public double db;                                                       //Grundkreisdurchmesser
-            public double da;                                                       //Kopfkreisdurchmesser
+            public double drz;                                                                  //Teilkreisdurchmesser nach Rundung von z
+            public double c;                                                                    //Kopfspiel
+            public double h;                                                                    //Zahnhöhe
+            public double hf;                                                                   //Zahnfußhöhe
+            public double ha;                                                                   //Zahnkopfhöhe
+            public double p;                                                                    //Teilung
+            public double z;                                                                    //Zahnzahl
+            public double df;                                                                   //Fußkreisdurchmesser
+            public double db;                                                                   //Grundkreisdurchmesser
+            public double da;                                                                   //Kopfkreisdurchmesser
 
-            public double mt;                                                       //Stirnmodul
-            public double pt;                                                       //Stirnteilung
-            public double alphat;                                                   //Stirneingriffswinkel
+            public double mt;                                                                   //Stirnmodul
+            public double pt;                                                                   //Stirnteilung
+            public double alphat;                                                               //Stirneingriffswinkel
 
             public int Verzahnung = 0;
-            public double Zahnbreite;                                               //Zahnbreite
-            public double BD;                                                       //Bohrungsdurchmesser
-            public double A;                                                        //Fläche
-            public double V;                                                        //Volumen
-            public string Material;                                                 //Zahnradmaterial
-            public double MTL_hlp;                                                  //Dichte
-            public double Masse;                                                    //Masse
+            public double Zahnbreite;                                                           //Zahnbreite
+            public double BD;                                                                   //Bohrungsdurchmesser
+            public double A;                                                                    //Fläche
+            public double V;                                                                    //Volumen
+            public string Material;                                                             //Zahnradmaterial
+            public double MTL_hlp;                                                              //Dichte
+            public double Masse;                                                                //Masse
 
             //Methoden
             internal void Berechnung()
             {
-                c = m * cf;                                                         //Kopfspiel
-                h = 2 * m + c;                                                      //Zahnhöhe
-                hf = m + c;                                                         //Zahnfußhöhe
-                ha = m;                                                             //Zahnkopfhöhe
-                p = Math.PI * m;                                                     //Teilung
-                z = Math.Round(d / m, 0);                                           //Zahnzahl
-                drz = z * m;                                                        //angepasster Teilkreisdurchmesser nach Rundung von z
-                db = drz * Math.Cos(ew);                                            //Grundkreisdurchmesser
+                c = m * cf;                                                                     //Kopfspiel
+                h = 2 * m + c;                                                                  //Zahnhöhe
+                hf = m + c;                                                                     //Zahnfußhöhe
+                ha = m;                                                                         //Zahnkopfhöhe
+                p = Math.PI * m;                                                                //Teilung
+                z = Math.Round(d / m, 0);                                                       //Zahnzahl
+                drz = z * m;                                                                    //angepasster Teilkreisdurchmesser nach Rundung von z
+                db = drz * Math.Cos(ew*(Math.PI/180));                                          //Grundkreisdurchmesser
 
             }
             internal void SonderrechnungAussen()
             {
-                df = d - 2 * (m + c);                                               //Fußkreisdurchmesser
-                da = d + 2 * m;                                                     //Kopfkreisdurchmesser
-                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);//Fläche
-                V = A * Zahnbreite;                                                 //Volumen
-                Masse = V * MTL_hlp;                                                //Masse
+                df = d - 2 * (m + c);                                                           //Fußkreisdurchmesser
+                da = d + 2 * m;                                                                 //Kopfkreisdurchmesser
+                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);      //Fläche
+                V = A * Zahnbreite;                                                             //Volumen
+                Masse = V * MTL_hlp;                                                            //Masse
             }
             internal void SonderrechnungInnen()
             {
-                df = d + 2 * (m + c);                                               //Fußkreisdurchmesser
-                da = d - 2 * m;                                                     //Kopfkreisdurchmesser
-                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);//Fläche
-                V = A * Zahnbreite;                                                 //Volumen
-                Masse = V * MTL_hlp;                                                 //Masse
+                df = d + 2 * (m + c);                                                           //Fußkreisdurchmesser
+                da = d - 2 * m;                                                                 //Kopfkreisdurchmesser
+                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);      //Fläche
+                V = A * Zahnbreite;                                                             //Volumen
+                Masse = V * MTL_hlp;                                                            //Masse
             }
             internal void SonderrechnungSchrägverzahnt()
             {
-                mt = m / Math.Cos(sw);                                             //Stirnmodul
-                p = m * Math.PI;                                                   //Teilung
-                pt = p / Math.Cos(sw);                                             //Stirnteilung
-                c = m * cf;                                                         //Kopfspiel
-                h = 2 * m + c;                                                      //Zahnhöhe
-                hf = m + c;                                                         //Zahnfußhöhe
-                ha = m;                                                             //Zahnkopfhöhe
-                z = d / mt;                                                         //Zahnzahl
-                drz = mt * Math.Round(z, 0);                                        //angepasster Teilkreisdurchmesser nach Rundung von z
-                alphat = Math.Atan((Math.Tan(ew) / Math.Cos(sw)));                   //Stirneingriffswinkel
-                db = drz*Math.Cos(alphat);                                          //Grundkreisdurchmesser (cos(20°)= 0,9397)
-                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);//Fläche
-                V = A * Zahnbreite;                                                 //Volumen
-               Masse = V * MTL_hlp;                                                 //Masse
+                mt = m / Math.Cos(sw*(Math.PI/180));                                            //Stirnmodul
+                p = m * Math.PI;                                                                //Teilung
+                pt = p / Math.Cos(sw*(Math.PI/180));                                            //Stirnteilung
+                c = m * cf;                                                                     //Kopfspiel
+                h = 2 * m + c;                                                                  //Zahnhöhe
+                hf = m + c;                                                                     //Zahnfußhöhe
+                ha = m;                                                                         //Zahnkopfhöhe
+                z = d / mt;                                                                     //Zahnzahl
+                drz = mt * Math.Round(z, 0);                                                    //angepasster Teilkreisdurchmesser nach Rundung von z
+                alphat = Math.Atan((Math.Tan(ew*(Math.PI/180)) / Math.Cos(sw*(Math.PI/180))));                   //Stirneingriffswinkel
+                db = drz*Math.Cos(alphat);                                                      //Grundkreisdurchmesser (cos(20°)= 0,9397)
+                A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);      //Fläche
+                V = A * Zahnbreite;                                                             //Volumen
+               Masse = V * MTL_hlp;                                                             //Masse
 
             }
             internal void Rundung()
