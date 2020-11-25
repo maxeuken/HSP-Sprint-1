@@ -434,11 +434,13 @@ namespace User_Interface_HSP
                         V_aus.Content = ZR1.V + " mm^3";
                         Masse_aus.Content = ZR1.Masse + " Kg";
                     }
-
                 }
-                if (rb_IV.IsChecked == true)                                                       //Berechnung Innenverzahnung
+
+            else
+
+                                                                                                  //Berechnung Innenverzahnung
                 {
-                    if (CB_SV.IsChecked == false)                                              //Berechnung geradverzahnt Innenverzahnung
+                    if (CB_SV.IsChecked == false)                                                 //Berechnung geradverzahnt Innenverzahnung
                     {
                         if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)        //Berechnung geradverzahnt Innenverzahnung m und d
                         {
@@ -480,7 +482,7 @@ namespace User_Interface_HSP
                     }
                     else
 
-                    if (CB_SV.IsChecked == true)                                                   //Berechnung schrägverzahnt Innenverzahnung
+                    if (CB_SV.IsChecked == true)                                                     //Berechnung schrägverzahnt Innenverzahnung
                     {
                         if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)            //Berechnung schrägverzahnt Innenverzahnung m und d
                         {
