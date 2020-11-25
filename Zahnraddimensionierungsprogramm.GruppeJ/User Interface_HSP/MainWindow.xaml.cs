@@ -193,7 +193,6 @@ namespace User_Interface_HSP
         //Bestätigungsbutton Event
         private void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
-            int Fehlerzähler = 0;
 
             Zahnrad ZR1 = new Zahnrad
             {
@@ -202,8 +201,8 @@ namespace User_Interface_HSP
             };
             
             //Fehlerabfragen
-            if(RB_MT.IsChecked==true)
-            {
+            
+            
                 //Kopfspielfaktor
                 string Zahlencheck = cf_txt.Text;
                 if (Zahlprüfung(Zahlencheck) == true)
@@ -212,13 +211,13 @@ namespace User_Interface_HSP
                     if ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
                     {
                         MessageBox.Show("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
-                        Fehlerzähler++;
+                        
                     }
                 }
                 else
                 {
                     MessageBox.Show("Bitte Eingabe zum Kopfspielfaktor überprüfen");
-                    Fehlerzähler++;
+                    
                 }
                 //Teilkreisdurchmesser
                 Zahlencheck = d_txt.Text;
@@ -228,13 +227,13 @@ namespace User_Interface_HSP
                     if (ZR1.d <= 0)
                     {
                         MessageBox.Show("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
-                        Fehlerzähler++;
+                        
                     }
                 }
                 else
                 {
                     MessageBox.Show("Bitte Eingabe zum Teilkreisdurchmesser überprüfen");
-                    Fehlerzähler++;
+                   
                 }
                 //Eingriffswinkel
                 Zahlencheck = ew_txt.Text;
@@ -244,13 +243,13 @@ namespace User_Interface_HSP
                     if ((ZR1.ew < 0) || (ZR1.ew >= 90))
                     {
                         MessageBox.Show("Fehler: Der Eingriffswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
-                        Fehlerzähler++;
+                        
                     }
                 }
                 else
                 {
                     MessageBox.Show("Bitte Eingabe zum Eingriffsswinkel überprüfen");
-                    Fehlerzähler++;
+                    
                 }
                 //Schrägungswinkel   
                 Zahlencheck = sw_txt.Text;
@@ -260,13 +259,13 @@ namespace User_Interface_HSP
                     if ((ZR1.sw < 0) || (ZR1.sw >= 90))
                     {
                         MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
-                        Fehlerzähler++;
+                        
                     }
                 }
                 else
                 {
                     MessageBox.Show("Bitte Eingabe zum Schrägungswinkel überprüfen");
-                    Fehlerzähler++;
+                   
                 }
                 //Bohrungsdurchmesser
                 Zahlencheck = BD_txt.Text;
@@ -276,13 +275,13 @@ namespace User_Interface_HSP
                     if (ZR1.BD < 0)
                     {
                         MessageBox.Show("Fehler: Bohrungsdurchmesser darf nicht 0 oder mehr als Kopfkreisdurchmesser betragen");
-                        Fehlerzähler++;
+                        
                     }
                 }
                 else
                 {
                     MessageBox.Show("Bitte Eingabe zum Bohrungsdurchmesser überprüfen");
-                    Fehlerzähler++;
+                    
                 }
                 //Zahnbreite
                 Zahlencheck = Zahnbreite_txt.Text;
@@ -292,116 +291,28 @@ namespace User_Interface_HSP
                     if (ZR1.Zahnbreite < 0)
                     {
                         MessageBox.Show("Zahnbreite muss über 0 liegen");
-                        Fehlerzähler++;
+                        
                     }
                 }
                 else
                 {
                     MessageBox.Show("Bitte Eingabe zur Zahnbreite überprüfen");
-                    Fehlerzähler++;
+                    
                 }
-              
-                //Überprüfung beendet
-            }
-            else
-            {
-                if(RB_MZ.IsChecked==true)
+                //Zähnezahl
+                 Zahlencheck = z_txt.Text;
+                if (Zahlprüfung(Zahlencheck) == true)
                 {
-                    //Kopfspielfaktor
-                    string Zahlencheck = cf_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
-                        ZR1.cf = Convert.ToDouble(cf_txt.Text);
-                        if ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
-                        {
-                            MessageBox.Show("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
-                            Fehlerzähler++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte Eingabe zum Kopfspielfaktor überprüfen");
-                        Fehlerzähler++;
-                    }
-                  
-                    }
-                    //Eingriffswinkel
-                    Zahlencheck = ew_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
-                        ZR1.ew = Convert.ToInt32(ew_txt.Text);
-                        if ((ZR1.ew < 0) || (ZR1.ew >= 90))
-                        {
-                            MessageBox.Show("Fehler: Der Eingriffswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
-                            Fehlerzähler++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte Eingabe zum Eingriffsswinkel überprüfen");
-                        Fehlerzähler++;
-                    }
-                    //Schrägungswinkel   
-                    Zahlencheck = sw_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
-                        ZR1.sw = Convert.ToInt32(sw_txt.Text);
-                        if ((ZR1.sw < 0) || (ZR1.sw >= 90))
-                        {
-                            MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
-                            Fehlerzähler++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte Eingabe zum Schrägungswinkel überprüfen");
-                        Fehlerzähler++;
-                    }
-                    //Bohrungsdurchmesser
-                    Zahlencheck = BD_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
-                        ZR1.BD = Convert.ToDouble(BD_txt.Text);
-                        if (ZR1.BD < 0)
-                        {
-                            MessageBox.Show("Fehler: Bohrungsdurchmesser darf nicht 0 oder mehr als Kopfkreisdurchmesser betragen");
-                            Fehlerzähler++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte Eingabe zum Bohrungsdurchmesser überprüfen");
-                        Fehlerzähler++;
-                    }
-                    //Zahnbreite
-                    Zahlencheck = Zahnbreite_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
-                        ZR1.Zahnbreite = Convert.ToDouble(Zahnbreite_txt.Text);
-                        if (ZR1.Zahnbreite < 0)
-                        {
-                            MessageBox.Show("Zahnbreite muss über 0 liegen");
-                            Fehlerzähler++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte Eingabe zur Zahnbreite überprüfen");
-                        Fehlerzähler++;
-                    }
-                    //Zähnezahl
-                    Zahlencheck = z_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
                         ZR1.z = Convert.ToDouble(z_txt.Text);
                         if (ZR1.z < 0)
                         {
                             MessageBox.Show("Zähnezahl muss über 0 liegen");
-                            Fehlerzähler++;
+                         
                         }
-                    }
-                    //Überprüfung beendet
-            }
+                }
+              
+                //Überprüfung beendet
+                   
 
                 
             //Material
