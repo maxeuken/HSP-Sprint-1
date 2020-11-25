@@ -202,8 +202,7 @@ namespace User_Interface_HSP
             };
             
             //Fehlerabfragen
-            if(RB_MT.IsChecked==true)
-            {
+            
                 //Kopfspielfaktor
                 string Zahlencheck = cf_txt.Text;
                 if (Zahlprüfung(Zahlencheck) == true)
@@ -222,7 +221,7 @@ namespace User_Interface_HSP
                 }
                 //Teilkreisdurchmesser
                 Zahlencheck = d_txt.Text;
-                if (Zahlprüfung(Zahlencheck) == true)
+                if (Zahlprüfung(Zahlencheck) == true && RB_MT.IsChecked==true)
                 {
                     ZR1.d = Convert.ToInt32(d_txt.Text);
                     if (ZR1.d <= 0)
@@ -300,108 +299,20 @@ namespace User_Interface_HSP
                     MessageBox.Show("Bitte Eingabe zur Zahnbreite überprüfen");
                     Fehlerzähler++;
                 }
-              
-                //Überprüfung beendet
-            }
-            else
-            {
-                if(RB_MZ.IsChecked==true)
+                //Zähnezahl
+                Zahlencheck = z_txt.Text;
+                if (Zahlprüfung(Zahlencheck) == true && RB_MZ.IsChecked==true)
                 {
-                    //Kopfspielfaktor
-                    string Zahlencheck = cf_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
+                    ZR1.z = Convert.ToDouble(z_txt.Text);
+                    if (ZR1.z < 0)
                     {
-                        ZR1.cf = Convert.ToDouble(cf_txt.Text);
-                        if ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
-                        {
-                            MessageBox.Show("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
-                            Fehlerzähler++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte Eingabe zum Kopfspielfaktor überprüfen");
+                        MessageBox.Show("Zähnezahl muss über 0 liegen");
                         Fehlerzähler++;
                     }
-                  
-                    }
-                    //Eingriffswinkel
-                    Zahlencheck = ew_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
-                        ZR1.ew = Convert.ToInt32(ew_txt.Text);
-                        if ((ZR1.ew < 0) || (ZR1.ew >= 90))
-                        {
-                            MessageBox.Show("Fehler: Der Eingriffswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
-                            Fehlerzähler++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte Eingabe zum Eingriffsswinkel überprüfen");
-                        Fehlerzähler++;
-                    }
-                    //Schrägungswinkel   
-                    Zahlencheck = sw_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
-                        ZR1.sw = Convert.ToInt32(sw_txt.Text);
-                        if ((ZR1.sw < 0) || (ZR1.sw >= 90))
-                        {
-                            MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
-                            Fehlerzähler++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte Eingabe zum Schrägungswinkel überprüfen");
-                        Fehlerzähler++;
-                    }
-                    //Bohrungsdurchmesser
-                    Zahlencheck = BD_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
-                        ZR1.BD = Convert.ToDouble(BD_txt.Text);
-                        if (ZR1.BD < 0)
-                        {
-                            MessageBox.Show("Fehler: Bohrungsdurchmesser darf nicht 0 oder mehr als Kopfkreisdurchmesser betragen");
-                            Fehlerzähler++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte Eingabe zum Bohrungsdurchmesser überprüfen");
-                        Fehlerzähler++;
-                    }
-                    //Zahnbreite
-                    Zahlencheck = Zahnbreite_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
-                        ZR1.Zahnbreite = Convert.ToDouble(Zahnbreite_txt.Text);
-                        if (ZR1.Zahnbreite < 0)
-                        {
-                            MessageBox.Show("Zahnbreite muss über 0 liegen");
-                            Fehlerzähler++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte Eingabe zur Zahnbreite überprüfen");
-                        Fehlerzähler++;
-                    }
-                    //Zähnezahl
-                    Zahlencheck = z_txt.Text;
-                    if (Zahlprüfung(Zahlencheck) == true)
-                    {
-                        ZR1.z = Convert.ToDouble(z_txt.Text);
-                        if (ZR1.z < 0)
-                        {
-                            MessageBox.Show("Zähnezahl muss über 0 liegen");
-                            Fehlerzähler++;
-                        }
-                    }
-                    //Überprüfung beendet
-            }
+                }
+
+                //Überprüfung beendet
+            
 
                 
             //Material
@@ -425,7 +336,7 @@ namespace User_Interface_HSP
             {
                 if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Außenverzahnung
                 {
-                    if (RB_MT.IsChecked == true)                                            //Berechnung geradverzahnt Außenverzahnung m und d
+                    if (RB_MT.IsChecked == true && Fehlerzähler==0)                         //Berechnung geradverzahnt Außenverzahnung m und d
                     {
                         ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_d();
                         c_aus.Content = ZR1.c + " mm";
@@ -442,7 +353,7 @@ namespace User_Interface_HSP
                         V_aus.Content = ZR1.V + " mm^3";
                         Masse_aus.Content = ZR1.Masse + " Kg";
                     }
-                    if (RB_MZ.IsChecked == true)                                            //Berechnung geradverzahnt Außenverzahnung m und z
+                    if (RB_MZ.IsChecked == true && Fehlerzähler == 0)                        //Berechnung geradverzahnt Außenverzahnung m und z
                     {
                         ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_z();
                         c_aus.Content = ZR1.c + " mm";
@@ -462,7 +373,7 @@ namespace User_Interface_HSP
                 }
                 if (CB_SV.IsChecked == true)                                                //Berechnung schrägverzahnt Außenverzahnung
                 {
-                    if (RB_MT.IsChecked == true)                                            //Berechnung schrägverzahnt Außenverzahnung m und d
+                    if (RB_MT.IsChecked == true && Fehlerzähler == 0)                       //Berechnung schrägverzahnt Außenverzahnung m und d
                     {
                         ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_d();
                         c_aus.Content = ZR1.c + " mm";
@@ -481,7 +392,7 @@ namespace User_Interface_HSP
                     }
                     else
                     {
-                        if (RB_MZ.IsChecked == true)                                            //Berechnung schrägverzahnt Außenverzahnung m und z
+                        if (RB_MZ.IsChecked == true && Fehlerzähler == 0)                   //Berechnung schrägverzahnt Außenverzahnung m und z
                         {
                             ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_z();
                             c_aus.Content = ZR1.c + " mm";
@@ -505,7 +416,7 @@ namespace User_Interface_HSP
             {                                                                               //Berechnung Innenverzahnung
                 if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Innenverzahnung
                 {
-                    if (RB_MT.IsChecked == true)                                            //Berechnung geradverzahnt Innenverzahnung m und d
+                    if (RB_MT.IsChecked == true && Fehlerzähler == 0)                       //Berechnung geradverzahnt Innenverzahnung m und d
                     {
                         ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_d();
                         c_aus_Innen.Content = ZR1.c + " mm";
@@ -523,7 +434,7 @@ namespace User_Interface_HSP
                         V_aus_Innen.Content = ZR1.V + " mm^3";
                         Masse_aus_Innen.Content = ZR1.Masse + " Kg";
                     }
-                    if (RB_MZ.IsChecked == true)                                            //Berechnung geradverzahnt Innenverzahnung m und z
+                    if (RB_MZ.IsChecked == true && Fehlerzähler == 0)                        //Berechnung geradverzahnt Innenverzahnung m und z
                     {
                         ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_z();
                         c_aus_Innen.Content = ZR1.c + " mm";
@@ -545,7 +456,7 @@ namespace User_Interface_HSP
                 }
                 if (CB_SV.IsChecked == true)                                                //Berechnung schrägverzahnt Innenverzahnung
                 {
-                    if (RB_MT.IsChecked == true)                                            //Berechnung schrägverzahnt Innenverzahnung m und d
+                    if (RB_MT.IsChecked == true && Fehlerzähler == 0)                       //Berechnung schrägverzahnt Innenverzahnung m und d
                     {
                         ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_d();
                         c_aus_Innen.Content = ZR1.c + " mm";
@@ -563,7 +474,7 @@ namespace User_Interface_HSP
                         V_aus_Innen.Content = ZR1.V + " mm^3";
                         Masse_aus_Innen.Content = ZR1.Masse + " Kg";
                     }
-                    if (RB_MZ.IsChecked == true)                                            //Berechnung schrägverzahnt Innenverzahnung m und z
+                    if (RB_MZ.IsChecked == true && Fehlerzähler == 0)                       //Berechnung schrägverzahnt Innenverzahnung m und z
                     {
                         ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_z();
                         c_aus_Innen.Content = ZR1.c + " mm";
