@@ -631,6 +631,13 @@ namespace User_Interface_HSP
             Modulrechner.Show();
         }
 
+        private void ExitProgram_BTN_Click(object sender, EventArgs e)
+        {
+            Close();
+
+
+        }
+
 
     }
 }

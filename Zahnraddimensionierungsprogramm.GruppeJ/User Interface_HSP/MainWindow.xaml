@@ -39,9 +39,9 @@
         <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,180,20,0" Grid.RowSpan="2">Der Schrägungswinkel liegt meist zwischen 8° und 25°, 
             theoretisch kann er zwischen 0° und 90° liegen</TextBlock>
 
-        <StackPanel  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Margin="0,0,20,0">
+        <StackPanel  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Margin="0,0,-20,0">
             <Label>Modul m</Label>
-            <ComboBox Margin="5,0,-15,0" x:Name="Modul_Dropbox">
+            <ComboBox Margin="5,0,0,0" x:Name="Modul_Dropbox">
 
                 <ComboBoxItem x:Name="CB2" IsSelected="True">1</ComboBoxItem>
                 <ComboBoxItem>1,25</ComboBoxItem>
@@ -68,25 +68,26 @@
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung" IsChecked="True" x:Name="rb_AV" Checked="rb_AV_Checked" >Aussenverzahnung</RadioButton>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung"                  x:Name="rb_IV" Checked="rb_IV_Checked" >Innenverzahnung</RadioButton>
             <CheckBox       Margin="5,0,-50,0" x:Name="CB_SV" Unchecked="CB_SV_Unchecked" Checked="CB_SV_Checked">Schrägverzahnt</CheckBox>
-            <Label Margin="0,0,-50,0"                  >Ø Bohrung</Label>
-            <TextBox        x:Name="BD_txt" Margin="5,0,-5,0"></TextBox>
+            <Label Margin="0,0,0,0"                  >Ø Bohrung</Label>
+            <TextBox        x:Name="BD_txt" Margin="5,0,28,0"></TextBox>
             <Label Content="Zahnbreite"                  />
-            <TextBox        x:Name="Zahnbreite_txt" Margin="5,0,-5,0"></TextBox>
+            <TextBox        x:Name="Zahnbreite_txt" Margin="5,0,28,0"></TextBox>
             <Label Margin="5,0,5,0">Material</Label>
             <ComboBox Margin="5,0,5,0" x:Name="Material_Dropbox">
                 <ComboBoxItem x:Name="Stahl" IsSelected="True" Content="Stahl"/>
                 <ComboBoxItem x:Name="Messing" Content="Messing"/>
                 <ComboBoxItem x:Name="Kunststoff" Content="Kunststoff"/>
             </ComboBox>
-            <Button         x:Name="Bestätigen_BTN" Click="Bestätigen_BTN_Click" Margin="5,5,-15,50">Bestätigen</Button>
+            <Button         x:Name="Bestätigen_BTN" Click="Bestätigen_BTN_Click" Margin="5,5,5,50">Bestätigen</Button>
+            <Button x:Name="ExitProgram_BTN" Click="ExitProgram_BTN_Click" Margin="5,5,5,40">ExitProgram</Button>
 
 
         </StackPanel>
 
         <CheckBox x:Name="Kopfspielfaktor_CB"   Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,75"     Checked="CheckBox_Checked"              Unchecked="CheckBox_Unchecked"              IsChecked="False" HorizontalAlignment="Right" Width="15"/>
-        <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,35"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
+        <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,19"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
 
-        <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,55" Click="Button_Click">Info</Button>
+        <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="30,5,5,55" Click="Button_Click">Info</Button>
 
 
 
