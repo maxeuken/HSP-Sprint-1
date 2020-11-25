@@ -77,9 +77,9 @@
                 <ComboBoxItem x:Name="Messing" Content="Messing"/>
                 <ComboBoxItem x:Name="Kunststoff" Content="Kunststoff"/>
             </ComboBox>
-            <Button         x:Name="Bestätigen_BTN" Click="Bestätigen_BTN_Click" Margin="5,5,5,50">Bestätigen</Button>
+            <Button         x:Name="Bestätigen_BTN" Click="Bestätigen_BTN_Click" Margin="5,5,5,50" Content="Bestätigen"/>
             <Button x:Name="Beenden_BTN" Click="Beenden_BTN_Click" Margin="5,5,5,40">Beenden</Button>
-            <Button x:Name="Clear_BTN" Click="Clear_BTN_Click" Margin="5,-83,5,70">Clear</Button>
+            <Button x:Name="Clear_BTN" Click="Clear_BTN_Click" Margin="5,-83,5,70" >Clear</Button>
 
 
         </StackPanel>
@@ -87,11 +87,11 @@
         <CheckBox x:Name="Kopfspielfaktor_CB"   Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,75"     Checked="CheckBox_Checked"              Unchecked="CheckBox_Unchecked"              IsChecked="False" HorizontalAlignment="Right" Width="15"/>
         <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,19"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
 
-        <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="30,5,5,55" Click="Button_Click">Info</Button>
+        <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,0,0,52" Click="Button_Click" HorizontalAlignment="Left" Width="121" Grid.ColumnSpan="2">Info</Button>
 
 
 
-        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="560" Width="220" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="550" Width="220" SelectionChanged="TabControl_SelectionChanged">
             <TabItem x:Name="Tab_AV" Header="Aussenverzahnung">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>

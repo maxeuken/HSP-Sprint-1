@@ -294,7 +294,7 @@ namespace User_Interface_HSP
             if (Zahlprüfung(Zahlencheck) == true)
             {
                 ZR1.Zahnbreite = Convert.ToDouble(Zahnbreite_txt.Text);
-                if (ZR1.Zahnbreite < 0)
+                if (ZR1.Zahnbreite <= 4)
                 {
                     MessageBox.Show("Zahnbreite muss über 0 liegen");
                     Error = 1;
