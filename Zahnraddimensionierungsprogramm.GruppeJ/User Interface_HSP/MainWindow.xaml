@@ -78,7 +78,8 @@
                 <ComboBoxItem x:Name="Kunststoff" Content="Kunststoff"/>
             </ComboBox>
             <Button         x:Name="Bestätigen_BTN" Click="Bestätigen_BTN_Click" Margin="5,5,5,50">Bestätigen</Button>
-            <Button x:Name="ExitProgram_BTN" Click="ExitProgram_BTN_Click" Margin="5,5,5,40">ExitProgram</Button>
+            <Button x:Name="Beenden_BTN" Click="Beenden_BTN_Click" Margin="5,5,5,40">Beenden</Button>
+            <Button x:Name="Clear_BTN" Click="Clear_BTN_Click" Margin="5,-83,5,70">Clear</Button>
 
 
         </StackPanel>

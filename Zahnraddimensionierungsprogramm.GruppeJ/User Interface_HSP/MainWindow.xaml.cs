@@ -631,7 +631,7 @@ namespace User_Interface_HSP
             Modulrechner.Show();
         }
 
-        private void ExitProgram_BTN_Click(object sender, EventArgs e)
+        private void Beenden_BTN_Click(object sender, EventArgs e)
         {
             Close();
 
@@ -641,6 +641,50 @@ namespace User_Interface_HSP
         {
             Window3 Passfederrechner = new Window3();
             Passfederrechner.Show();
+        }
+
+        private void Clear_BTN_Click(object sender, EventArgs e)
+        {
+            d_txt.Clear();
+            z_txt.Clear();
+            BD_txt.Clear();
+            Zahnbreite_txt.Clear();
+            c_aus.Content = "";
+            h_aus.Content = "";
+            hf_aus.Content = "";
+            ha_aus.Content = "";
+            p_aus.Content = "";
+            db_aus.Content = "";
+            z_aus.Content = "";
+            df_aus.Content = "";
+            da_aus.Content = "";
+            drz_aus.Content = "";
+            m_aus.Content = "";
+            V_aus.Content = "";
+            Masse_aus.Content = "";
+            c_aus_Innen.Content = "";
+            h_aus_Innen.Content = "";
+            hf_aus_Innen.Content = "";
+            ha_aus_Innen.Content = "";
+            p_aus_Innen.Content = "";
+            db_aus_Innen.Content = "";
+            z_aus_Innen.Content = "";
+            df_aus_Innen.Content = "";
+            da_aus_Innen.Content = "";
+            dm_aus_Innen.Content = "";
+            drz_aus_Innen.Content = "";
+            m_aus_Innen.Content = "";
+            V_aus_Innen.Content = "";
+            Masse_aus_Innen.Content = "";
+            cf_txt.Text = "0,167";
+            ew_txt.Text = "20";
+            Modul_Dropbox.SelectedItem =CB2;
+            Kopfspielfaktor_CB.IsChecked = false;
+            Eingriffswinkel_CB.IsChecked = false;
+            CB_SV.IsChecked = false;
+            RB_MT.IsChecked = true;
+
+
         }
     }
 }
