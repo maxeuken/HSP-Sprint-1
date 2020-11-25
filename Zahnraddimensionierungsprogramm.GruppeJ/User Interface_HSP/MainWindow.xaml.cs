@@ -68,15 +68,15 @@ namespace User_Interface_HSP
 
             internal void Berechnung_geradverzahnt_Außenverzahnung_m_und_z() 
             {
-                d = Math.Round((m * z), dezimal);                                                       //Teilkreisdurchmesser
+                drz = Math.Round((m * z), dezimal);                                                     //Teilkreisdurchmesser
                 p = Math.Round((Math.PI * m), dezimal);                                                 //Teilung
                 c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
                 ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
                 hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
                 h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
                 da = Math.Round((m * (z + 2)), dezimal);                                                //Kopfkreisdurchmesser
-                df = Math.Round((d - (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
-                db = Math.Round((d * Math.Cos(ew * (Math.PI / 180))), dezimal);                         //Grundkreisdurchmesser
+                df = Math.Round((drz - (2 * (m + c))), dezimal);                                        //Fußkreisdurchmesser
+                db = Math.Round((drz * Math.Cos(ew * (Math.PI / 180))), dezimal);                       //Grundkreisdurchmesser
                 A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
@@ -122,6 +122,7 @@ namespace User_Interface_HSP
             {
                 mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
                 pt = Math.Round((p / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnteilung
+                p = Math.Round(Math.PI * m, dezimal);                                                   //Normalteilung
                 z = Math.Round((d / mt), 0);                                                            //Zahnzahl
                 c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
                 ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
@@ -142,15 +143,16 @@ namespace User_Interface_HSP
             {
                 mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
                 pt = Math.Round((p / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnteilung
-                d = Math.Round((mt * z), dezimal);                                                      //Teilkreisdurchmesser
+                p = Math.Round(Math.PI * m, dezimal);                                                   //Normalteilung
+                drz = Math.Round((mt * z), dezimal);                                                    //Teilkreisdurchmesser
                 c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
                 ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
                 hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
                 h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
-                da = Math.Round((d + 2 * m), dezimal);                                                  //Kopfkreisdurchmesser
-                df = Math.Round((d - (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
+                da = Math.Round((drz + 2 * m), dezimal);                                                  //Kopfkreisdurchmesser
+                df = Math.Round((drz - (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
                 alphat = Math.Atan(Math.Tan(ew * (Math.PI / 180)) / Math.Cos(sw * (Math.PI / 180)));  //Stirneingriffswinkel
-                db = Math.Round((d * Math.Cos(alphat)), dezimal);                                       //Grundkreisdurchmesser
+                db = Math.Round((drz * Math.Cos(alphat)), dezimal);                                       //Grundkreisdurchmesser
                 A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
@@ -161,6 +163,7 @@ namespace User_Interface_HSP
             {
                 mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
                 pt = Math.Round((p / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnteilung
+                p = Math.Round(Math.PI * m, dezimal);                                                   //Normalteilung
                 z = Math.Round((d / mt), 0);                                                            //Zahnzahl
                 c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
                 ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
@@ -181,15 +184,17 @@ namespace User_Interface_HSP
             {
                 mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
                 pt = Math.Round((p / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnteilung
+                p = Math.Round(Math.PI * m, dezimal);                                                   //Normalteilung
                 d = Math.Round((mt * z), dezimal);                                                      //Teilkreisdurchmesser
+                drz = Math.Round((mt * z), dezimal);                                                    //Teilkreisdurchmesser Rückrechnung
                 c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
                 ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
                 hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
                 h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
-                da = Math.Round((d - 2 * m), dezimal);                                                  //Kopfkreisdurchmesser
-                df = Math.Round((d + (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
+                da = Math.Round((drz - 2 * m), dezimal);                                                  //Kopfkreisdurchmesser
+                df = Math.Round((drz + (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
                 alphat = Math.Atan((Math.Tan(ew * (Math.PI / 180)) / Math.Cos(sw * (Math.PI / 180))));  //Stirneingriffswinkel
-                db = Math.Round((d * Math.Cos(alphat)), dezimal);                                       //Grundkreisdurchmesser
+                db = Math.Round((drz * Math.Cos(alphat)), dezimal);                                       //Grundkreisdurchmesser
                 dm = Math.Round((drz * 1.4), dezimal);                                                  //Mindestaußendurchmesser Hohlrad
                 A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
@@ -354,19 +359,19 @@ namespace User_Interface_HSP
                     if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)       //Berechnung geradverzahnt Außenverzahnung m und d
                     {
                         ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_d();
-                        df_aus_Innen.Content = ZR1.df + " mm";
-                        da_aus_Innen.Content = ZR1.da + " mm";
-                        c_aus_Innen.Content = ZR1.c + " mm";
-                        h_aus_Innen.Content = ZR1.h + " mm";
-                        hf_aus_Innen.Content = ZR1.hf + " mm";
-                        ha_aus_Innen.Content = ZR1.ha + " mm";
-                        p_aus_Innen.Content = ZR1.p + " mm";
-                        db_aus_Innen.Content = ZR1.db + " mm";
-                        z_aus_Innen.Content = ZR1.z;
-                        drz_aus_Innen.Content = ZR1.drz + " mm";
-                        m_aus_Innen.Content = ZR1.m + " mm";
-                        V_aus_Innen.Content = ZR1.V + " mm^3";
-                        Masse_aus_Innen.Content = ZR1.Masse + " Kg";
+                        c_aus.Content = ZR1.c + " mm";
+                        h_aus.Content = ZR1.h + " mm";
+                        hf_aus.Content = ZR1.hf + " mm";
+                        ha_aus.Content = ZR1.ha + " mm";
+                        p_aus.Content = ZR1.p + " mm";
+                        db_aus.Content = ZR1.db + " mm";
+                        z_aus.Content = ZR1.z;
+                        df_aus.Content = ZR1.df + " mm";
+                        da_aus.Content = ZR1.da + " mm";
+                        drz_aus.Content = ZR1.drz + " mm";
+                        m_aus.Content = ZR1.m + " mm";
+                        V_aus.Content = ZR1.V + " mm^3";
+                        Masse_aus.Content = ZR1.Masse + " Kg";
                     }
                     else
 
@@ -374,6 +379,7 @@ namespace User_Interface_HSP
                     {
                         ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_z();
                         c_aus.Content = ZR1.c + " mm";
+                        z_aus.Content = ZR1.z + " mm";
                         h_aus.Content = ZR1.h + " mm";
                         hf_aus.Content = ZR1.hf + " mm";
                         ha_aus.Content = ZR1.ha + " mm";
