@@ -43,11 +43,6 @@ namespace User_Interface_HSP
             public double MTL_hlp;                                                                      //Dichte
             public double Masse;                                                                        //Masse
             int dezimal = 2;                                                                            //Rundungsvariable
-<<<<<<< Updated upstream
-=======
-            
-
->>>>>>> Stashed changes
             //Berechnungsmethoden
             internal void Berechnung_geradverzahnt_Außenverzahnung_m_und_d()
             { 
@@ -198,7 +193,6 @@ namespace User_Interface_HSP
         //Bestätigungsbutton Event
         private void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
-            int Error = 0;
             Zahnrad ZR1 = new Zahnrad
             {
                 //Modul
@@ -212,35 +206,25 @@ namespace User_Interface_HSP
                 if ((ZR1.cf < 0.1) || (ZR1.cf > 0.3))
                 {
                     MessageBox.Show("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
-                    Error = 1;
                 }
             }
             else
             {
                 MessageBox.Show("Bitte Eingabe zum Kopfspielfaktor überprüfen");
-                Error = 1;
             }
             //Teilkreisdurchmesser
             Zahlencheck = d_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
             {
                 ZR1.d = Convert.ToInt32(d_txt.Text);
-                if (ZR1.d <= 0)
+                if (ZR1.d == 0)
                 {
-                    if (RB_MT.IsChecked == true)
-                    {
-                        MessageBox.Show("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
-                        Error = 1;
-                    }
+                    MessageBox.Show("Fehler: Teilkreisdurchmesser muss größer als 0 sein. Bitte Eingabe korrigieren");
                 }
             }
             else
             {
-                if (RB_MT.IsChecked == true)
-                {
-                    MessageBox.Show("Bitte Eingabe zum Teilkreisdurchmesser überprüfen");
-                    Error = 1;
-                }
+                MessageBox.Show("Bitte Eingabe zum Teilkreisdurchmesser überprüfen");
             }
             //Eingriffswinkel
             Zahlencheck = ew_txt.Text;
@@ -250,13 +234,11 @@ namespace User_Interface_HSP
                 if ((ZR1.ew < 0) || (ZR1.ew >= 90))
                 {
                     MessageBox.Show("Fehler: Der Eingriffswinkel muss zwischen 0 und 90 Grad liegen. Bitte Eingabe korrigieren");
-                    Error = 1;
                 }
             }
             else
             {
                 MessageBox.Show("Bitte Eingabe zum Eingriffsswinkel überprüfen");
-                Error = 1;
             }
             //Schrägungswinkel   
             Zahlencheck = sw_txt.Text;
@@ -265,8 +247,7 @@ namespace User_Interface_HSP
                 ZR1.sw = Convert.ToInt32(sw_txt.Text);
                 if ((ZR1.sw < 0) || (ZR1.sw >= 90))
                 {
-                    MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen");
-                    Error = 1;
+                    MessageBox.Show("Fehler: Winkel muss zwischen 0 und 90 Grad liegen"); ;
                 }
             }
             else
@@ -281,13 +262,11 @@ namespace User_Interface_HSP
                 if (ZR1.BD < 0)
                 {
                     MessageBox.Show("Fehler: Bohrungsdurchmesser darf nicht 0 oder mehr als Kopfkreisdurchmesser betragen");
-                    Error = 1;
                 }
             }
             else
             {
                 MessageBox.Show("Bitte Eingabe zum Bohrungsdurchmesser überprüfen");
-                Error = 1;
             }
             //Zahnbreite
             Zahlencheck = Zahnbreite_txt.Text;
@@ -297,26 +276,20 @@ namespace User_Interface_HSP
                 if (ZR1.Zahnbreite < 0)
                 {
                     MessageBox.Show("Zahnbreite muss über 0 liegen");
-                    Error = 1;
                 }
             }
             else
             {
                 MessageBox.Show("Bitte Eingabe zur Zahnbreite überprüfen");
-                Error = 1;
             }
             //Zähnezahl
             Zahlencheck = z_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
             {
                 ZR1.z = Convert.ToDouble(z_txt.Text);
-                if (ZR1.z <= 4)
+                if (ZR1.z < 0)
                 {
-                    if (RB_MZ.IsChecked == true)
-                    {
-                        MessageBox.Show("Zähnezahl muss über 0 liegen");
-                        Error = 1;
-                    }
+                    MessageBox.Show("Zähnezahl muss über 0 liegen");
                 }
             }
             //Überprüfung beendet
@@ -336,17 +309,12 @@ namespace User_Interface_HSP
                     break;
             }
             //Ausgabe
-<<<<<<< Updated upstream
             if (rb_AV.IsChecked == true)                                                    //Berechnung Außenverzahnung
-=======
-            if (Error == 0)
->>>>>>> Stashed changes
             {
-                if (rb_AV.IsChecked == true)                                                    //Berechnung Außenverzahnung
+                if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Außenverzahnung
                 {
-                    if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Außenverzahnung
+                    if (RB_MT.IsChecked == true)                                            //Berechnung geradverzahnt Außenverzahnung m und d
                     {
-<<<<<<< Updated upstream
                         ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_d();
                         c_aus.Content = ZR1.c + " mm";
                         h_aus.Content = ZR1.h + " mm";
@@ -383,86 +351,22 @@ namespace User_Interface_HSP
                 if (CB_SV.IsChecked == true)                                                //Berechnung schrägverzahnt Außenverzahnung
                 {
                     if (RB_MT.IsChecked == true)                                            //Berechnung schrägverzahnt Außenverzahnung m und d
-=======
-                        if (RB_MT.IsChecked == true)                                            //Berechnung geradverzahnt Außenverzahnung m und d
-                        {
-                            ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_d();
-                            c_aus.Content = ZR1.c + " mm";
-                            h_aus.Content = ZR1.h + " mm";
-                            hf_aus.Content = ZR1.hf + " mm";
-                            ha_aus.Content = ZR1.ha + " mm";
-                            p_aus.Content = ZR1.p + " mm";
-                            db_aus.Content = ZR1.db + " mm";
-                            z_aus.Content = ZR1.z;
-                            df_aus.Content = ZR1.df + " mm";
-                            da_aus.Content = ZR1.da + " mm";
-                            drz_aus.Content = ZR1.drz + " mm";
-                            m_aus.Content = ZR1.m + " mm";
-                            V_aus.Content = ZR1.V + " mm^3";
-                            Masse_aus.Content = ZR1.Masse + " Kg";
-                        }
-
-                        if (RB_MZ.IsChecked == true)        //Berechnung geradverzahnt Außenverzahnung m und z
-                        {
-                            ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_z();
-                            c_aus.Content = ZR1.c + " mm";
-                            z_aus.Content = ZR1.z + " mm";
-                            h_aus.Content = ZR1.h + " mm";
-                            hf_aus.Content = ZR1.hf + " mm";
-                            ha_aus.Content = ZR1.ha + " mm";
-                            p_aus.Content = ZR1.p + " mm";
-                            db_aus.Content = ZR1.db + " mm";
-                            df_aus.Content = ZR1.df + " mm";
-                            da_aus.Content = ZR1.da + " mm";
-                            drz_aus.Content = ZR1.drz + " mm";
-                            m_aus.Content = ZR1.m + " mm";
-                            V_aus.Content = ZR1.V + " mm^3";
-                            Masse_aus.Content = ZR1.Masse + " Kg";
-                        }
-
-                    }
-
-                    if (CB_SV.IsChecked == true)                                                   //Berechnung schrägverzahnt Außenverzahnung
->>>>>>> Stashed changes
                     {
-                        if (RB_MT.IsChecked == true)            //Berechnung schrägverzahnt Außenverzahnung m und d
-                        {
-                            ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_d();
-                            c_aus.Content = ZR1.c + " mm";
-                            h_aus.Content = ZR1.h + " mm";
-                            hf_aus.Content = ZR1.hf + " mm";
-                            ha_aus.Content = ZR1.ha + " mm";
-                            p_aus.Content = ZR1.p + " mm";
-                            db_aus.Content = ZR1.db + " mm";
-                            z_aus.Content = ZR1.z;
-                            df_aus.Content = ZR1.df + " mm";
-                            da_aus.Content = ZR1.da + " mm";
-                            drz_aus.Content = ZR1.drz + " mm";
-                            m_aus.Content = ZR1.m + " mm";
-                            V_aus.Content = ZR1.V + " mm^3";
-                            Masse_aus.Content = ZR1.Masse + " Kg";
-                        }
-                        else
-
-                        if (RB_MZ.IsChecked == true)             //Berechnung schrägverzahnt Außenverzahnung m und z
-                        {
-                            ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_z();
-                            c_aus.Content = ZR1.c + " mm";
-                            h_aus.Content = ZR1.h + " mm";
-                            hf_aus.Content = ZR1.hf + " mm";
-                            ha_aus.Content = ZR1.ha + " mm";
-                            p_aus.Content = ZR1.p + " mm";
-                            db_aus.Content = ZR1.db + " mm";
-                            z_aus.Content = ZR1.z;
-                            df_aus.Content = ZR1.df + " mm";
-                            da_aus.Content = ZR1.da + " mm";
-                            drz_aus.Content = ZR1.drz + " mm";
-                            m_aus.Content = ZR1.m + " mm";
-                            V_aus.Content = ZR1.V + " mm^3";
-                            Masse_aus.Content = ZR1.Masse + " Kg";
-                        }
+                        ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_d();
+                        c_aus.Content = ZR1.c + " mm";
+                        h_aus.Content = ZR1.h + " mm";
+                        hf_aus.Content = ZR1.hf + " mm";
+                        ha_aus.Content = ZR1.ha + " mm";
+                        p_aus.Content = ZR1.p + " mm";
+                        db_aus.Content = ZR1.db + " mm";
+                        z_aus.Content = ZR1.z;
+                        df_aus.Content = ZR1.df + " mm";
+                        da_aus.Content = ZR1.da + " mm";
+                        drz_aus.Content = ZR1.drz + " mm";
+                        m_aus.Content = ZR1.m + " mm";
+                        V_aus.Content = ZR1.V + " mm^3";
+                        Masse_aus.Content = ZR1.Masse + " Kg";
                     }
-<<<<<<< Updated upstream
                     else
                     {
                         if (RB_MZ.IsChecked == true)                                            //Berechnung schrägverzahnt Außenverzahnung m und z
@@ -490,55 +394,23 @@ namespace User_Interface_HSP
                 if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Innenverzahnung
                 {
                     if (RB_MT.IsChecked == true)                                            //Berechnung geradverzahnt Innenverzahnung m und d
-=======
-
-                }
-                else
-                {
-                    if (CB_SV.IsChecked == false)                                                  //Berechnung geradverzahnt Innenverzahnung
->>>>>>> Stashed changes
                     {
-                        if (RB_MT.IsChecked == true)        //Berechnung geradverzahnt Innenverzahnung m und d
-                        {
-                            ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_d();
-                            c_aus_Innen.Content = ZR1.c + " mm";
-                            h_aus_Innen.Content = ZR1.h + " mm";
-                            hf_aus_Innen.Content = ZR1.hf + " mm";
-                            ha_aus_Innen.Content = ZR1.ha + " mm";
-                            p_aus_Innen.Content = ZR1.p + " mm";
-                            db_aus_Innen.Content = ZR1.db + " mm";
-                            z_aus_Innen.Content = ZR1.z;
-                            df_aus_Innen.Content = ZR1.df + " mm";
-                            da_aus_Innen.Content = ZR1.da + " mm";
-                            dm_aus_Innen.Content = ZR1.dm + " mm";
-                            drz_aus_Innen.Content = ZR1.drz + " mm";
-                            m_aus_Innen.Content = ZR1.m + " mm";
-                            V_aus_Innen.Content = ZR1.V + " mm^3";
-                            Masse_aus_Innen.Content = ZR1.Masse + " Kg";
-                        }
-
-
-                        if (RB_MZ.IsChecked == true)            //Berechnung geradverzahnt Innenverzahnung m und z
-                        {
-                            ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_z();
-                            c_aus_Innen.Content = ZR1.c + " mm";
-                            h_aus_Innen.Content = ZR1.h + " mm";
-                            hf_aus_Innen.Content = ZR1.hf + " mm";
-                            ha_aus_Innen.Content = ZR1.ha + " mm";
-                            p_aus_Innen.Content = ZR1.p + " mm";
-                            db_aus_Innen.Content = ZR1.db + " mm";
-                            z_aus_Innen.Content = ZR1.z;
-                            df_aus_Innen.Content = ZR1.df + " mm";
-                            da_aus_Innen.Content = ZR1.da + " mm";
-                            dm_aus_Innen.Content = ZR1.dm + " mm";
-                            drz_aus_Innen.Content = ZR1.drz + " mm";
-                            m_aus_Innen.Content = ZR1.m + " mm";
-                            V_aus_Innen.Content = ZR1.V + " mm^3";
-                            Masse_aus_Innen.Content = ZR1.Masse + " Kg";
-
-                        }
+                        ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_d();
+                        c_aus_Innen.Content = ZR1.c + " mm";
+                        h_aus_Innen.Content = ZR1.h + " mm";
+                        hf_aus_Innen.Content = ZR1.hf + " mm";
+                        ha_aus_Innen.Content = ZR1.ha + " mm";
+                        p_aus_Innen.Content = ZR1.p + " mm";
+                        db_aus_Innen.Content = ZR1.db + " mm";
+                        z_aus_Innen.Content = ZR1.z;
+                        df_aus_Innen.Content = ZR1.df + " mm";
+                        da_aus_Innen.Content = ZR1.da + " mm";
+                        dm_aus_Innen.Content = ZR1.dm + " mm";
+                        drz_aus_Innen.Content = ZR1.drz + " mm";
+                        m_aus_Innen.Content = ZR1.m + " mm";
+                        V_aus_Innen.Content = ZR1.V + " mm^3";
+                        Masse_aus_Innen.Content = ZR1.Masse + " Kg";
                     }
-<<<<<<< Updated upstream
                     if (RB_MZ.IsChecked == true)                                            //Berechnung geradverzahnt Innenverzahnung m und z
                     {
                         ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_z();
@@ -596,51 +468,6 @@ namespace User_Interface_HSP
                         m_aus_Innen.Content = ZR1.m + " mm";
                         V_aus_Innen.Content = ZR1.V + " mm^3";
                         Masse_aus_Innen.Content = ZR1.Masse + " Kg";
-=======
-
-
-                    if (CB_SV.IsChecked == true)                                                     //Berechnung schrägverzahnt Innenverzahnung
-                    {
-                        if (RB_MT.IsChecked == true)            //Berechnung schrägverzahnt Innenverzahnung m und d
-                        {
-                            ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_d();
-                            c_aus_Innen.Content = ZR1.c + " mm";
-                            h_aus_Innen.Content = ZR1.h + " mm";
-                            hf_aus_Innen.Content = ZR1.hf + " mm";
-                            ha_aus_Innen.Content = ZR1.ha + " mm";
-                            p_aus_Innen.Content = ZR1.p + " mm";
-                            db_aus_Innen.Content = ZR1.db + " mm";
-                            z_aus_Innen.Content = ZR1.z;
-                            df_aus_Innen.Content = ZR1.df + " mm";
-                            da_aus_Innen.Content = ZR1.da + " mm";
-                            dm_aus_Innen.Content = ZR1.dm + " mm";
-                            drz_aus_Innen.Content = ZR1.drz + " mm";
-                            m_aus_Innen.Content = ZR1.m + " mm";
-                            V_aus_Innen.Content = ZR1.V + " mm^3";
-                            Masse_aus_Innen.Content = ZR1.Masse + " Kg";
-                        }
-
-
-                        if (RB_MZ.IsChecked == true)             //Berechnung schrägverzahnt Innenverzahnung m und z
-                        {
-                            ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_z();
-                            c_aus_Innen.Content = ZR1.c + " mm";
-                            h_aus_Innen.Content = ZR1.h + " mm";
-                            hf_aus_Innen.Content = ZR1.hf + " mm";
-                            ha_aus_Innen.Content = ZR1.ha + " mm";
-                            p_aus_Innen.Content = ZR1.p + " mm";
-                            db_aus_Innen.Content = ZR1.db + " mm";
-                            z_aus_Innen.Content = ZR1.z;
-                            df_aus_Innen.Content = ZR1.df + " mm";
-                            da_aus_Innen.Content = ZR1.da + " mm";
-                            dm_aus_Innen.Content = ZR1.dm + " mm";
-                            drz_aus_Innen.Content = ZR1.drz + " mm";
-                            m_aus_Innen.Content = ZR1.m + " mm";
-                            V_aus_Innen.Content = ZR1.V + " mm^3";
-                            Masse_aus_Innen.Content = ZR1.Masse + " Kg";
-
-                        }
->>>>>>> Stashed changes
                     }
                 }
             }
