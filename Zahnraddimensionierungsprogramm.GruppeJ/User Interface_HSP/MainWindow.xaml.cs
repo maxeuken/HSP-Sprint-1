@@ -31,11 +31,9 @@ namespace User_Interface_HSP
             public double db;                                                                           //Grundkreisdurchmesser
             public double da;                                                                           //Kopfkreisdurchmesser
             public double dm;                                                                           //Mindestaußendurchmesser Hohlrad
-
             public double mt;                                                                           //Stirnmodul
             public double pt;                                                                           //Stirnteilung
             public double alphat;                                                                       //Stirneingriffswinkel
-
             public int Verzahnung = 0;
             public double Zahnbreite;                                                                   //Zahnbreite
             public double BD;                                                                           //Bohrungsdurchmesser
@@ -44,10 +42,8 @@ namespace User_Interface_HSP
             public string Material;                                                                     //Zahnradmaterial
             public double MTL_hlp;                                                                      //Dichte
             public double Masse;                                                                        //Masse
-
             int dezimal = 2;                                                                            //Rundungsvariable
-
-            //Berechnungsmethoden(Max):
+            //Berechnungsmethoden
             internal void Berechnung_geradverzahnt_Außenverzahnung_m_und_d()
             { 
                 z = Math.Round((d / m), 0);                                                             //Zahnzahl
@@ -63,9 +59,7 @@ namespace User_Interface_HSP
                 A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-
             }
-
             internal void Berechnung_geradverzahnt_Außenverzahnung_m_und_z() 
             {
                 drz = Math.Round((m * z), dezimal);                                                     //Teilkreisdurchmesser
@@ -80,9 +74,7 @@ namespace User_Interface_HSP
                 A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-
             }
-
             internal void Berechnung_geradverzahnt_Innenverzahnung_m_und_d() 
             {
                 z = Math.Round((d / m), 0);                                                             //Zahnzahl
@@ -100,7 +92,6 @@ namespace User_Interface_HSP
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
             }
-
             internal void Berechnung_geradverzahnt_Innenverzahnung_m_und_z() 
             {
                 d = Math.Round((m * z), dezimal);                                                       //Teilkreisdurchmesser
@@ -117,7 +108,6 @@ namespace User_Interface_HSP
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
             }
-
             internal void Berechnung_schrägverzahnt_Außenverzahnung_m_und_d() 
             {
                 mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
@@ -136,9 +126,7 @@ namespace User_Interface_HSP
                 A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-
             }
-
             internal void Berechnung_schrägverzahnt_Außenverzahnung_m_und_z() 
             {
                 mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
@@ -149,16 +137,14 @@ namespace User_Interface_HSP
                 ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
                 hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
                 h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
-                da = Math.Round((drz + 2 * m), dezimal);                                                  //Kopfkreisdurchmesser
-                df = Math.Round((drz - (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
-                alphat = Math.Atan(Math.Tan(ew * (Math.PI / 180)) / Math.Cos(sw * (Math.PI / 180)));  //Stirneingriffswinkel
-                db = Math.Round((drz * Math.Cos(alphat)), dezimal);                                       //Grundkreisdurchmesser
+                da = Math.Round((drz + 2 * m), dezimal);                                                //Kopfkreisdurchmesser
+                df = Math.Round((drz - (2 * (m + c))), dezimal);                                        //Fußkreisdurchmesser
+                alphat = Math.Atan(Math.Tan(ew * (Math.PI / 180)) / Math.Cos(sw * (Math.PI / 180)));    //Stirneingriffswinkel
+                db = Math.Round((drz * Math.Cos(alphat)), dezimal);                                     //Grundkreisdurchmesser
                 A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-
             }
-
             internal void Berechnung_schrägverzahnt_Innenverzahnung_m_und_d() 
             {
                 mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
@@ -179,7 +165,6 @@ namespace User_Interface_HSP
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
             }
-
             internal void Berechnung_schrägverzahnt_Innenverzahnung_m_und_z() 
             {
                 mt = Math.Round((m / Math.Cos(sw * (Math.PI / 180))), dezimal);                         //Stirnmodul
@@ -191,38 +176,28 @@ namespace User_Interface_HSP
                 ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
                 hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
                 h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
-                da = Math.Round((drz - 2 * m), dezimal);                                                  //Kopfkreisdurchmesser
-                df = Math.Round((drz + (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
+                da = Math.Round((drz - 2 * m), dezimal);                                                //Kopfkreisdurchmesser
+                df = Math.Round((drz + (2 * (m + c))), dezimal);                                        //Fußkreisdurchmesser
                 alphat = Math.Atan((Math.Tan(ew * (Math.PI / 180)) / Math.Cos(sw * (Math.PI / 180))));  //Stirneingriffswinkel
-                db = Math.Round((drz * Math.Cos(alphat)), dezimal);                                       //Grundkreisdurchmesser
+                db = Math.Round((drz * Math.Cos(alphat)), dezimal);                                     //Grundkreisdurchmesser
                 dm = Math.Round((drz * 1.4), dezimal);                                                  //Mindestaußendurchmesser Hohlrad
                 A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-
-
             }
-
         }
-
-
-
         public MainWindow()
         {
             InitializeComponent();
         }
-
-
         //Bestätigungsbutton Event
         private void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
             Zahnrad ZR1 = new Zahnrad
             {
-
                 //Modul
                 m = Convert.ToDouble(Modul_Dropbox.Text)
             };
-
             //Kopfspielfaktor
             string Zahlencheck = cf_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
@@ -251,7 +226,6 @@ namespace User_Interface_HSP
             {
                 MessageBox.Show("Bitte Eingabe zum Teilkreisdurchmesser überprüfen");
             }
-
             //Eingriffswinkel
             Zahlencheck = ew_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
@@ -266,7 +240,6 @@ namespace User_Interface_HSP
             {
                 MessageBox.Show("Bitte Eingabe zum Eingriffsswinkel überprüfen");
             }
-
             //Schrägungswinkel   
             Zahlencheck = sw_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
@@ -281,7 +254,6 @@ namespace User_Interface_HSP
             {
                 MessageBox.Show("Bitte Eingabe zum Schrägungswinkel überprüfen");
             }
-
             //Bohrungsdurchmesser
             Zahlencheck = BD_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
@@ -296,7 +268,6 @@ namespace User_Interface_HSP
             {
                 MessageBox.Show("Bitte Eingabe zum Bohrungsdurchmesser überprüfen");
             }
-
             //Zahnbreite
             Zahlencheck = Zahnbreite_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
@@ -311,7 +282,6 @@ namespace User_Interface_HSP
             {
                 MessageBox.Show("Bitte Eingabe zur Zahnbreite überprüfen");
             }
-
             //Zähnezahl
             Zahlencheck = z_txt.Text;
             if (Zahlprüfung(Zahlencheck) == true)
@@ -322,6 +292,7 @@ namespace User_Interface_HSP
                     MessageBox.Show("Zähnezahl muss über 0 liegen");
                 }
             }
+            //Überprüfung beendet
 
             //Material
             ZR1.Material = Convert.ToString(Material_Dropbox.Text);
@@ -337,9 +308,7 @@ namespace User_Interface_HSP
                     ZR1.MTL_hlp = 0.00000022;
                     break;
             }
-
             //Ausgabe
-
             if (rb_AV.IsChecked == true)                                                    //Berechnung Außenverzahnung
             {
                 if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Außenverzahnung
@@ -361,8 +330,7 @@ namespace User_Interface_HSP
                         V_aus.Content = ZR1.V + " mm^3";
                         Masse_aus.Content = ZR1.Masse + " Kg";
                     }
-
-                    if (RB_MZ.IsChecked == true)        //Berechnung geradverzahnt Außenverzahnung m und z
+                    if (RB_MZ.IsChecked == true)                                            //Berechnung geradverzahnt Außenverzahnung m und z
                     {
                         ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_z();
                         c_aus.Content = ZR1.c + " mm";
@@ -379,12 +347,10 @@ namespace User_Interface_HSP
                         V_aus.Content = ZR1.V + " mm^3";
                         Masse_aus.Content = ZR1.Masse + " Kg";
                     }
-
                 }
-
-                if (CB_SV.IsChecked == true)                                                   //Berechnung schrägverzahnt Außenverzahnung
+                if (CB_SV.IsChecked == true)                                                //Berechnung schrägverzahnt Außenverzahnung
                 {
-                    if (RB_MT.IsChecked == true)            //Berechnung schrägverzahnt Außenverzahnung m und d
+                    if (RB_MT.IsChecked == true)                                            //Berechnung schrägverzahnt Außenverzahnung m und d
                     {
                         ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_d();
                         c_aus.Content = ZR1.c + " mm";
@@ -402,32 +368,32 @@ namespace User_Interface_HSP
                         Masse_aus.Content = ZR1.Masse + " Kg";
                     }
                     else
-
-                    if (RB_MZ.IsChecked == true)             //Berechnung schrägverzahnt Außenverzahnung m und z
                     {
-                        ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_z();
-                        c_aus.Content = ZR1.c + " mm";
-                        h_aus.Content = ZR1.h + " mm";
-                        hf_aus.Content = ZR1.hf + " mm";
-                        ha_aus.Content = ZR1.ha + " mm";
-                        p_aus.Content = ZR1.p + " mm";
-                        db_aus.Content = ZR1.db + " mm";
-                        z_aus.Content = ZR1.z;
-                        df_aus.Content = ZR1.df + " mm";
-                        da_aus.Content = ZR1.da + " mm";
-                        drz_aus.Content = ZR1.drz + " mm";
-                        m_aus.Content = ZR1.m + " mm";
-                        V_aus.Content = ZR1.V + " mm^3";
-                        Masse_aus.Content = ZR1.Masse + " Kg";
-                    }
+                        if (RB_MZ.IsChecked == true)                                            //Berechnung schrägverzahnt Außenverzahnung m und z
+                        {
+                            ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_z();
+                            c_aus.Content = ZR1.c + " mm";
+                            h_aus.Content = ZR1.h + " mm";
+                            hf_aus.Content = ZR1.hf + " mm";
+                            ha_aus.Content = ZR1.ha + " mm";
+                            p_aus.Content = ZR1.p + " mm";
+                            db_aus.Content = ZR1.db + " mm";
+                            z_aus.Content = ZR1.z;
+                            df_aus.Content = ZR1.df + " mm";
+                            da_aus.Content = ZR1.da + " mm";
+                            drz_aus.Content = ZR1.drz + " mm";
+                            m_aus.Content = ZR1.m + " mm";
+                            V_aus.Content = ZR1.V + " mm^3";
+                            Masse_aus.Content = ZR1.Masse + " Kg";
+                        }
+                    }   
                 }
-
             }
             else
-            {
-                if (CB_SV.IsChecked == false)                                                  //Berechnung geradverzahnt Innenverzahnung
+            {                                                                               //Berechnung Innenverzahnung
+                if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Innenverzahnung
                 {
-                    if (RB_MT.IsChecked == true)        //Berechnung geradverzahnt Innenverzahnung m und d
+                    if (RB_MT.IsChecked == true)                                            //Berechnung geradverzahnt Innenverzahnung m und d
                     {
                         ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_d();
                         c_aus_Innen.Content = ZR1.c + " mm";
@@ -445,9 +411,7 @@ namespace User_Interface_HSP
                         V_aus_Innen.Content = ZR1.V + " mm^3";
                         Masse_aus_Innen.Content = ZR1.Masse + " Kg";
                     }
-
-
-                    if (RB_MZ.IsChecked == true)            //Berechnung geradverzahnt Innenverzahnung m und z
+                    if (RB_MZ.IsChecked == true)                                            //Berechnung geradverzahnt Innenverzahnung m und z
                     {
                         ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_z();
                         c_aus_Innen.Content = ZR1.c + " mm";
@@ -467,11 +431,9 @@ namespace User_Interface_HSP
 
                     }
                 }
-
-
-                if (CB_SV.IsChecked == true)                                                     //Berechnung schrägverzahnt Innenverzahnung
+                if (CB_SV.IsChecked == true)                                                //Berechnung schrägverzahnt Innenverzahnung
                 {
-                    if (RB_MT.IsChecked == true)            //Berechnung schrägverzahnt Innenverzahnung m und d
+                    if (RB_MT.IsChecked == true)                                            //Berechnung schrägverzahnt Innenverzahnung m und d
                     {
                         ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_d();
                         c_aus_Innen.Content = ZR1.c + " mm";
@@ -489,9 +451,7 @@ namespace User_Interface_HSP
                         V_aus_Innen.Content = ZR1.V + " mm^3";
                         Masse_aus_Innen.Content = ZR1.Masse + " Kg";
                     }
-
-
-                    if (RB_MZ.IsChecked == true)             //Berechnung schrägverzahnt Innenverzahnung m und z
+                    if (RB_MZ.IsChecked == true)                                            //Berechnung schrägverzahnt Innenverzahnung m und z
                     {
                         ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_z();
                         c_aus_Innen.Content = ZR1.c + " mm";
@@ -508,18 +468,16 @@ namespace User_Interface_HSP
                         m_aus_Innen.Content = ZR1.m + " mm";
                         V_aus_Innen.Content = ZR1.V + " mm^3";
                         Masse_aus_Innen.Content = ZR1.Masse + " Kg";
-
                     }
                 }
             }
         }
-
         //Zahlüberprüfung
-        private bool Zahlprüfung(string Zahlcheck)
+        private bool Zahlprüfung(string Zahlencheck)
         {
             try
             {
-                double doublezahl = double.Parse(Zahlcheck);
+                double doublezahl = double.Parse(Zahlencheck);
                 return true;
             }
             catch (FormatException)
@@ -527,7 +485,6 @@ namespace User_Interface_HSP
                 return false;
             }
         }
-
         //Eingriffswinkel Checkbox
         private void CheckBox_Unchecked_1(object sender, RoutedEventArgs e)
         {
@@ -538,111 +495,91 @@ namespace User_Interface_HSP
             ew_txt.IsEnabled = false;
             ew_txt.Text = Convert.ToString(20);
         }
-
         //Info Button Event
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             User_Interface_HSP.Window1 window1 = new Window1();
             window1.Show();
         }
-
-
         //Schrägverzahnt Checkbox Visibility Check
         private void CB_SV_Unchecked(object sender, RoutedEventArgs e)
         {
             sw_txt.Visibility = Visibility.Hidden;
             sw_lbl.Visibility = Visibility.Hidden;
-
         }
-
         private void CB_SV_Checked(object sender, RoutedEventArgs e)
         {
             sw_txt.Visibility = Visibility.Visible;
             sw_lbl.Visibility = Visibility.Visible;
         }
-
         //Checkbox Kopfspielfaktor
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             cf_txt.IsEnabled = true;
         }
-
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             cf_txt.IsEnabled = false;
             cf_txt.Text = Convert.ToString(0.167);
         }
-
         //Checkbox Eingriffsswinkel
         private void Eingriffswinkel_CB_Checked(object sender, RoutedEventArgs e)
         {
             ew_txt.IsEnabled = true;
         }
-
         private void Eingriffswinkel_CB_Unchecked(object sender, RoutedEventArgs e)
         {
             ew_txt.IsEnabled = false;
             ew_txt.Text = Convert.ToString("20");
         }
-
         private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 
         }
-
         //Radiobutton 
         private void RB_MT_Checked(object sender, RoutedEventArgs e)
         {
             d_txt.IsEnabled = true;
             z_txt.IsEnabled = false;
         }
-
         private void RB_MZ_Checked(object sender, RoutedEventArgs e)
         {
             d_txt.IsEnabled = false;
             z_txt.IsEnabled = true;
         }
-
         private void RB_MT_Unchecked(object sender, RoutedEventArgs e)
         {
             d_txt.IsEnabled = false;
             z_txt.IsEnabled = true;
         }
-
         private void RB_MZ_Unchecked(object sender, RoutedEventArgs e)
         {
             d_txt.IsEnabled = true;
             z_txt.IsEnabled = false;
         }
-
         private void rb_AV_Checked(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void rb_IV_Checked(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void Modulrechner_Button_Click(object sender, RoutedEventArgs e)
         {
             Window2 Modulrechner = new Window2();
             Modulrechner.Show();
         }
-
         private void Beenden_BTN_Click(object sender, EventArgs e)
         {
             Close();
 
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Window3 Passfederrechner = new Window3();
             Passfederrechner.Show();
         }
-
         private void Clear_BTN_Click(object sender, EventArgs e)
         {
             d_txt.Clear();
@@ -683,8 +620,6 @@ namespace User_Interface_HSP
             Eingriffswinkel_CB.IsChecked = false;
             CB_SV.IsChecked = false;
             RB_MT.IsChecked = true;
-
-
         }
     }
 }
