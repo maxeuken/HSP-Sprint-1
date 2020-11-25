@@ -322,10 +322,6 @@ namespace User_Interface_HSP
                     MessageBox.Show("Zähnezahl muss über 0 liegen");
                 }
             }
-            else
-            {
-                MessageBox.Show("Bitte Eingabe zur Zähnezahl überprüfen");
-            }
 
             //Material
             ZR1.Material = Convert.ToString(Material_Dropbox.Text);
@@ -340,14 +336,6 @@ namespace User_Interface_HSP
                 case "Kunststoff":
                     ZR1.MTL_hlp = 0.00000022;
                     break;
-            }
-
-
-
-            //Zahnzahl Fehlerbox
-            if (ZR1.z <= 4)
-            {
-                MessageBox.Show("Fehler: Durch eingegebene Parameter ist die Zahnzahl unter/gleich 4");
             }
 
             //Ausgabe
@@ -564,7 +552,6 @@ namespace User_Interface_HSP
         {
             sw_txt.Visibility = Visibility.Hidden;
             sw_lbl.Visibility = Visibility.Hidden;
-            sw_txt.Text = "0";
 
         }
 
