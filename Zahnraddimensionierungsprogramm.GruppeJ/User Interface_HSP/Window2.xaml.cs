@@ -48,12 +48,12 @@ namespace User_Interface_HSP
                 d = Convert.ToDouble(d_calc.Text);
                 if (d < 0)
                 {
-                    MessageBox.Show("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
+                    MessageBox.Show("Fehler: Der Teilkreisdurchmesser darf nicht unter 0 liegen. Bitte Eingabe korrigieren");
                 }
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe zum Kopfspielfaktor überprüfen");
+                MessageBox.Show("Bitte Eingabe zum Teilkreisdurchmesser überprüfen");
             }
 
             Zahlencheck = z_calc.Text;
@@ -62,12 +62,12 @@ namespace User_Interface_HSP
                 z = Convert.ToDouble(z_calc.Text);
                 if (z < 0)
                 {
-                    MessageBox.Show("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
+                    MessageBox.Show("Fehler: Die Zähnezahl darf nicht unter 0 liegen. Bitte Eingabe korrigieren");
                 }
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe zum Kopfspielfaktor überprüfen");
+                MessageBox.Show("Fehler: Bitte Eingabe zur Zähnezahl überprüfen");
             }
 
             m_calc.Content = d / z;
