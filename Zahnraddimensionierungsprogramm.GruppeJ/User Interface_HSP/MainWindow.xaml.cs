@@ -383,6 +383,7 @@ namespace User_Interface_HSP
                 if (CB_SV.IsChecked == true)                                                //Berechnung schrägverzahnt Außenverzahnung
                 {
                     if (RB_MT.IsChecked == true)                                            //Berechnung schrägverzahnt Außenverzahnung m und d
+=======
                         if (RB_MT.IsChecked == true)                                            //Berechnung geradverzahnt Außenverzahnung m und d
                         {
                             ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_d();
