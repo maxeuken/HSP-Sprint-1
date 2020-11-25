@@ -1,0 +1,34 @@
+﻿<Window x:Class="User_Interface_HSP.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:User_Interface_HSP"
+        mc:Ignorable="d"
+        Title="Modulrechner" Height="250" Width="215">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#FF8B8B8B"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Grid>
+        <TextBox x:Name="d_calc" HorizontalAlignment="Left" Height="23" Margin="80,23,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="50"/>
+        <TextBox x:Name="z_calc" HorizontalAlignment="Left" Height="23" Margin="80,61,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="50"/>
+        <Label Content="Modul" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="65"/>
+        <Label Content="Teilkreis" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="65"/>
+        <Label Content="Zahnzahl" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="65"/>
+        <Label Content="" x:Name="m_calc" HorizontalAlignment="Left" Margin="80,122,0,0" VerticalAlignment="Top"/>
+        <Label Content="Wählen sie anhand des&#xD;&#xA;Ergebnisses den nächstgelenen &#xA;Modulwert aus" HorizontalAlignment="Left" Margin="10,145,10,5" VerticalAlignment="Top" Height="61" Width="177">
+            <Label.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                </RadialGradientBrush>
+            </Label.Background>
+        </Label>
+
+    </Grid>
+</Window>

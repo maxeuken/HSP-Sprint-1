@@ -619,5 +619,11 @@ namespace User_Interface_HSP
         {
 
         }
+
+        private void Modulrechner_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window2 Modulrechner = new Window2();
+            Modulrechner.Show();
+        }
     }
 }

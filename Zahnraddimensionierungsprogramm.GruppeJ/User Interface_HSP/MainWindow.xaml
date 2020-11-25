@@ -187,9 +187,10 @@
             </TabItem>
         </TabControl>
         <Label Content="Label" HorizontalAlignment="Left" Margin="-267,160,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        
+
         <RadioButton GroupName="Eingabemodus" x:Name="RB_MT" Content="Modul und Ø Teilkreis"   HorizontalAlignment="Left" Margin="10,155,0,0"               VerticalAlignment="Top"     IsChecked="True"    Checked="RB_MT_Checked" Unchecked="RB_MT_Unchecked"/>
         <RadioButton GroupName="Eingabemodus" x:Name="RB_MZ" Content="Modul und Zähnezahl"     HorizontalAlignment="Left" Margin="10,0,0,0"    Grid.Row="1" VerticalAlignment="Top"                        Checked="RB_MZ_Checked" Unchecked="RB_MZ_Unchecked"/>
+        <Button Content="Modulrechner" x:Name="Modulrechner_Button" HorizontalAlignment="Left" Margin="10,20,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" Click="Modulrechner_Button_Click"/>
 
 
 
