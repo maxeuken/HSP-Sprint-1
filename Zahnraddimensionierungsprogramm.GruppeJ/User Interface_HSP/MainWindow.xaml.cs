@@ -315,9 +315,17 @@ namespace User_Interface_HSP
                 {
                     if (RB_MZ.IsChecked == true)
                     {
-                        MessageBox.Show("Zähnezahl muss über 0 liegen");
+                        MessageBox.Show("Zähnezahl muss über 4 liegen");
                         Error = 1;
                     }
+                }
+            }
+            else
+            {
+                if (RB_MZ.IsChecked == true)
+                {
+                    MessageBox.Show("Error: Eingabe für Zähnezahl überprüfen");
+                    Error = 1;
                 }
             }
             //Überprüfung beendet
@@ -537,6 +545,7 @@ namespace User_Interface_HSP
         {
             sw_txt.Visibility = Visibility.Hidden;
             sw_lbl.Visibility = Visibility.Hidden;
+            sw_txt.Text = 0;
         }
         private void CB_SV_Checked(object sender, RoutedEventArgs e)
         {
