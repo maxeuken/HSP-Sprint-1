@@ -590,6 +590,7 @@ namespace User_Interface_HSP
 
         }
 
+        //Radiobutton 
         private void RB_MT_Checked(object sender, RoutedEventArgs e)
         {
             d_txt.IsEnabled = true;
@@ -629,5 +630,7 @@ namespace User_Interface_HSP
             Window2 Modulrechner = new Window2();
             Modulrechner.Show();
         }
+
+
     }
 }

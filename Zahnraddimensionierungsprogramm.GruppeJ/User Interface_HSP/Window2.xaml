@@ -14,8 +14,8 @@
     </Window.Background>
 
     <Grid>
-        <TextBox x:Name="d_calc" HorizontalAlignment="Left" Height="23" Margin="80,23,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="50"/>
-        <TextBox x:Name="z_calc" HorizontalAlignment="Left" Height="23" Margin="80,61,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="50"/>
+        <TextBox x:Name="d_calc" Text="" HorizontalAlignment="Left" Height="23" Margin="80,23,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="50"/>
+        <TextBox x:Name="z_calc" HorizontalAlignment="Left" Height="23" Margin="80,61,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="50"/>
         <Label Content="Modul" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="65"/>
         <Label Content="Teilkreis" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="65"/>
         <Label Content="Zahnzahl" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="65"/>
@@ -29,6 +29,7 @@
                 </RadialGradientBrush>
             </Label.Background>
         </Label>
+        <Button Content="Bestätigen" x:Name="m_calc_btn" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="177" Click="m_calc_btn_Click"/>
 
     </Grid>
 </Window>

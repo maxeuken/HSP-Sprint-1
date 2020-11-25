@@ -23,5 +23,55 @@ namespace User_Interface_HSP
         {
             InitializeComponent();
         }
+
+        private bool Zahlprüfung(string Zahlcheck)
+        {
+            try
+            {
+                double doublezahl = double.Parse(Zahlcheck);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
+        private double d;
+        private double z;
+
+        private void m_calc_btn_Click(object sender, RoutedEventArgs e)
+        {
+            string Zahlencheck = d_calc.Text;
+            if (Zahlprüfung(Zahlencheck) == true)
+            {
+                d = Convert.ToDouble(d_calc.Text);
+                if (d < 0)
+                {
+                    MessageBox.Show("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte Eingabe zum Kopfspielfaktor überprüfen");
+            }
+
+            Zahlencheck = z_calc.Text;
+            if (Zahlprüfung(Zahlencheck) == true)
+            {
+                z = Convert.ToDouble(z_calc.Text);
+                if (z < 0)
+                {
+                    MessageBox.Show("Fehler: Der Kopfspielfaktor muss zwischen 0.1 und 0.3 liegen. Bitte Eingabe korrigieren");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte Eingabe zum Kopfspielfaktor überprüfen");
+            }
+
+            m_calc.Content = d / z;
+        }
+
     }
 }
