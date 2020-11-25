@@ -62,7 +62,7 @@
             <Label          Margin="0,0,-60,0" Content="Eingriffswinkel α"/>
             <TextBox        x:Name="ew_txt" Text="20" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
             <Label          Margin="0,0,-50,0" x:Name="sw_lbl" Visibility="Hidden">Schrägungswinkel β</Label>
-            <TextBox        x:Name="sw_txt" Text="0" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False" Visibility="Hidden"/>
+            <TextBox        x:Name="sw_txt" Text="0" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="True" Visibility="Hidden"/>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung" IsChecked="True" x:Name="rb_AV" >Aussenverzahnung</RadioButton>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung"                  x:Name="rb_IV" >Innenverzahnung</RadioButton>
             <CheckBox       Margin="5,0,-50,0" x:Name="CB_SV" Unchecked="CB_SV_Unchecked" Checked="CB_SV_Checked">Schrägverzahnt</CheckBox>
