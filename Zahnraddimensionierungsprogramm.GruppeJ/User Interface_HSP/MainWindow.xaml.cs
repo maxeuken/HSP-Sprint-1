@@ -94,15 +94,15 @@ namespace User_Interface_HSP
             }
             internal void Berechnung_geradverzahnt_Innenverzahnung_m_und_z() 
             {
-                d = Math.Round((m * z), dezimal);                                                       //Teilkreisdurchmesser
+                drz = Math.Round((m * z), dezimal);                                                     //Teilkreisdurchmesser
                 p = Math.Round((Math.PI * m), dezimal);                                                 //Teilung
                 c = Math.Round((cf * m), dezimal);                                                      //Kopfspiel
                 ha = Math.Round(m, dezimal);                                                            //Zahnkopfhöhe
                 hf = Math.Round((m + c), dezimal);                                                      //Zahnfußhöhe
                 h = Math.Round((2 * m + c), dezimal);                                                   //Zahnhöhe
                 da = Math.Round((m * (z - 2)), dezimal);                                                //Kopfkreisdurchmesser
-                df = Math.Round((d + (2 * (m + c))), dezimal);                                          //Fußkreisdurchmesser
-                db = Math.Round((d * Math.Cos(ew * (Math.PI / 180))), dezimal);                         //Grundkreisdurchmesser
+                df = Math.Round((drz + (2 * (m + c))), dezimal);                                        //Fußkreisdurchmesser
+                db = Math.Round((drz * Math.Cos(ew * (Math.PI / 180))), dezimal);                       //Grundkreisdurchmesser
                 dm = Math.Round((drz * 1.4), dezimal);                                                  //Mindestaußendurchmesser Hohlrad
                 A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
@@ -545,7 +545,7 @@ namespace User_Interface_HSP
         {
             sw_txt.Visibility = Visibility.Hidden;
             sw_lbl.Visibility = Visibility.Hidden;
-            sw_txt.Text = 0;
+            sw_txt.Text = "0";
         }
         private void CB_SV_Checked(object sender, RoutedEventArgs e)
         {
