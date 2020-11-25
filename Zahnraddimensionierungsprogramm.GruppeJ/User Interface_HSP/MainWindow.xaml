@@ -31,10 +31,9 @@
 
         <Image Source="Bild.png" Margin="0,0,10,0"></Image>
 
-        <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,45,10,10" Grid.RowSpan="2">Der Faktor zur Berechnung des Kopfspiels c liegt immer zwischen 0,1 und 0,3. Häufig beträgt er 0,167.
+        <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,70,10,10" Grid.RowSpan="2">Der Faktor zur Berechnung des Kopfspiels c liegt immer zwischen 0,1 und 0,3. Häufig beträgt er 0,167.
 
         </TextBlock>
-        <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,85,10,100" Grid.RowSpan="2"/>
 
         <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,180,20,0" Grid.RowSpan="2">Der Schrägungswinkel liegt meist zwischen 8° und 25°, 
             theoretisch kann er zwischen 0° und 90° liegen</TextBlock>
@@ -194,6 +193,7 @@
         <RadioButton GroupName="Eingabemodus" x:Name="RB_MT" Content="Modul und Ø Teilkreis"   HorizontalAlignment="Left" Margin="10,170,0,0"               VerticalAlignment="Top"     IsChecked="True"    Checked="RB_MT_Checked" Unchecked="RB_MT_Unchecked"/>
         <RadioButton GroupName="Eingabemodus" x:Name="RB_MZ" Content="Modul und Zähnezahl"     HorizontalAlignment="Left" Margin="10,0,0,0"    Grid.Row="1" VerticalAlignment="Top"                        Checked="RB_MZ_Checked" Unchecked="RB_MZ_Unchecked"/>
         <Button Content="Modulrechner" x:Name="Modulrechner_Button" HorizontalAlignment="Left" Margin="10,20,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" Click="Modulrechner_Button_Click"/>
+        <Button Content="Passfederrechner" HorizontalAlignment="Left" Margin="10,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" Click="Button_Click_1"/>
 
 
 
