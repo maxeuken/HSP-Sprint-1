@@ -31,8 +31,8 @@
 
         <Image Source="Bild.png" Margin="0,0,10,0"></Image>
 
-        <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,10" Grid.RowSpan="3">Infobox:</TextBlock>
-        <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,45,10,100" Grid.RowSpan="2">Der Faktor zur Berechnung des Kopfspiels c liegt immer zwischen 0,1 und 0,3. 
+        <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,45,10,10" Grid.RowSpan="2">Infobox:</TextBlock>
+        <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,85,10,100" Grid.RowSpan="2">Der Faktor zur Berechnung des Kopfspiels c liegt immer zwischen 0,1 und 0,3. 
             Häufig beträgt er 0,167.</TextBlock>
         <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,180,20,0" Grid.RowSpan="2">Der Schrägungswinkel liegt meist zwischen 8° und 25°, 
             theoretisch kann er zwischen 0° und 90° liegen</TextBlock>
@@ -81,12 +81,8 @@
 
         </StackPanel>
 
-        <CheckBox x:Name="Modul_CB"             Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,30"     Checked="Modul_CB_Checked"              Unchecked="Modul_CB_Unchecked"              IsChecked="true"/>
         <CheckBox x:Name="Kopfspielfaktor_CB"   Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,75"     Checked="CheckBox_Checked"              Unchecked="CheckBox_Unchecked"              IsChecked="False" HorizontalAlignment="Right" Width="15"/>
-        <CheckBox x:Name="Teilkreis_CB"         Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,120"    Checked="Teilkreis_CB_Checked"          Unchecked="Teilkreis_CB_Unchecked"          IsChecked="true"/>
-        <CheckBox x:Name="Zahnzahl_CB"          Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,0"      Checked="Zahnzahl_CB_Checked"           Unchecked="Zahnzahl_CB_Unchecked"           IsChecked="False"/>
         <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,45"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
-        <CheckBox Content="" x:Name="CB_sw" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,85" Unchecked="CheckBox_Unchecked_2" Checked="CheckBox_Checked_2" IsChecked="True" Visibility="Hidden" />
 
         <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,10" Click="Button_Click">Info</Button>
 
@@ -191,6 +187,9 @@
             </TabItem>
         </TabControl>
         <Label Content="Label" HorizontalAlignment="Left" Margin="-267,160,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        
+        <RadioButton GroupName="Eingabemodus" x:Name="RB_MT" Content="Modul und Ø Teilkreis"   HorizontalAlignment="Left" Margin="10,155,0,0"               VerticalAlignment="Top"     IsChecked="True"    Checked="RB_MT_Checked" Unchecked="RB_MT_Unchecked"/>
+        <RadioButton GroupName="Eingabemodus" x:Name="RB_MZ" Content="Modul und Zähnezahl"     HorizontalAlignment="Left" Margin="10,0,0,0"    Grid.Row="1" VerticalAlignment="Top"                        Checked="RB_MZ_Checked" Unchecked="RB_MZ_Unchecked"/>
 
 
 

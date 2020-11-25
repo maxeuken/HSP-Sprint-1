@@ -356,7 +356,7 @@ namespace User_Interface_HSP
             {
                 if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Außenverzahnung
                 {
-                    if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)       //Berechnung geradverzahnt Außenverzahnung m und d
+                    if (RB_MT.IsChecked == true)                                              //Berechnung geradverzahnt Außenverzahnung m und d
                     {
                         ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_d();
                         c_aus.Content = ZR1.c + " mm";
@@ -375,7 +375,7 @@ namespace User_Interface_HSP
                     }
                     else
 
-                    if (Modul_CB.IsChecked == true && Zahnzahl_CB.IsChecked == true)        //Berechnung geradverzahnt Außenverzahnung m und z
+                    if (RB_MZ.IsChecked == true)        //Berechnung geradverzahnt Außenverzahnung m und z
                     {
                         ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_z();
                         c_aus.Content = ZR1.c + " mm";
@@ -398,7 +398,7 @@ namespace User_Interface_HSP
 
                 if (CB_SV.IsChecked == true)                                                   //Berechnung schrägverzahnt Außenverzahnung
                 {
-                    if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)            //Berechnung schrägverzahnt Außenverzahnung m und d
+                    if (RB_MT.IsChecked == true)            //Berechnung schrägverzahnt Außenverzahnung m und d
                     {
                         ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_d();
                         c_aus.Content = ZR1.c + " mm";
@@ -417,7 +417,7 @@ namespace User_Interface_HSP
                     }
                     else
 
-                    if (Modul_CB.IsChecked == true && Zahnzahl_CB.IsChecked == true)             //Berechnung schrägverzahnt Außenverzahnung m und z
+                    if (RB_MZ.IsChecked == true)             //Berechnung schrägverzahnt Außenverzahnung m und z
                     {
                         ZR1.Berechnung_schrägverzahnt_Außenverzahnung_m_und_z();
                         c_aus.Content = ZR1.c + " mm";
@@ -442,7 +442,7 @@ namespace User_Interface_HSP
                 {
                     if (CB_SV.IsChecked == false)                                                 //Berechnung geradverzahnt Innenverzahnung
                     {
-                        if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)        //Berechnung geradverzahnt Innenverzahnung m und d
+                        if (RB_MT.IsChecked == true)        //Berechnung geradverzahnt Innenverzahnung m und d
                         {
                             ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_d();
                             c_aus_Innen.Content = ZR1.c + " mm";
@@ -461,7 +461,7 @@ namespace User_Interface_HSP
                         }
                         else
 
-                        if (Modul_CB.IsChecked == true && Zahnzahl_CB.IsChecked == true)            //Berechnung geradverzahnt Innenverzahnung m und z
+                        if (RB_MZ.IsChecked == true)            //Berechnung geradverzahnt Innenverzahnung m und z
                         {
                             ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_z();
                             c_aus_Innen.Content = ZR1.c + " mm";
@@ -484,7 +484,7 @@ namespace User_Interface_HSP
 
                     if (CB_SV.IsChecked == true)                                                     //Berechnung schrägverzahnt Innenverzahnung
                     {
-                        if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)            //Berechnung schrägverzahnt Innenverzahnung m und d
+                        if (RB_MT.IsChecked == true)            //Berechnung schrägverzahnt Innenverzahnung m und d
                         {
                             ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_d();
                             c_aus_Innen.Content = ZR1.c + " mm";
@@ -503,7 +503,7 @@ namespace User_Interface_HSP
                         }
                         else
 
-                        if (Modul_CB.IsChecked == true && Zahnzahl_CB.IsChecked == true)             //Berechnung schrägverzahnt Innenverzahnung m und z
+                        if (RB_MZ.IsChecked == true)             //Berechnung schrägverzahnt Innenverzahnung m und z
                         {
                             ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_z();
                             c_aus_Innen.Content = ZR1.c + " mm";
@@ -551,18 +551,6 @@ namespace User_Interface_HSP
             ew_txt.Text = Convert.ToString(20);
         }
 
-        //Schrägungswinkel Checkbox
-        private void CheckBox_Unchecked_2(object sender, RoutedEventArgs e)
-        {
-            sw_txt.IsEnabled = false;
-            sw_txt.Text = Convert.ToString(0);
-        }
-        private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
-        {
-            sw_txt.IsEnabled = true;
-            
-        }
-
         //Info Button Event
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -576,7 +564,7 @@ namespace User_Interface_HSP
         {
             sw_txt.Visibility = Visibility.Hidden;
             sw_lbl.Visibility = Visibility.Hidden;
-            CB_sw.Visibility = Visibility.Hidden;
+            sw_txt.Text = "0";
 
         }
 
@@ -584,7 +572,6 @@ namespace User_Interface_HSP
         {
             sw_txt.Visibility = Visibility.Visible;
             sw_lbl.Visibility = Visibility.Visible;
-            CB_sw.Visibility = Visibility.Visible;
         }
 
         //Checkbox Kopfspielfaktor
@@ -597,39 +584,6 @@ namespace User_Interface_HSP
         {
             cf_txt.IsEnabled = false;
             cf_txt.Text = Convert.ToString(0.167);
-        }
-
-        //Checkbox Modul
-        private void Modul_CB_Checked(object sender, RoutedEventArgs e)
-        {
-            Modul_Dropbox.IsEnabled = true;
-        }
-
-        private void Modul_CB_Unchecked(object sender, RoutedEventArgs e)
-        {
-            Modul_Dropbox.IsEnabled = false;
-        }
-
-        //Checkbox Teilkreisdurchmesser
-        private void Teilkreis_CB_Checked(object sender, RoutedEventArgs e)
-        {
-            d_txt.IsEnabled = true;
-        }
-
-        private void Teilkreis_CB_Unchecked(object sender, RoutedEventArgs e)
-        {
-            d_txt.IsEnabled = false;
-        }
-
-        //Checkbox Zahnzahl
-        private void Zahnzahl_CB_Checked(object sender, RoutedEventArgs e)
-        {
-            z_txt.IsEnabled = true;
-        }
-
-        private void Zahnzahl_CB_Unchecked(object sender, RoutedEventArgs e)
-        {
-            z_txt.IsEnabled = false;
         }
 
         //Checkbox Eingriffsswinkel
@@ -647,6 +601,30 @@ namespace User_Interface_HSP
         private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void RB_MT_Checked(object sender, RoutedEventArgs e)
+        {
+            d_txt.IsEnabled = true;
+            z_txt.IsEnabled = false;
+        }
+
+        private void RB_MZ_Checked(object sender, RoutedEventArgs e)
+        {
+            d_txt.IsEnabled = false;
+            z_txt.IsEnabled = true;
+        }
+
+        private void RB_MT_Unchecked(object sender, RoutedEventArgs e)
+        {
+            d_txt.IsEnabled = false;
+            z_txt.IsEnabled = true;
+        }
+
+        private void RB_MZ_Unchecked(object sender, RoutedEventArgs e)
+        {
+            d_txt.IsEnabled = true;
+            z_txt.IsEnabled = false;
         }
     }
 }

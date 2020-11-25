@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:User_Interface_HSP"
         mc:Ignorable="d"
-        Title="Window1" Height="400" Width="400">
+        Title="Info" Height="400" Width="400" Icon="Bild.ico">
     <Grid>
         <Image Source="Drawing1.jpg"></Image>
     </Grid>
