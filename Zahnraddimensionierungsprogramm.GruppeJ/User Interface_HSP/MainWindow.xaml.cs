@@ -631,10 +631,13 @@ namespace User_Interface_HSP
             Modulrechner.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ExitProgram_BTN_Click(object sender, EventArgs e)
         {
-            Window3 Passfederrechner = new Window3();
-            Passfederrechner.Show();
+            Close();
+
+
         }
+
+
     }
 }
