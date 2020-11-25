@@ -439,6 +439,7 @@ namespace User_Interface_HSP
                         z_aus_Innen.Content = ZR1.z;
                         df_aus_Innen.Content = ZR1.df + " mm";
                         da_aus_Innen.Content = ZR1.da + " mm";
+                        dm_aus_Innen.Content = ZR1.dm + " mm";
                         drz_aus_Innen.Content = ZR1.drz + " mm";
                         m_aus_Innen.Content = ZR1.m + " mm";
                         V_aus_Innen.Content = ZR1.V + " mm^3";
@@ -458,6 +459,7 @@ namespace User_Interface_HSP
                         z_aus_Innen.Content = ZR1.z;
                         df_aus_Innen.Content = ZR1.df + " mm";
                         da_aus_Innen.Content = ZR1.da + " mm";
+                        dm_aus_Innen.Content = ZR1.dm + " mm";
                         drz_aus_Innen.Content = ZR1.drz + " mm";
                         m_aus_Innen.Content = ZR1.m + " mm";
                         V_aus_Innen.Content = ZR1.V + " mm^3";
@@ -481,6 +483,7 @@ namespace User_Interface_HSP
                         z_aus_Innen.Content = ZR1.z;
                         df_aus_Innen.Content = ZR1.df + " mm";
                         da_aus_Innen.Content = ZR1.da + " mm";
+                        dm_aus_Innen.Content = ZR1.dm + " mm";
                         drz_aus_Innen.Content = ZR1.drz + " mm";
                         m_aus_Innen.Content = ZR1.m + " mm";
                         V_aus_Innen.Content = ZR1.V + " mm^3";
@@ -500,6 +503,7 @@ namespace User_Interface_HSP
                         z_aus_Innen.Content = ZR1.z;
                         df_aus_Innen.Content = ZR1.df + " mm";
                         da_aus_Innen.Content = ZR1.da + " mm";
+                        dm_aus_Innen.Content = ZR1.dm + " mm";
                         drz_aus_Innen.Content = ZR1.drz + " mm";
                         m_aus_Innen.Content = ZR1.m + " mm";
                         V_aus_Innen.Content = ZR1.V + " mm^3";

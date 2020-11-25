@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:User_Interface_HSP"
         mc:Ignorable="d"
-        Title="Zahnraddimensionierungsprogramm" Height="570" Width="550" Icon="Bild.ico">
+        Title="Zahnraddimensionierungsprogramm" Height="600" Width="550" Icon="Bild.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="#FF8B8B8B"/>
@@ -31,9 +31,11 @@
 
         <Image Source="Bild.png" Margin="0,0,10,0"></Image>
 
-        <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,45,10,10" Grid.RowSpan="2">Infobox:</TextBlock>
-        <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,85,10,100" Grid.RowSpan="2">Der Faktor zur Berechnung des Kopfspiels c liegt immer zwischen 0,1 und 0,3. 
-            Häufig beträgt er 0,167.</TextBlock>
+        <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,45,10,10" Grid.RowSpan="2">Der Faktor zur Berechnung des Kopfspiels c liegt immer zwischen 0,1 und 0,3. Häufig beträgt er 0,167.
+
+        </TextBlock>
+        <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,85,10,100" Grid.RowSpan="2"/>
+
         <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,180,20,0" Grid.RowSpan="2">Der Schrägungswinkel liegt meist zwischen 8° und 25°, 
             theoretisch kann er zwischen 0° und 90° liegen</TextBlock>
 
@@ -88,7 +90,7 @@
 
 
 
-        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="520" Width="220" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="560" Width="220" SelectionChanged="TabControl_SelectionChanged">
             <TabItem x:Name="Tab_AV" Header="Aussenverzahnung">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -101,9 +103,9 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Image Source="Aussenverzahnung.png" Grid.ColumnSpan="2" Margin="5,-16,90,136" Grid.RowSpan="2"/>
+                    <Image Source="Aussenverzahnung.png" Grid.ColumnSpan="2" Margin="5,-76,90,136" Grid.RowSpan="2"/>
 
-                    <StackPanel Grid.Column="0" Margin="0,148,0,-26" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                    <StackPanel Grid.Column="0" Margin="0,137,0,-26" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_txt_aus">Modul m:</Label>
                         <Label x:Name="drz_txt_aus">Ø Teilkreis:</Label>
                         <Label x:Name="c_txt_aus">Kopfspiel c:</Label>
@@ -118,7 +120,7 @@
                         <Label x:Name="V_txt_aus">Volumen V:</Label>
                         <Label x:Name="Masse_txt_aus">Masse:</Label>
                     </StackPanel>
-                    <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                    <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-39" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_aus"></Label>
                         <Label x:Name="drz_aus"></Label>
                         <Label x:Name="c_aus"></Label>
@@ -149,8 +151,8 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Image Source="Innenverzahnung.png" Width="600" Height="350" Margin="-240,-109,-146,43" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.633" Grid.ColumnSpan="2"/>
-                    <StackPanel Grid.Column="0" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                    <Image Source="Innenverzahnung.png" Width="600" Height="350" Margin="-240,-169,-146,43" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.633" Grid.ColumnSpan="2"/>
+                    <StackPanel Grid.Column="0" Grid.Row ="1" Margin="0,-40,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_txt_aus_Innen">Modul m:</Label>
                         <Label x:Name="drz_txt_aus_Innen">Ø Teilkreis:</Label>
                         <Label x:Name="c_txt_aus_Innen">Kopfspiel c:</Label>
@@ -162,11 +164,12 @@
                         <Label x:Name="df_txt_aus_Innen">Ø Fußkreis hf:</Label>
                         <Label x:Name="db_txt_aus_Innen">Ø Grundkreis db:</Label>
                         <Label x:Name="da_txt_aus_Innen">Ø Kopfkreis da:</Label>
+                        <Label x:Name="dm_txt_aus_Innen">Ø Min.Außen dm:</Label>
                         <Label x:Name="V_txt_aus_Innen">Volumen V:</Label>
                         <Label x:Name="Masse_txt_aus_Innen">Masse m:</Label>
 
                     </StackPanel>
-                    <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-10" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                    <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-40,0,0" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_aus_Innen"></Label>
                         <Label x:Name="drz_aus_Innen"></Label>
                         <Label x:Name="c_aus_Innen"></Label>
@@ -178,6 +181,7 @@
                         <Label x:Name="df_aus_Innen"></Label>
                         <Label x:Name="db_aus_Innen"></Label>
                         <Label x:Name="da_aus_Innen"></Label>
+                        <Label x:Name="dm_aus_Innen"></Label>
                         <Label x:Name="V_aus_Innen"></Label>
                         <Label x:Name="Masse_aus_Innen"></Label>
                     </StackPanel>
@@ -186,9 +190,8 @@
 
             </TabItem>
         </TabControl>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="-267,160,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
-        <RadioButton GroupName="Eingabemodus" x:Name="RB_MT" Content="Modul und Ø Teilkreis"   HorizontalAlignment="Left" Margin="10,155,0,0"               VerticalAlignment="Top"     IsChecked="True"    Checked="RB_MT_Checked" Unchecked="RB_MT_Unchecked"/>
+        <RadioButton GroupName="Eingabemodus" x:Name="RB_MT" Content="Modul und Ø Teilkreis"   HorizontalAlignment="Left" Margin="10,170,0,0"               VerticalAlignment="Top"     IsChecked="True"    Checked="RB_MT_Checked" Unchecked="RB_MT_Unchecked"/>
         <RadioButton GroupName="Eingabemodus" x:Name="RB_MZ" Content="Modul und Zähnezahl"     HorizontalAlignment="Left" Margin="10,0,0,0"    Grid.Row="1" VerticalAlignment="Top"                        Checked="RB_MZ_Checked" Unchecked="RB_MZ_Unchecked"/>
         <Button Content="Modulrechner" x:Name="Modulrechner_Button" HorizontalAlignment="Left" Margin="10,20,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" Click="Modulrechner_Button_Click"/>
 
