@@ -443,38 +443,38 @@ namespace User_Interface_HSP
                         if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)        //Berechnung geradverzahnt Innenverzahnung m und d
                         {
                             ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_d();
-                            c_aus.Content = ZR1.c + " mm";
-                            h_aus.Content = ZR1.h + " mm";
-                            hf_aus.Content = ZR1.hf + " mm";
-                            ha_aus.Content = ZR1.ha + " mm";
-                            p_aus.Content = ZR1.p + " mm";
-                            db_aus.Content = ZR1.db + " mm";
-                            z_aus.Content = ZR1.z;
-                            df_aus.Content = ZR1.df + " mm";
-                            da_aus.Content = ZR1.da + " mm";
-                            drz_aus.Content = ZR1.drz + " mm";
-                            m_aus.Content = ZR1.m + " mm";
-                            V_aus.Content = ZR1.V + " mm^3";
-                            Masse_aus.Content = ZR1.Masse + " Kg";
+                            c_aus_Innen.Content = ZR1.c + " mm";
+                            h_aus_Innen.Content = ZR1.h + " mm";
+                            hf_aus_Innen.Content = ZR1.hf + " mm";
+                            ha_aus_Innen.Content = ZR1.ha + " mm";
+                            p_aus_Innen.Content = ZR1.p + " mm";
+                            db_aus_Innen.Content = ZR1.db + " mm";
+                            z_aus_Innen.Content = ZR1.z;
+                            df_aus_Innen.Content = ZR1.df + " mm";
+                            da_aus_Innen.Content = ZR1.da + " mm";
+                            drz_aus_Innen.Content = ZR1.drz + " mm";
+                            m_aus_Innen.Content = ZR1.m + " mm";
+                            V_aus_Innen.Content = ZR1.V + " mm^3";
+                            Masse_aus_Innen.Content = ZR1.Masse + " Kg";
                         }
                         else
 
                         if (Modul_CB.IsChecked == true && Zahnzahl_CB.IsChecked == true)            //Berechnung geradverzahnt Innenverzahnung m und z
                         {
                             ZR1.Berechnung_geradverzahnt_Innenverzahnung_m_und_z();
-                            c_aus.Content = ZR1.c + " mm";
-                            h_aus.Content = ZR1.h + " mm";
-                            hf_aus.Content = ZR1.hf + " mm";
-                            ha_aus.Content = ZR1.ha + " mm";
-                            p_aus.Content = ZR1.p + " mm";
-                            db_aus.Content = ZR1.db + " mm";
-                            z_aus.Content = ZR1.z;
-                            df_aus.Content = ZR1.df + " mm";
-                            da_aus.Content = ZR1.da + " mm";
-                            drz_aus.Content = ZR1.drz + " mm";
-                            m_aus.Content = ZR1.m + " mm";
-                            V_aus.Content = ZR1.V + " mm^3";
-                            Masse_aus.Content = ZR1.Masse + " Kg";
+                            c_aus_Innen.Content = ZR1.c + " mm";
+                            h_aus_Innen.Content = ZR1.h + " mm";
+                            hf_aus_Innen.Content = ZR1.hf + " mm";
+                            ha_aus_Innen.Content = ZR1.ha + " mm";
+                            p_aus_Innen.Content = ZR1.p + " mm";
+                            db_aus_Innen.Content = ZR1.db + " mm";
+                            z_aus_Innen.Content = ZR1.z;
+                            df_aus_Innen.Content = ZR1.df + " mm";
+                            da_aus_Innen.Content = ZR1.da + " mm";
+                            drz_aus_Innen.Content = ZR1.drz + " mm";
+                            m_aus_Innen.Content = ZR1.m + " mm";
+                            V_aus_Innen.Content = ZR1.V + " mm^3";
+                            Masse_aus_Innen.Content = ZR1.Masse + " Kg";
 
                         }
                     }
@@ -485,38 +485,38 @@ namespace User_Interface_HSP
                         if (Modul_CB.IsChecked == true && Teilkreis_CB.IsChecked == true)            //Berechnung schrägverzahnt Innenverzahnung m und d
                         {
                             ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_d();
-                            c_aus.Content = ZR1.c + " mm";
-                            h_aus.Content = ZR1.h + " mm";
-                            hf_aus.Content = ZR1.hf + " mm";
-                            ha_aus.Content = ZR1.ha + " mm";
-                            p_aus.Content = ZR1.p + " mm";
-                            db_aus.Content = ZR1.db + " mm";
-                            z_aus.Content = ZR1.z;
-                            df_aus.Content = ZR1.df + " mm";
-                            da_aus.Content = ZR1.da + " mm";
-                            drz_aus.Content = ZR1.drz + " mm";
-                            m_aus.Content = ZR1.m + " mm";
-                            V_aus.Content = ZR1.V + " mm^3";
-                            Masse_aus.Content = ZR1.Masse + " Kg";
+                            c_aus_Innen.Content = ZR1.c + " mm";
+                            h_aus_Innen.Content = ZR1.h + " mm";
+                            hf_aus_Innen.Content = ZR1.hf + " mm";
+                            ha_aus_Innen.Content = ZR1.ha + " mm";
+                            p_aus_Innen.Content = ZR1.p + " mm";
+                            db_aus_Innen.Content = ZR1.db + " mm";
+                            z_aus_Innen.Content = ZR1.z;
+                            df_aus_Innen.Content = ZR1.df + " mm";
+                            da_aus_Innen.Content = ZR1.da + " mm";
+                            drz_aus_Innen.Content = ZR1.drz + " mm";
+                            m_aus_Innen.Content = ZR1.m + " mm";
+                            V_aus_Innen.Content = ZR1.V + " mm^3";
+                            Masse_aus_Innen.Content = ZR1.Masse + " Kg";
                         }
                         else
 
                         if (Modul_CB.IsChecked == true && Zahnzahl_CB.IsChecked == true)             //Berechnung schrägverzahnt Innenverzahnung m und z
                         {
                             ZR1.Berechnung_schrägverzahnt_Innenverzahnung_m_und_z();
-                            c_aus.Content = ZR1.c + " mm";
-                            h_aus.Content = ZR1.h + " mm";
-                            hf_aus.Content = ZR1.hf + " mm";
-                            ha_aus.Content = ZR1.ha + " mm";
-                            p_aus.Content = ZR1.p + " mm";
-                            db_aus.Content = ZR1.db + " mm";
-                            z_aus.Content = ZR1.z;
-                            df_aus.Content = ZR1.df + " mm";
-                            da_aus.Content = ZR1.da + " mm";
-                            drz_aus.Content = ZR1.drz + " mm";
-                            m_aus.Content = ZR1.m + " mm";
-                            V_aus.Content = ZR1.V + " mm^3";
-                            Masse_aus.Content = ZR1.Masse + " Kg";
+                            c_aus_Innen.Content = ZR1.c + " mm";
+                            h_aus_Innen.Content = ZR1.h + " mm";
+                            hf_aus_Innen.Content = ZR1.hf + " mm";
+                            ha_aus_Innen.Content = ZR1.ha + " mm";
+                            p_aus_Innen.Content = ZR1.p + " mm";
+                            db_aus_Innen.Content = ZR1.db + " mm";
+                            z_aus_Innen.Content = ZR1.z;
+                            df_aus_Innen.Content = ZR1.df + " mm";
+                            da_aus_Innen.Content = ZR1.da + " mm";
+                            drz_aus_Innen.Content = ZR1.drz + " mm";
+                            m_aus_Innen.Content = ZR1.m + " mm";
+                            V_aus_Innen.Content = ZR1.V + " mm^3";
+                            Masse_aus_Innen.Content = ZR1.Masse + " Kg";
 
                         }
                     }
