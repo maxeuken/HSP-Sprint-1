@@ -278,14 +278,20 @@ namespace User_Interface_HSP
                 ZR1.BD = Convert.ToDouble(BD_txt.Text);
                 if (ZR1.BD < 0)
                 {
-                    MessageBox.Show("Fehler: Bohrungsdurchmesser darf nicht 0 oder mehr als Kopfkreisdurchmesser betragen");
-                    Error = 1;
+                    if(rb_AV.IsChecked == true)
+                    {
+                        MessageBox.Show("Fehler: Bohrungsdurchmesser darf nicht 0 oder mehr als Kopfkreisdurchmesser betragen");
+                        Error = 1;
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Bitte Eingabe zum Bohrungsdurchmesser überprüfen");
-                Error = 1;
+                if(rb_AV.IsChecked == true)
+                {
+                    MessageBox.Show("Bitte Eingabe zum Bohrungsdurchmesser überprüfen");
+                    Error = 1;
+                }
             }
             //Eingabecheck Zahnbreite
             Zahlencheck = Zahnbreite_txt.Text;
