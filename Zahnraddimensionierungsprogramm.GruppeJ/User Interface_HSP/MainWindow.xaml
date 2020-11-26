@@ -64,11 +64,11 @@
             <TextBox        x:Name="ew_txt" Text="20" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
             <Label          Margin="0,0,-50,0" x:Name="sw_lbl" Visibility="Hidden">Schrägungswinkel β</Label>
             <TextBox        x:Name="sw_txt" Text="0" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="True" Visibility="Hidden"/>
-            <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung" IsChecked="True" x:Name="rb_AV" Checked="rb_AV_Checked" >Aussenverzahnung</RadioButton>
-            <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung"                  x:Name="rb_IV" Checked="rb_IV_Checked" >Innenverzahnung</RadioButton>
+            <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung" IsChecked="True" x:Name="RB_AV" Checked="RB_AV_Checked" >Aussenverzahnung</RadioButton>
+            <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung"                  x:Name="RB_IV" Checked="RB_IV_Checked" >Innenverzahnung</RadioButton>
             <CheckBox       Margin="5,0,-50,0" x:Name="CB_SV" Unchecked="CB_SV_Unchecked" Checked="CB_SV_Checked">Schrägverzahnt</CheckBox>
-            <Label Margin="0,0,0,0"                  >Ø Bohrung</Label>
-            <TextBox        x:Name="BD_txt" Margin="5,0,28,0"></TextBox>
+            <Label Margin="0,0,0,0" x:Name="BD_lbl"            >Ø Bohrung</Label>
+            <TextBox        x:Name="BD_txt" Margin="5,0,28,0"/>
             <Label Content="Zahnbreite"                  />
             <TextBox        x:Name="Zahnbreite_txt" Margin="5,0,28,0"></TextBox>
             <Label Margin="5,0,5,0">Material</Label>
@@ -85,7 +85,7 @@
         </StackPanel>
 
         <CheckBox x:Name="Kopfspielfaktor_CB"   Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,75"     Checked="CheckBox_Checked"              Unchecked="CheckBox_Unchecked"              IsChecked="False" HorizontalAlignment="Right" Width="15"/>
-        <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,19"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
+        <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Margin="0,19,0,20"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
 
         <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,0,0,52" Click="Button_Click" HorizontalAlignment="Left" Width="121" Grid.ColumnSpan="2">Info</Button>
 

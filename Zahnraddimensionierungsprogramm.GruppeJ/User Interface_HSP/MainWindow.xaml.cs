@@ -186,6 +186,7 @@ namespace User_Interface_HSP
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
             }
+        
         }
         public MainWindow()
         {
@@ -278,7 +279,7 @@ namespace User_Interface_HSP
                 ZR1.BD = Convert.ToDouble(BD_txt.Text);
                 if (ZR1.BD < 0)
                 {
-                    if(rb_AV.IsChecked == true)
+                    if(RB_AV.IsChecked == true)
                     {
                         MessageBox.Show("Fehler: Bohrungsdurchmesser darf nicht 0 oder mehr als Kopfkreisdurchmesser betragen");
                         Error = 1;
@@ -287,7 +288,7 @@ namespace User_Interface_HSP
             }
             else
             {
-                if(rb_AV.IsChecked == true)
+                if(RB_AV.IsChecked == true)
                 {
                     MessageBox.Show("Bitte Eingabe zum Bohrungsdurchmesser überprüfen");
                     Error = 1;
@@ -331,6 +332,29 @@ namespace User_Interface_HSP
                     Error = 1;
                 }
             }
+            //Ganzzahlencheck
+            string Ganzzahlencheck = z_txt.Text;
+            if (Ganzzahlprüfung(Ganzzahlencheck) == true)
+            {
+                ZR1.z = Convert.ToDouble(z_txt.Text);
+                if (ZR1.z % 1 != 0)
+                {
+                    if (RB_MZ.IsChecked == true)
+                    {
+                        MessageBox.Show("Die Zähnezahl muss eine ganzzahlige Zahl sein!");
+                        Error = 1;
+                    }
+                }
+            }
+            else 
+            {
+                if (RB_MZ.IsChecked == true)
+                {
+                    MessageBox.Show("Die Zähnezahl muss eine ganzzahlige Zahl sein!");
+                    Error = 1;
+                }
+            }
+
             //EINGABECHECKS BEENDET
 
             //Materialauswahl mit entsprechender Dichte für Masseberechnung
@@ -350,7 +374,7 @@ namespace User_Interface_HSP
             //AUSGABE
             if (Error == 0)
             {
-                if (rb_AV.IsChecked == true)                                                    //Berechnung Außenverzahnung
+                if (RB_AV.IsChecked == true)                                                    //Berechnung Außenverzahnung
                 {
                     if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Außenverzahnung
                     {
@@ -527,6 +551,19 @@ namespace User_Interface_HSP
                 return false;
             }
         }
+        //Zahlencheck ganzzahlige Zahl
+        private bool Ganzzahlprüfung(string Ganzzahlencheck)
+        {
+            try
+            {
+                int intzahl = int.Parse(Ganzzahlencheck);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
         //Event Click Info Button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -602,13 +639,13 @@ namespace User_Interface_HSP
             d_txt.IsEnabled = true;
             z_txt.IsEnabled = false;
         }
-        private void rb_AV_Checked(object sender, RoutedEventArgs e)                //Radiobutton für Außenverzahnung angewählt
+        private void RB_AV_Checked(object sender, RoutedEventArgs e)                //Radiobutton für Außenverzahnung angewählt
         {
 
         }
-        private void rb_IV_Checked(object sender, RoutedEventArgs e)                //Radiobutton für Innenverzahnung angewählt          
+        private void RB_IV_Checked(object sender, RoutedEventArgs e)                //Radiobutton für Innenverzahnung angewählt          
         {
-
+            BD_txt.Clear();
         }
         //Event Click Modulrechner Button
         private void Modulrechner_Button_Click(object sender, RoutedEventArgs e)
