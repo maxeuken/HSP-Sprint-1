@@ -64,11 +64,12 @@
             <TextBox        x:Name="ew_txt" Text="20" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
             <Label          Margin="0,0,-50,0" x:Name="sw_lbl" Visibility="Hidden">Schrägungswinkel β</Label>
             <TextBox        x:Name="sw_txt" Text="0" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="True" Visibility="Hidden"/>
+            <Label Margin="0,0,0,0" x:Name="BD_lbl"            >Ø Bohrung</Label>
+            <TextBox        x:Name="BD_txt" Margin="5,0,28,0"/>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung" IsChecked = "true" x:Name="RB_AV" Checked="RB_AV_Checked" >Aussenverzahnung</RadioButton>
             <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung"                  x:Name="RB_IV" Checked="RB_IV_Checked" >Innenverzahnung</RadioButton>
             <CheckBox       Margin="5,0,-50,0" x:Name="CB_SV" Unchecked="CB_SV_Unchecked" Checked="CB_SV_Checked">Schrägverzahnt</CheckBox>
-            <Label Margin="0,0,0,0" x:Name="BD_lbl"            >Ø Bohrung</Label>
-            <TextBox        x:Name="BD_txt" Margin="5,0,28,0"/>
+           
             <Label Content="Zahnbreite"                  />
             <TextBox        x:Name="Zahnbreite_txt" Margin="5,0,28,0"></TextBox>
             <Label Margin="5,0,5,0">Material</Label>
