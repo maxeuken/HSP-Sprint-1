@@ -5,8 +5,204 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:API.Zahnraddimensionierungsprogramm.GruppeJ"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Zahnraddimensionierungsprogramm" Height="600" Width="550" Icon="Bild.png">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#FF8B8B8B"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid Margin="10,0,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="176*"/>
+            <RowDefinition Height="176"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="170*"/>
+            <ColumnDefinition Width="155*"/>
+
+
+
+        </Grid.ColumnDefinitions>
+
+        <Image Source="Bild.png" Margin="0,0,10,0"></Image>
+
+        <TextBlock Background="#FFE5E5E5" Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,70,10,10" Grid.RowSpan="2">Der Faktor zur Berechnung des Kopfspiels c liegt immer zwischen 0,1 und 0,3. Häufig beträgt er 0,167.
+
+        </TextBlock>
+
+        <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,180,20,84" Grid.RowSpan="2">Der Schrägungswinkel liegt meist zwischen 8° und 25°, 
+            theoretisch kann er zwischen 0° und 90° liegen</TextBlock>
+        <Button x:Name="CATIA_BTN" Click="CATIA_BTN_Click" Margin="10,500,10,-350" >Erzeuge in CATIA</Button>
+
+        <StackPanel  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Margin="0,0,-20,0">
+            <Label>Modul m</Label>
+            <ComboBox Margin="5,0,0,0" x:Name="Modul_Dropbox">
+
+                <ComboBoxItem x:Name="CB2" IsSelected="True">1</ComboBoxItem>
+                <ComboBoxItem>1,25</ComboBoxItem>
+                <ComboBoxItem>1,5</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>2,5</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>8</ComboBoxItem>
+
+            </ComboBox>
+            <Label          Margin="0,0,-50,0"      >Kopfspielfaktor cf</Label>
+            <TextBox        x:Name="cf_txt" Text="0,167" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
+            <Label          Margin="0,0,-60,0"      >Ø Teilkreis d</Label>
+            <TextBox        x:Name="d_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0"/>
+            <Label          Margin="0,0,-60,0"      >Zahnzahl z</Label>
+            <TextBox        x:Name="z_txt" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
+            <Label          Margin="0,0,-60,0" Content="Eingriffswinkel α"/>
+            <TextBox        x:Name="ew_txt" Text="20" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="False"/>
+            <Label          Margin="0,0,-50,0" x:Name="sw_lbl" Visibility="Hidden">Schrägungswinkel β</Label>
+            <TextBox        x:Name="sw_txt" Text="0" Width="100" HorizontalAlignment="Left" Margin="5,0,-15,0" IsEnabled="True" Visibility="Hidden"/>
+            <Label Margin="0,0,0,0" x:Name="BD_lbl"            >Ø Bohrung</Label>
+            <TextBox        x:Name="BD_txt" Margin="5,0,28,0"/>
+            <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung" IsChecked = "true" x:Name="RB_AV" Checked="RB_AV_Checked" >Aussenverzahnung</RadioButton>
+            <RadioButton    Margin="5,0,-50,0" GroupName="Verzahnung"                  x:Name="RB_IV" Checked="RB_IV_Checked" >Innenverzahnung</RadioButton>
+            <CheckBox       Margin="5,0,-50,0" x:Name="CB_SV" Unchecked="CB_SV_Unchecked" Checked="CB_SV_Checked">Schrägverzahnt</CheckBox>
+
+            <Label Content="Zahnbreite"                  />
+            <TextBox        x:Name="Zahnbreite_txt" Margin="5,0,28,0"></TextBox>
+            <Label Margin="5,0,5,0">Material</Label>
+            <ComboBox Margin="5,0,5,0" x:Name="Material_Dropbox">
+                <ComboBoxItem x:Name="Stahl" IsSelected="True" Content="Stahl"/>
+                <ComboBoxItem x:Name="Messing" Content="Messing"/>
+                <ComboBoxItem x:Name="Kunststoff" Content="Kunststoff"/>
+            </ComboBox>
+            <Button         x:Name="Bestätigen_BTN" Click="Bestätigen_BTN_Click" Margin="5,5,5,50" Content="Bestätigen"/>
+            <Button x:Name="Beenden_BTN" Click="Beenden_BTN_Click" Margin="5,5,5,40">Beenden</Button>
+            <Button x:Name="Clear_BTN" Click="Clear_BTN_Click" Margin="5,-83,5,70" >Clear</Button>
+            
+
+
+        </StackPanel>
+
+        <CheckBox x:Name="Kopfspielfaktor_CB"   Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,75"     Checked="CheckBox_Checked"              Unchecked="CheckBox_Unchecked"              IsChecked="False" HorizontalAlignment="Right" Width="15"/>
+        <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Margin="0,19,0,20"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
+
+        <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,0,0,52" Click="Button_Click" HorizontalAlignment="Left" Width="121" Grid.ColumnSpan="2">Info</Button>
+
+
+
+        <TabControl HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="3" Margin="0,5,5,0" Height="550" Width="220" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem x:Name="Tab_AV" Header="Aussenverzahnung">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="107*"/>
+                        <ColumnDefinition Width="90*"/>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Image Source="Aussenverzahnung.png" Grid.ColumnSpan="2" Margin="5,-76,73,136" Grid.RowSpan="2"/>
+
+                    <StackPanel Grid.Column="0" Margin="0,137,0,-26" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                        <Label x:Name="m_txt_aus">Modul m:</Label>
+                        <Label x:Name="drz_txt_aus">Ø Teilkreis:</Label>
+                        <Label x:Name="c_txt_aus">Kopfspiel c:</Label>
+                        <Label x:Name="h_txt_aus">Zahnhöhe h:</Label>
+                        <Label x:Name="hf_txt_aus">Zahnfußhöhe hf:</Label>
+                        <Label x:Name="ha_txt_aus">Zahnkopfhöhe ha:</Label>
+                        <Label x:Name="p_txt_aus">Zahnteilung p:</Label>
+                        <Label x:Name="z_txt_aus">Zahnzahl z:</Label>
+                        <Label x:Name="df_txt_aus">Ø Fußkreis df:</Label>
+                        <Label x:Name="db_txt_aus">Ø Grundkreis db:</Label>
+                        <Label x:Name="da_txt_aus">Ø Kopfkreis da:</Label>
+                        <Label x:Name="V_txt_aus">Volumen V:</Label>
+                        <Label x:Name="Masse_txt_aus">Masse:</Label>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="0,135,-43,-39" Grid.RowSpan="3" Grid.ColumnSpan="3" Width="150" HorizontalAlignment="Left">
+                        <Label x:Name="m_aus"></Label>
+                        <Label x:Name="drz_aus"></Label>
+                        <Label x:Name="c_aus"></Label>
+                        <Label x:Name="h_aus"></Label>
+                        <Label x:Name="hf_aus"></Label>
+                        <Label x:Name="ha_aus"></Label>
+                        <Label x:Name="p_aus"></Label>
+                        <Label x:Name="z_aus"></Label>
+                        <Label x:Name="df_aus"></Label>
+                        <Label x:Name="db_aus"></Label>
+                        <Label x:Name="da_aus"></Label>
+                        <Label x:Name="V_aus"></Label>
+                        <Label x:Name="Masse_aus"></Label>
+                    </StackPanel>
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Innenverzahnung" x:Name="Tab_IV">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Image Source="Innenverzahnung.png" Width="600" Height="350" Margin="-240,-169,-146,43" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.633" Grid.ColumnSpan="2"/>
+                    <StackPanel Grid.Column="0" Grid.Row ="1" Margin="0,-40,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                        <Label x:Name="m_txt_aus_Innen">Modul m:</Label>
+                        <Label x:Name="drz_txt_aus_Innen">Ø Teilkreis:</Label>
+                        <Label x:Name="c_txt_aus_Innen">Kopfspiel c:</Label>
+                        <Label x:Name="h_txt_aus_Innen">Zahnhöhe h:</Label>
+                        <Label x:Name="hf_txt_aus_Innen">Zahnfußhöhe hf:</Label>
+                        <Label x:Name="ha_txt_aus_Innen">Zahnkopfhöhe ha:</Label>
+                        <Label x:Name="p_txt_aus_Innen">Zahnteilung p:</Label>
+                        <Label x:Name="z_txt_aus_Innen">Zahnzahl z:</Label>
+                        <Label x:Name="df_txt_aus_Innen">Ø Fußkreis hf:</Label>
+                        <Label x:Name="db_txt_aus_Innen">Ø Grundkreis db:</Label>
+                        <Label x:Name="da_txt_aus_Innen">Ø Kopfkreis da:</Label>
+                        <Label x:Name="dm_txt_aus_Innen">Ø Min.Außen dm:</Label>
+                        <Label x:Name="V_txt_aus_Innen">Volumen V:</Label>
+                        <Label x:Name="Masse_txt_aus_Innen">Masse m:</Label>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-40,0,0" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
+                        <Label x:Name="m_aus_Innen"></Label>
+                        <Label x:Name="drz_aus_Innen"></Label>
+                        <Label x:Name="c_aus_Innen"></Label>
+                        <Label x:Name="h_aus_Innen"></Label>
+                        <Label x:Name="hf_aus_Innen"></Label>
+                        <Label x:Name="ha_aus_Innen"></Label>
+                        <Label x:Name="p_aus_Innen"></Label>
+                        <Label x:Name="z_aus_Innen"></Label>
+                        <Label x:Name="df_aus_Innen"></Label>
+                        <Label x:Name="db_aus_Innen"></Label>
+                        <Label x:Name="da_aus_Innen"></Label>
+                        <Label x:Name="dm_aus_Innen"></Label>
+                        <Label x:Name="V_aus_Innen"></Label>
+                        <Label x:Name="Masse_aus_Innen"></Label>
+                    </StackPanel>
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+
+        <RadioButton GroupName="Eingabemodus" x:Name="RB_MT" Content="Modul und Ø Teilkreis"   HorizontalAlignment="Left" Margin="10,170,0,0"               VerticalAlignment="Top"     IsChecked="True"    Checked="RB_MT_Checked" Unchecked="RB_MT_Unchecked"/>
+        <RadioButton GroupName="Eingabemodus" x:Name="RB_MZ" Content="Modul und Zähnezahl"     HorizontalAlignment="Left" Margin="10,0,0,0"    Grid.Row="1" VerticalAlignment="Top"                        Checked="RB_MZ_Checked" Unchecked="RB_MZ_Unchecked"/>
+        <Button Content="Modulrechner" x:Name="Modulrechner_Button" HorizontalAlignment="Left" Margin="10,20,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" Click="Modulrechner_Button_Click"/>
+        <Button Content="Passfederrechner" HorizontalAlignment="Left" Margin="10,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" Click="Button_Click_1"/>
+
+
+
     </Grid>
 </Window>
