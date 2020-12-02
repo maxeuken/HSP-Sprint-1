@@ -749,11 +749,11 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                     //Console.WriteLine("2");
 
                     // Generiere ein Profil
-                    cc.ErzeugeProfil(20, 10);
+                    cc.ErzeugeZahnradGeometrie(20, 10);
                     //Console.WriteLine("3");
 
                     // Extrudiere Balken
-                    cc.ErzeugeBalken(300);
+                    cc.ErzeugeBlock(300);
                     //Console.WriteLine("4");
                 }
                 else

@@ -77,16 +77,16 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             hsp_catiaProfil.SetAbsoluteAxisData(arr);
         }
 
-        public void ErzeugeProfil(Double b, Double h)
+        public void ErzeugeZahnradGeometrie(Double b, Double h)
         {
             // Skizze umbenennen
             hsp_catiaProfil.set_Name("Rechteck");
 
-            // Rechteck in Skizze einzeichnen
+            // ZahnradGeometrie in Skizze einzeichnen
             // Skizze oeffnen
             Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
 
-            // Rechteck erzeugen
+            //  erzeugen
 
             // erst die Punkte
             Point2D catPoint2D1 = catFactory2D1.CreatePoint(-50, 50);
@@ -117,17 +117,17 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             hsp_catiaPart.Part.Update();
         }
 
-        public void ErzeugeBalken(Double l)
+        public void ErzeugeBlock(Double l)
         {
             // Hauptkoerper in Bearbeitung definieren
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
 
-            // Block(Balken) erzeugen
+            // Block erzeugen
             ShapeFactory catShapeFactory1 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
             Pad catPad1 = catShapeFactory1.AddNewPad(hsp_catiaProfil, l);
 
             // Block umbenennen
-            catPad1.set_Name("Balken");
+            catPad1.set_Name("Rechteckblock");
 
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
