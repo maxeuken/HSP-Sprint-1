@@ -758,7 +758,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 }
                 else
                 {
-                    //Console.WriteLine("Laufende Catia Application nicht gefunden");
+                    MessageBox.Show("Laufende Catia Application nicht gefunden");
                 }
             }
             catch (Exception ex)
