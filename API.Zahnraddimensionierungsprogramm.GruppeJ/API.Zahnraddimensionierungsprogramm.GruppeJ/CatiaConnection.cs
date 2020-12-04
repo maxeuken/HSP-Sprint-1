@@ -7,6 +7,9 @@ using INFITF;
 using MECMOD;
 using PARTITF;
 using System.Windows;
+using HybridShapeTypeLib;
+using KnowledgewareTypeLib;
+using ProductStructureTypeLib;
 
 
 namespace API.Zahnraddimensionierungsprogramm.GruppeJ
@@ -37,6 +40,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             INFITF.Documents catDocuments1 = hsp_catiaApp.Documents;
             hsp_catiaPart = catDocuments1.Add("Part") as MECMOD.PartDocument;
             return true;
+            
         }
 
         public void ErstelleLeereSkizze()
@@ -77,7 +81,24 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             hsp_catiaProfil.SetAbsoluteAxisData(arr);
         }
 
-        public void ErzeugeZahnradGeometrie(Double b, Double h)
+
+        //Implementierung der Variablen
+        //Eingabewerte
+        double x1 = 8;                                                              //X-Koordinate Mittelpunkt 2
+        double x2 = 4;                                                              //X-Koordiante Mittelpunkt 1
+        double y1 = 16;                                                             //Y-Koordinate Mittelpunkt 1
+        double y2 = 8;                                                              //Y-Koordinate Mittelpunkt 2
+        double r1;                                                                  //Radius 1
+        double r2;                                                                  //Radius 2
+        //Ausgabewerte
+        double x;
+        double y;
+        //Berechnungsvariablen 
+        double L;
+        double h;
+        double d;
+
+        public void ErzeugeZahnradGeometrie(Double z, Double h)
         {
             // Skizze umbenennen
             hsp_catiaProfil.set_Name("Rechteck");
@@ -87,35 +108,68 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
 
             //  erzeugen
+            double[] Koordinatenliste = new double[3];
+            //Zeile1
+            Koordinatenliste[0] = 45;
+            Koordinatenliste[0] = 45;
+            //Zeile2
+            Koordinatenliste[1] = 50;
+            Koordinatenliste[1] = 50;
+            //Zeile3
+            Koordinatenliste[2] = 55;
+            Koordinatenliste[2] = 55;
 
             // erst die Punkte
-            Point2D catPoint2D1 = catFactory2D1.CreatePoint(-50, 50);
+            Point2D catPoint2D1 = catFactory2D1.CreatePoint(-50, 75);
             Point2D catPoint2D2 = catFactory2D1.CreatePoint(50, 50);
-            Point2D catPoint2D3 = catFactory2D1.CreatePoint(50, -50);
-            Point2D catPoint2D4 = catFactory2D1.CreatePoint(-50, -50);
 
             // dann die Linien
-            Line2D catLine2D1 = catFactory2D1.CreateLine(-50, 50, 50, 50);
+            Line2D catLine2D1 = catFactory2D1.CreateLine(50,50,-50,50);
             catLine2D1.StartPoint = catPoint2D1;
             catLine2D1.EndPoint = catPoint2D2;
 
-            Line2D catLine2D2 = catFactory2D1.CreateLine(50, 50, 50, -50);
-            catLine2D2.StartPoint = catPoint2D2;
-            catLine2D2.EndPoint = catPoint2D3;
+            Evolventenerzeugung();
 
-            Line2D catLine2D3 = catFactory2D1.CreateLine(50, -50, -50, -50);
-            catLine2D3.StartPoint = catPoint2D3;
-            catLine2D3.EndPoint = catPoint2D4;
+            //Kreismuster erzeugen                                                                          (Dokument aus Moodle)
+            ShapeFactory SF = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
+            HybridShapeFactory HSF = (HybridShapeFactory)hsp_catiaPart.Part.HybridShapeFactory;
+            Part myPart = hsp_catiaPart.Part;
 
-            Line2D catLine2D4 = catFactory2D1.CreateLine(-50, -50, -50, 50);
-            catLine2D4.StartPoint = catPoint2D4;
-            catLine2D4.EndPoint = catPoint2D1;
+            Factory2D Factory2D1 = hsp_catiaProfil.Factory2D;
+            HybridShapePointCoord Ursprung = HSF.AddNewPointCoord(0, 0, 0);
+            Reference RefUrsprung = myPart.CreateReferenceFromObject(Ursprung);
+            HybridShapeDirection XDir = HSF.AddNewDirectionByCoord(1, 0, 0);
+            Reference RefXDir = myPart.CreateReferenceFromObject(XDir);
+
+           
+
+            CircPattern Kreismuster = SF.AddNewSurfacicCircPattern(Factory2D1, 1, 2, 0, 0, 1, 1, RefUrsprung, RefXDir, false, 0, true, false);
+            Kreismuster.CircularPatternParameters = CatCircularPatternParameters.catInstancesandAngularSpacing;
+            AngularRepartition angularRepartition1 = Kreismuster.AngularRepartition;
+            Angle angle1 = angularRepartition1.AngularSpacing;
+            angle1.Value = Convert.ToDouble(360 / Convert.ToDouble(z));                                   // d ersetzen durch Zähnezahl
+            AngularRepartition angularRepartition2 = Kreismuster.AngularRepartition;
+            IntParam intParam1 = angularRepartition2.InstancesCount;
+            intParam1.Value = Convert.ToInt32(z) + 1;                                                     // d ersetzen durch Zähnezahl
+
+            Reference Ref_Kreismuster = myPart.CreateReferenceFromObject(Kreismuster);
+            HybridShapeAssemble Verbindung = HSF.AddNewJoin(Ref_Kreismuster, Ref_Kreismuster);
+            Reference Ref_Verbindung = myPart.CreateReferenceFromObject(Verbindung);
+            HSF.GSMVisibility(Ref_Verbindung, 0); myPart.Update();
+            Bodies bodies = myPart.Bodies; Body myBody = bodies.Add();
+            myBody.set_Name("Zahnrad"); myBody.InsertHybridShape(Verbindung);
+            myPart.Update();
+
+            myPart.InWorkObject = myBody;
+            Pad myPad = SF.AddNewPadFromRef(Ref_Verbindung, 10);                                          // 10 ersetzen durch Dicke
+            myPart.Update();
 
             // Skizzierer verlassen
             hsp_catiaProfil.CloseEdition();
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
         }
+
 
         public void ErzeugeBlock(Double l)
         {
@@ -127,12 +181,20 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             Pad catPad1 = catShapeFactory1.AddNewPad(hsp_catiaProfil, l);
 
             // Block umbenennen
-            catPad1.set_Name("Rechteckblock");
+            catPad1.set_Name("Zahnrad");
 
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
         }
 
+        private void Evolventenerzeugung()
+        {
+            d = Math.Round(Math.Sqrt(Math.Pow(x1 - x2,2)+Math.Pow(y1 - y2,2)),0);
+            MessageBox.Show("d=" + Convert.ToString(d));
+            L = (Math.Pow(r1,2)+ Math.Pow(r2, 2)+ Math.Pow(d, 2))/(2*d);
+            MessageBox.Show("L=" + L);
+            h = (Math.Sqrt(Math.Pow(r1,2) - Math.Pow(r2,2)));
+        }
 
 
     }

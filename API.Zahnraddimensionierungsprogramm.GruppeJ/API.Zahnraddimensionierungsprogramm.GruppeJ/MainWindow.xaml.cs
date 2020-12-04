@@ -20,7 +20,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
     /// </summary>
     public partial class MainWindow : Window
     {
-        private class Zahnrad
+        public class Zahnrad
         {
             //Eingangsparameter
             public double m;                                                                            //Modul
@@ -201,15 +201,15 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         {
             InitializeComponent();
         }
+        Zahnrad ZR1 = new Zahnrad();
         //Event Click Bestätigungsbutton
-        private void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
+        public void Bestätigen_BTN_Click(object sender, RoutedEventArgs e)
         {
             int Error = 0;
-            Zahnrad ZR1 = new Zahnrad
-            {
-                //Modul
-                m = Convert.ToDouble(Modul_Dropbox.Text)
-            };
+
+            //Modul
+            ZR1.m = Convert.ToDouble(Modul_Dropbox.Text);
+            
             //EINGABECHECKS
             //Eingabecheck Kopfspielfaktor
             string Zahlencheck = cf_txt.Text;
@@ -545,8 +545,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                         }
                     }
                 }
-            }
-        }
+            } 
+        } 
         //ZAHLENCHECK
         private bool Zahlprüfung(string Zahlencheck)
         {
@@ -749,7 +749,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                     //Console.WriteLine("2");
 
                     // Generiere ein Profil
-                    cc.ErzeugeZahnradGeometrie(20, 10);
+                    cc.ErzeugeZahnradGeometrie(ZR1.z,ZR1.h);
                     //Console.WriteLine("3");
 
                     // Extrudiere Balken
