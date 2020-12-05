@@ -605,6 +605,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         private void CheckBox_Checked(object sender, RoutedEventArgs e)             //Checkbox für Kopfspielfaktor angewählt
         {
             cf_txt.IsEnabled = true;
+            cf_txt.Clear();
         }
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)           //Checkbox für Kopfspielfaktor nicht angewählt
         {
@@ -657,7 +658,6 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         {
             BD_txt.Clear();
             BD_txt.IsEnabled = false;
-            
         }
         //Event Click Modulrechner Button
         private void Modulrechner_Button_Click(object sender, RoutedEventArgs e)
@@ -744,12 +744,14 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                     cc.ErzeugePart();
                     //Console.WriteLine("1");
 
+                    cc.Mittelpunktbestimmung(ZR1.ew);
+
                     // Erstelle eine Skizze
                     cc.ErstelleLeereSkizze();
                     //Console.WriteLine("2");
 
                     // Generiere ein Profil
-                    cc.ErzeugeZahnradGeometrie(ZR1.z,ZR1.h);
+                    cc.ErzeugeZahnradGeometrie(ZR1.z,ZR1.Zahnbreite,ZR1.d);
                     //Console.WriteLine("3");
 
                     // Extrudiere Balken

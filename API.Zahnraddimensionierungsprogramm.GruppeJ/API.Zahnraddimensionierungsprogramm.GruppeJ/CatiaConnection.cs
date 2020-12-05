@@ -98,7 +98,13 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         double h;
         double d;
 
-        public void ErzeugeZahnradGeometrie(Double z, Double h)
+        public void Mittelpunktbestimmung(Double ew)
+        {
+            double x = Math.Cos(ew) * 0.94 * d;
+            double y = Math.Sin(ew) * 0.94 * d;
+        }
+
+        public void ErzeugeZahnradGeometrie(Double z, Double Zahnbreite,Double d)
         {
             // Skizze umbenennen
             hsp_catiaProfil.set_Name("Rechteck");
@@ -120,13 +126,13 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             Koordinatenliste[2] = 55;
 
             // erst die Punkte
-            Point2D catPoint2D1 = catFactory2D1.CreatePoint(-50, 75);
-            Point2D catPoint2D2 = catFactory2D1.CreatePoint(50, 50);
+            Point2D catPoint2D1 = catFactory2D1.CreatePoint(50, d/2);
+            Point2D catPoint2D2 = catFactory2D1.CreatePoint(-50, d/2);
 
             // dann die Linien
-            Line2D catLine2D1 = catFactory2D1.CreateLine(50,50,-50,50);
-            catLine2D1.StartPoint = catPoint2D1;
-            catLine2D1.EndPoint = catPoint2D2;
+            Circle2D catCircle2D1 = catFactory2D1.CreateCircle(10,20,3,x,y);
+            catCircle2D1.StartPoint = catPoint2D1;
+            catCircle2D1.EndPoint = catPoint2D2;
 
             Evolventenerzeugung();
 
@@ -147,10 +153,10 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             Kreismuster.CircularPatternParameters = CatCircularPatternParameters.catInstancesandAngularSpacing;
             AngularRepartition angularRepartition1 = Kreismuster.AngularRepartition;
             Angle angle1 = angularRepartition1.AngularSpacing;
-            angle1.Value = Convert.ToDouble(360 / Convert.ToDouble(z));                                   // d ersetzen durch Zähnezahl
+            angle1.Value = Convert.ToDouble(360 / Convert.ToDouble(z));                                   //Zähnezahl
             AngularRepartition angularRepartition2 = Kreismuster.AngularRepartition;
             IntParam intParam1 = angularRepartition2.InstancesCount;
-            intParam1.Value = Convert.ToInt32(z) + 1;                                                     // d ersetzen durch Zähnezahl
+            intParam1.Value = Convert.ToInt32(z) + 1;                                                     //Zähnezahl
 
             Reference Ref_Kreismuster = myPart.CreateReferenceFromObject(Kreismuster);
             HybridShapeAssemble Verbindung = HSF.AddNewJoin(Ref_Kreismuster, Ref_Kreismuster);
@@ -161,7 +167,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             myPart.Update();
 
             myPart.InWorkObject = myBody;
-            Pad myPad = SF.AddNewPadFromRef(Ref_Verbindung, 10);                                          // 10 ersetzen durch Dicke
+            Pad myPad = SF.AddNewPadFromRef(Ref_Verbindung, Zahnbreite);                                  //Zahnbreite prüfen
             myPart.Update();
 
             // Skizzierer verlassen
@@ -171,14 +177,14 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         }
 
 
-        public void ErzeugeBlock(Double l)
+        public void ErzeugeBlock(Double Zahnbreite)
         {
             // Hauptkoerper in Bearbeitung definieren
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
 
             // Block erzeugen
             ShapeFactory catShapeFactory1 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
-            Pad catPad1 = catShapeFactory1.AddNewPad(hsp_catiaProfil, l);
+            Pad catPad1 = catShapeFactory1.AddNewPad(hsp_catiaProfil, Zahnbreite);                          //Zahnbreite prüfen
 
             // Block umbenennen
             catPad1.set_Name("Zahnrad");

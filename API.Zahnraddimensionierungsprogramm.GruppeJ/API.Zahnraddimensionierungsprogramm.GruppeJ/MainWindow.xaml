@@ -87,7 +87,7 @@
 
         </StackPanel>
 
-        <CheckBox x:Name="Kopfspielfaktor_CB"   Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,75"     Checked="CheckBox_Checked"              Unchecked="CheckBox_Unchecked"              IsChecked="False" HorizontalAlignment="Right" Width="15"/>
+        <CheckBox x:Name="Kopfspielfaktor_CB"   Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="0,75"     Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" IsChecked="False" HorizontalAlignment="Right" Width="15"/>
         <CheckBox x:Name="Eingriffswinkel_CB" Grid.Column="2" Grid.Row="1" Margin="0,19,0,20"     Checked="Eingriffswinkel_CB_Checked"  Unchecked="Eingriffswinkel_CB_Unchecked"  IsChecked="False"/>
 
         <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,0,0,52" Click="Button_Click" HorizontalAlignment="Left" Width="121" Grid.ColumnSpan="2">Info</Button>
