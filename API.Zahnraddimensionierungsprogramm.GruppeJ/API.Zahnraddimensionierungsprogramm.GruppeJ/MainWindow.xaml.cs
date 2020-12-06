@@ -194,7 +194,9 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
                 V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
                 Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+
             }
+            
         
         }
         public MainWindow()
@@ -751,7 +753,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                     //Console.WriteLine("2");
 
                     // Generiere ein Profil
-                    cc.ErzeugeZahnradGeometrie(ZR1.z,ZR1.Zahnbreite,ZR1.d);
+                    cc.ErzeugeZahnradGeometrie(ZR1.z,ZR1.Zahnbreite,ZR1.d,ZR1.da,ZR1.df);
                     //Console.WriteLine("3");
 
                     // Extrudiere Balken

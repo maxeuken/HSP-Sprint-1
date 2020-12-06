@@ -40,7 +40,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             INFITF.Documents catDocuments1 = hsp_catiaApp.Documents;
             hsp_catiaPart = catDocuments1.Add("Part") as MECMOD.PartDocument;
             return true;
-            
+
         }
 
         public void ErstelleLeereSkizze()
@@ -104,7 +104,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             double y = Math.Sin(ew) * 0.94 * d;
         }
 
-        public void ErzeugeZahnradGeometrie(Double z, Double Zahnbreite,Double d)
+        public void ErzeugeZahnradGeometrie(Double z, Double Zahnbreite, Double d, Double da, Double df)
         {
             // Skizze umbenennen
             hsp_catiaProfil.set_Name("Rechteck");
@@ -126,13 +126,18 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             Koordinatenliste[2] = 55;
 
             // erst die Punkte
-            Point2D catPoint2D1 = catFactory2D1.CreatePoint(50, d/2);
-            Point2D catPoint2D2 = catFactory2D1.CreatePoint(-50, d/2);
+            Point2D catPoint2D1 = catFactory2D1.CreatePoint(0, df);
+            Point2D catPoint2D2 = catFactory2D1.CreatePoint(90 / z, da);
+            Point2D catPoint2D3 = catFactory2D1.CreatePoint(0, df);
+            Point2D catPoint2D4 = catFactory2D1.CreatePoint(-90 / z, da);
 
             // dann die Linien
-            Circle2D catCircle2D1 = catFactory2D1.CreateCircle(10,20,3,x,y);
-            catCircle2D1.StartPoint = catPoint2D1;
-            catCircle2D1.EndPoint = catPoint2D2;
+            Circle2D catCircle2D1 = catFactory2D1.CreateCircle(10,20, 3, x, y);
+            catCircle2D1.StartPoint = catPoint2D2;
+            catCircle2D1.EndPoint = catPoint2D1;
+            Circle2D catCircle2D2 = catFactory2D1.CreateCircle(10, 20, 3, x, y);
+            catCircle2D2.StartPoint = catPoint2D3;
+            catCircle2D2.EndPoint = catPoint2D4;
 
             Evolventenerzeugung();
 
@@ -147,7 +152,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             HybridShapeDirection XDir = HSF.AddNewDirectionByCoord(1, 0, 0);
             Reference RefXDir = myPart.CreateReferenceFromObject(XDir);
 
-           
+
 
             CircPattern Kreismuster = SF.AddNewSurfacicCircPattern(Factory2D1, 1, 2, 0, 0, 1, 1, RefUrsprung, RefXDir, false, 0, true, false);
             Kreismuster.CircularPatternParameters = CatCircularPatternParameters.catInstancesandAngularSpacing;
@@ -195,13 +200,12 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
 
         private void Evolventenerzeugung()
         {
-            d = Math.Round(Math.Sqrt(Math.Pow(x1 - x2,2)+Math.Pow(y1 - y2,2)),0);
+            d = Math.Round(Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2)), 0);
             MessageBox.Show("d=" + Convert.ToString(d));
-            L = (Math.Pow(r1,2)+ Math.Pow(r2, 2)+ Math.Pow(d, 2))/(2*d);
+            L = (Math.Pow(r1, 2) + Math.Pow(r2, 2) + Math.Pow(d, 2)) / (2 * d);
             MessageBox.Show("L=" + L);
-            h = (Math.Sqrt(Math.Pow(r1,2) - Math.Pow(r2,2)));
+            h = (Math.Sqrt(Math.Pow(r1, 2) - Math.Pow(r2, 2)));
         }
-
 
     }
 }
