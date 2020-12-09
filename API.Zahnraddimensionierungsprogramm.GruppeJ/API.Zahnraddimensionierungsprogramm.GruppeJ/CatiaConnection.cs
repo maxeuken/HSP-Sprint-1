@@ -82,26 +82,15 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         }
 
 
-        //Implementierung der Variablen
-        //Eingabewerte
-        double x1 = 8;                                                              //X-Koordinate Mittelpunkt 2
-        double x2 = 4;                                                              //X-Koordiante Mittelpunkt 1
-        double y1 = 16;                                                             //Y-Koordinate Mittelpunkt 1
-        double y2 = 8;                                                              //Y-Koordinate Mittelpunkt 2
-        double r1;                                                                  //Radius 1
-        double r2;                                                                  //Radius 2
+                                                       //Radius 2
         //Ausgabewerte
         double x;
         double y;
-        //Berechnungsvariablen 
-        double L;
-        double h;
-        double d;
 
-        public void Mittelpunktbestimmung(Double ew)
+        public void Mittelpunktbestimmung(Double ew, Double d)
         {
-            double x = Math.Cos(ew) * 0.94 * d;
-            double y = Math.Sin(ew) * 0.94 * d;
+            double x = Math.Sin(ew) * 0.94 * d;
+            double y = Math.Cos(ew) * 0.94 * d;
         }
 
         public void ErzeugeZahnradGeometrie(Double z, Double Zahnbreite, Double d, Double da, Double df)
@@ -126,20 +115,22 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             Koordinatenliste[2] = 55;
 
             // erst die Punkte
-            Point2D catPoint2D1 = catFactory2D1.CreatePoint(df, 0);
-            Point2D catPoint2D2 = catFactory2D1.CreatePoint(90 / z, da);
-            Point2D catPoint2D3 = catFactory2D1.CreatePoint(df, 0);
-            Point2D catPoint2D4 = catFactory2D1.CreatePoint(90 / z, da);
+            Point2D catPoint2D1 = catFactory2D1.CreatePoint(5, df/2);
+            Point2D catPoint2D2 = catFactory2D1.CreatePoint(90 / z, da/2);
+            Point2D catPoint2D3 = catFactory2D1.CreatePoint(-90 / z, da/2);
+            Point2D catPoint2D4 = catFactory2D1.CreatePoint(-5, df/2);
 
             // dann die Linien
-            Circle2D catCircle2D1 = catFactory2D1.CreateCircle(10,20, 3, x, y);
+            Circle2D catCircle2D1 = catFactory2D1.CreateCircle(0,0, 5, x, y);
             catCircle2D1.StartPoint = catPoint2D1;
             catCircle2D1.EndPoint = catPoint2D2;
-            Circle2D catCircle2D2 = catFactory2D1.CreateCircle(10, 20, 3, -x, y);
+            Circle2D catCircle2D2 = catFactory2D1.CreateCircle(0,0, 5, x, y);
             catCircle2D2.StartPoint = catPoint2D3;
             catCircle2D2.EndPoint = catPoint2D4;
+            Circle2D catCircle2D3 = catFactory2D1.CreateCircle(0, 0, da/2, 0, 0);
+            catCircle2D3.StartPoint = catPoint2D2;
+            catCircle2D3.EndPoint = catPoint2D3;
 
-            Evolventenerzeugung();
 
             //Kreismuster erzeugen                                                                          (Dokument aus Moodle)
             ShapeFactory SF = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
@@ -196,13 +187,6 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
 
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
-        }
-
-        private void Evolventenerzeugung()
-        {
-            d = Math.Round(Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2)), 0);
-            L = (Math.Pow(r1, 2) + Math.Pow(r2, 2) + Math.Pow(d, 2)) / (2 * d);
-            h = (Math.Sqrt(Math.Pow(r1, 2) - Math.Pow(r2, 2)));
         }
 
     }

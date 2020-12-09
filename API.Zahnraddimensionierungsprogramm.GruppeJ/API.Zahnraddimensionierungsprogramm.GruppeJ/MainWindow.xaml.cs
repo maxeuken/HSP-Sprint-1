@@ -746,7 +746,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                     cc.ErzeugePart();
                     //Console.WriteLine("1");
 
-                    cc.Mittelpunktbestimmung(ZR1.ew);
+                    cc.Mittelpunktbestimmung(ZR1.ew,ZR1.d);
 
                     // Erstelle eine Skizze
                     cc.ErstelleLeereSkizze();
