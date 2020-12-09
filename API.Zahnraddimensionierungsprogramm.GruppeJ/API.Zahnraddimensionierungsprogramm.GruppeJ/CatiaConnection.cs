@@ -19,6 +19,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         INFITF.Application hsp_catiaApp;
         MECMOD.PartDocument hsp_catiaPart;
         MECMOD.Sketch hsp_catiaProfil;
+       
 
         public bool CATIALaeuft()
         {
