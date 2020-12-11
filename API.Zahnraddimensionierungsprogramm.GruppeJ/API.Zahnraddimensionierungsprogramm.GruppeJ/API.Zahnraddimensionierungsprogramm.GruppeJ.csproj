@@ -90,6 +90,7 @@
     <Compile Include="Window3.xaml.cs">
       <DependentUpon>Window3.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Zahnrad.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
