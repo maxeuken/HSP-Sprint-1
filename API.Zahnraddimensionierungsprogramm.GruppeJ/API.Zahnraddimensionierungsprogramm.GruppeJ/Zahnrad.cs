@@ -70,6 +70,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+         
         }
         internal void Berechnung_geradverzahnt_Innenverzahnung_m_und_d()                            //GERADVERZAHNT-INNENVERZAHNUNG-M-UND-D 
         {
