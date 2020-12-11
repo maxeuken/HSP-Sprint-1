@@ -247,6 +247,30 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
 
             ErzeugedenNeuenBlock(ZR1, refVerbindung, shapeFactory1);
 
+
+            Sketches sketchesBohrung = catHybridBody1.HybridSketches;
+            OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
+            Reference refmxPlaneX = (Reference)catoriginelements.PlaneYZ;
+            hsp_catiaProfil = catSketches1.Add(refmxPlaneX);
+
+            ErzeugeAchsensystem();
+
+            hsp_catiaPart.Part.Update();
+
+            hsp_catiaProfil.set_Name("Bohrung");
+
+            Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
+
+            Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, ZR1.BD/2);
+
+            hsp_catiaProfil.CloseEdition();
+
+            hsp_catiaPart.Part.Update();
+
+            hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+            Pocket Tasche = shapeFactory1.AddNewPocket(hsp_catiaProfil, ZR1.Zahnbreite);
+            hsp_catiaPart.Part.Update();
+
         }
 
 
