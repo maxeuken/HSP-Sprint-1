@@ -394,6 +394,7 @@ namespace User_Interface_HSP
                             m_aus.Content = ZR1.m + " mm";
                             V_aus.Content = ZR1.V + " mm^3";
                             Masse_aus.Content = ZR1.Masse + " Kg";
+                            d_txt.Text = Convert.ToString(ZR1.drz);
                         }
                         if (RB_MZ.IsChecked == true)                                            //Berechnung geradverzahnt Außenverzahnung m und z
                         {
@@ -431,6 +432,7 @@ namespace User_Interface_HSP
                             m_aus.Content = ZR1.m + " mm";
                             V_aus.Content = ZR1.V + " mm^3";
                             Masse_aus.Content = ZR1.Masse + " Kg";
+                            d_txt.Text = Convert.ToString(ZR1.drz);
                         }
                         else
                         {
@@ -475,6 +477,7 @@ namespace User_Interface_HSP
                             m_aus_Innen.Content = ZR1.m + " mm";
                             V_aus_Innen.Content = ZR1.V + " mm^3";
                             Masse_aus_Innen.Content = ZR1.Masse + " Kg";
+                            d_txt.Text = Convert.ToString(ZR1.drz);
                         }
                         if (RB_MZ.IsChecked == true)                                            //Berechnung geradverzahnt Innenverzahnung m und z
                         {
@@ -515,6 +518,7 @@ namespace User_Interface_HSP
                             m_aus_Innen.Content = ZR1.m + " mm";
                             V_aus_Innen.Content = ZR1.V + " mm^3";
                             Masse_aus_Innen.Content = ZR1.Masse + " Kg";
+                            d_txt.Text = Convert.ToString(ZR1.drz);
                         }
                         if (RB_MZ.IsChecked == true)                                            //Berechnung schrägverzahnt Innenverzahnung m und z
                         {
