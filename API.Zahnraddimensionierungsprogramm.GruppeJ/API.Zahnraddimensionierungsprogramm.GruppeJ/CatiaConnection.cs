@@ -149,7 +149,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
 
 
             //Skizze umbenennen und öffnen
-            hsp_catiaProfil.set_Name("Zahnrädchen");
+            hsp_catiaProfil.set_Name("Zahnradskizze");
             Factory2D catfactory2D1 = hsp_catiaProfil.OpenEdition();
 
             //Nun die Punkte in die Skizze

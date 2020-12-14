@@ -38,6 +38,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         public double MTL_hlp;                                                                      //Dichte
         public double Masse;                                                                        //Masse
         int dezimal = 2;                                                                            //Rundungsvariable
+        public bool Catiakonstruktionserlaubnis;                                                    //Erlaubnis für Catia, 3D zu erzeugen
 
         //BERECHNUNGSMETHODEN
         internal void Berechnung_geradverzahnt_Außenverzahnung_m_und_d()                            //GERADVERZAHNT-AUßENVERZAHNUNG-M-UND-D

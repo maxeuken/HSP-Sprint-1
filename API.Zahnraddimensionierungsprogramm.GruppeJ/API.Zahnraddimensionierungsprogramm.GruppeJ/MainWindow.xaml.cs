@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace API.Zahnraddimensionierungsprogramm.GruppeJ
 {
@@ -208,10 +210,12 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             //AUSGABE
             if (Error == 0)
             {
+                ZR1.Catiakonstruktionserlaubnis = true;
                 if (RB_AV.IsChecked == true)                                                    //Berechnung Außenverzahnung
                 {
                     if (CB_SV.IsChecked == false)                                               //Berechnung geradverzahnt Außenverzahnung
                     {
+                        
                         if (RB_MT.IsChecked == true)                                            //Berechnung geradverzahnt Außenverzahnung m und d
                         {
                             ZR1.Berechnung_geradverzahnt_Außenverzahnung_m_und_d();
@@ -374,7 +378,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                         }
                     }
                 }
-            } 
+            }
         } 
         //ZAHLENCHECK
         private bool Zahlprüfung(string Zahlencheck)
@@ -551,10 +555,45 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             RB_MT.IsChecked = true;                                                    //Radiobutton für Berechnungsmodus Modul und Teilkreisdurchmesser wird aktiviert
         }
 
-        //Event Click CATIA Button
+        //Event Click CATIA ÖFFNEN Button
+        private void OPENCATIA_BTN_Click(object sender, EventArgs e)
+        {
+            bool Catia_running = CheckobCatialaeuft("CNEXT");
+            if (Catia_running == true)
+            {
+                MessageBox.Show("CATIA ist schon geöffnet");
+            }
+            else if (Catia_running == false)
+            {
+                Process Catia = new Process();
+                Catia.StartInfo.FileName = "CNEXT.exe";
+                Catia.Start();
+            }
+        }
+        //Überprüfung ob Catia läuft
+        private bool CheckobCatialaeuft(string Processname)
+        {
+
+            return Process.GetProcessesByName(Processname).Length > 0;
+        }
+
+
+        //Event Click CATIA Button (CAD Modell erzeugen)
         private void CATIA_BTN_Click(object sender, EventArgs e)
         {
-            CatiaControl();
+            
+            if(ZR1.Catiakonstruktionserlaubnis == true)
+            {
+                CatiaControl();
+            }
+            else
+            {
+                MessageBox.Show("Zuerst korrekte Eingaben tätigen und Berechnung durchführen bevor CAD Modell erzeugt werden kann");
+            }
+
+            ZR1.Catiakonstruktionserlaubnis = false;
+            
+            
         }
         //Catia Control
         

@@ -37,7 +37,8 @@
 
         <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" Margin="10,180,20,84" Grid.RowSpan="2">Der Schrägungswinkel liegt meist zwischen 8° und 25°, 
             theoretisch kann er zwischen 0° und 90° liegen</TextBlock>
-        <Button x:Name="CATIA_BTN" Click="CATIA_BTN_Click" Margin="10,505,10,-355" >Erzeuge CAD Modell</Button>
+        <Button x:Name="CATIA_BTN" Click="CATIA_BTN_Click" Margin="10,505,10,-355" >2) Erzeuge CAD Modell</Button>
+        <Button x:Name="OPENCATIA_BTN" Click="OPENCATIA_BTN_Click" Margin="10,480,10,-310" >1) Catia V5 öffnen</Button>
 
         <StackPanel  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Margin="0,0,-20,0">
             <Label>Modul m</Label>
