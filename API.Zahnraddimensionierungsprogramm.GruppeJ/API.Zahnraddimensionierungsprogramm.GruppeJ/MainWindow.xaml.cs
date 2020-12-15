@@ -599,36 +599,14 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         
         public void CatiaControl()
         {
-            
             try
             {
-
                 CatiaConnection cc = new CatiaConnection();
 
                 // Finde Catia Prozess
                 if (cc.CATIALaeuft())
                 {
-                    //Console.WriteLine("0");
-
-                    // Öffne ein neues Part
                     cc.ErzeugePart();
-                    //Console.WriteLine("1");
-
-                    //cc.Mittelpunktbestimmung(ZR1.ew,ZR1.d);
-
-                    // Erstelle eine Skizze
-                    //cc.ErstelleLeereSkizze();
-                    //Console.WriteLine("2");
-
-                    // Generiere ein Profil
-                    //cc.ErzeugeZahnradGeometrie(ZR1.z,ZR1.Zahnbreite,ZR1.d,ZR1.da,ZR1.df);
-                    //Console.WriteLine("3");
-
-                    // Extrudiere Balken
-                    //cc.ErzeugeBlock(300);
-                    //Console.WriteLine("4");
-                   
-
                     cc.GanzeZahnrad(ZR1);
                 }
                 else
@@ -640,8 +618,6 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             {
                 MessageBox.Show(ex.Message, "Exception aufgetreten");
             }
-            //Console.WriteLine("Fertig - Taste drücken.");
-            //Console.ReadKey();
 
         }
 

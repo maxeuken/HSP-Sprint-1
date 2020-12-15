@@ -42,7 +42,6 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             INFITF.Documents catDocuments1 = hsp_catiaApp.Documents;
             hsp_catiaPart = catDocuments1.Add("Part") as MECMOD.PartDocument;
             return true;
-
         }
 
         private void ErzeugeAchsensystem()
@@ -51,7 +50,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                                          0.0, 1.0, 0.0,
                                          0.0, 0.0, 1.0 };
             hsp_catiaProfil.SetAbsoluteAxisData(arr);
-        }//das wird benutzt in einer methode
+        }
 
         public void GanzeZahnrad(Zahnrad ZR1)
         {
@@ -83,19 +82,13 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
 
-            //Erstelle Skizze Ende
-
-
             //Profil Erstellen
-
-            //Deklarieren!! Beginn
-
 
             //Nullpunkt
             double x0 = 0;
             double y0 = 0;
 
-            //Hilfsgrößen von Wilkos PDF
+            //Hilfsgrößen
             double Teilkreisradius = ZR1.drz / 2;
             double Hilfskreisradius = Teilkreisradius * 0.94;
             double HilfskreisradiusInnen = Teilkreisradius * 1.06;
@@ -148,13 +141,6 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 double Hilfswinkel = Totalangelrad - Math.Atan(Math.Abs(x_SP_FußkreisradiusVerrundung_links) / Math.Abs(y_SP_FußkreisradiusVerrundung_links));
                 double x_AnfangspunktFußkreis = Fußkreisradius * Math.Sin(Hilfswinkel);
                 double y_AnfangspunktFußkreis = Fußkreisradius * Math.Cos(Hilfswinkel);
-
-
-
-
-                //Deklarieren!! Ende
-
-
 
                 //Skizze umbenennen und öffnen
                 hsp_catiaProfil.set_Name("Zahnradskizze");
@@ -250,6 +236,9 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 Point2D pointMittelpunktevolventeRechts = catfactory2D1.CreatePoint(-xMittelpunktaufEvol_links, yMittelpunktaufEvol_links);
                 Point2D pointEvolventenKopfkreisLinks = catfactory2D1.CreatePoint(xEvolventenkopfkreis_links, yEvolventenkopfkreis_links);
                 Point2D pointEvolventenKopfkreisRechts = catfactory2D1.CreatePoint(-xEvolventenkopfkreis_links, yEvolventenkopfkreis_links);
+                Point2D pointAnfangAussendurchmesser = catfactory2D1.CreatePoint(x0, ZR1.dm);
+                Point2D pointEnddurchmesser = catfactory2D1.CreatePoint(Math.Cos(Alpha)*ZR1.dm, Math.Sin(Alpha)*ZR1.dm);
+                
 
                 Circle2D KreisFußkreis = catfactory2D1.CreateCircle(x0, y0, FußkreisradiusInnen, 0, Math.PI * 2);
                 KreisFußkreis.CenterPoint = point_Ursprung;
@@ -281,18 +270,19 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 KreisKopfkreis.StartPoint = pointEvolventenKopfkreisLinks;
                 KreisKopfkreis.EndPoint = pointEvolventenKopfkreisRechts;
 
-            }
+                Circle2D AussenkreisLinks = catfactory2D1.CreateCircle(x0,y0,ZR1.dm/2, x0,Math.PI*2);
+                AussenkreisLinks.CenterPoint = point_Ursprung;
+                AussenkreisLinks.StartPoint = pointEnddurchmesser;
+                AussenkreisLinks.EndPoint = pointAnfangAussendurchmesser;
 
+
+            }
 
             hsp_catiaProfil.CloseEdition();
 
             hsp_catiaPart.Part.Update();
 
-
-            ////////////////////////////////////////////////////////////////
-
             //Profilerstellen Ende
-
 
             ShapeFactory shapeFactory1 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
             HybridShapeFactory hybridShapeFactory1 = (HybridShapeFactory)hsp_catiaPart.Part.HybridShapeFactory;
