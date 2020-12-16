@@ -11,6 +11,7 @@ using HybridShapeTypeLib;
 using KnowledgewareTypeLib;
 using ProductStructureTypeLib;
 using System.Windows.Shapes;
+using CATMat;
 
 
 namespace API.Zahnraddimensionierungsprogramm.GruppeJ
@@ -91,7 +92,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             //Hilfsgrößen
             double Teilkreisradius = ZR1.drz / 2;
             double Hilfskreisradius = Teilkreisradius * 0.94;
-            double HilfskreisradiusInnen = Teilkreisradius * 1.06;
+            double HilfskreisradiusInnen = Teilkreisradius * 1.12;
             double Fußkreisradius = Teilkreisradius - (1.25 * ZR1.m);
             double FußkreisradiusInnen = Teilkreisradius + (1.25 * ZR1.m);
             double Kopfkreisradius = Teilkreisradius + ZR1.m;

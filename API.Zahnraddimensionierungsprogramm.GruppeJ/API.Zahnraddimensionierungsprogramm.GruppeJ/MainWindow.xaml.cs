@@ -485,12 +485,16 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         private void RB_AV_Checked(object sender, RoutedEventArgs e)                //Radiobutton für Außenverzahnung angewählt
         {
             BD_txt.IsEnabled = true;
+            
+            
+
 
         }
         private void RB_IV_Checked(object sender, RoutedEventArgs e)                //Radiobutton für Innenverzahnung angewählt          
         {
             BD_txt.Clear();
             BD_txt.IsEnabled = false;
+            
         }
         //Event Click Modulrechner Button
         private void Modulrechner_Button_Click(object sender, RoutedEventArgs e)
