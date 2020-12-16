@@ -468,7 +468,6 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             IntParam intParam1 = angularRepartition2.InstancesCount;
             intParam1.Value = Convert.ToInt32(ZR1.z) + 1;
 
-
             //Kreismusterenden verbinden
 
             Reference refKreismuster = hsp_catiaPart.Part.CreateReferenceFromObject(kreismuster);
@@ -485,29 +484,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
 
             ErzeugedenNeuenBlock(ZR1, refVerbindung, shapeFactory1);
 
+            ErzeugeBohrung(ZR1, refVerbindung, shapeFactory1,catHybridBody1,catSketches1);
 
-            Sketches sketchesBohrung = catHybridBody1.HybridSketches;
-            OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
-            Reference refmxPlaneX = (Reference)catoriginelements.PlaneYZ;
-            hsp_catiaProfil = catSketches1.Add(refmxPlaneX);
-
-            ErzeugeAchsensystem();
-
-            hsp_catiaPart.Part.Update();
-
-            hsp_catiaProfil.set_Name("Bohrung");
-
-            Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
-
-            Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, ZR1.BD/2);
-
-            hsp_catiaProfil.CloseEdition();
-
-            hsp_catiaPart.Part.Update();
-
-            hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
-            Pocket Tasche = shapeFactory1.AddNewPocket(hsp_catiaProfil, ZR1.Zahnbreite);
-            hsp_catiaPart.Part.Update();
 
         }
 
@@ -519,47 +497,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             hsp_catiaPart.Part.Update();
         }
 
-        public void Verdrehen()
-        {
-            myPart.InWorkObject = myBody;
-            HybridShapeDirection XDir = HSF.AddNewDirectionByCoord(1, 0, 0);
-            Reference RefXDir = myPart.CreateReferenceFromObject(XDir);
-            HybridShapeTranslate Verschieben = HSF.AddNewEmptyTranslate();
-            Verschieben.ElemToTranslate = Ref_Kreismuster;
-            Verschieben.VectorType = 0;
-            Verschieben.Direction = XDir;
-            Verschieben.DistanceValue = Dicke;
-            Verschieben.VolumeResult = false;
-            myBody.InsertHybridShape(Verschieben);
-            myPart.InWorkObject = Verschieben;
-            Reference Ref_Verschieben = myPart.CreateReferenceFromObject(Verschieben);
-            myPart.Update();
-
-            HybridShapeRotate Drehen = HSF.AddNewEmptyRotate(); 
-            Drehen.ElemToRotate = Ref_Verschieben; 
-            Drehen.VolumeResult = false; 
-            Drehen.RotationType = 0; 
-            Drehen.Axis = RefXDir; 
-            Drehen.AngleValue = RotationsWinkel; 
-            myBody.InsertHybridShape(Drehen); 
-            myPart.InWorkObject = Drehen; 
-            HSF.GSMVisibility(Ref_Verschieben, 0); 
-            Reference Ref_Drehen = myPart.CreateReferenceFromObject(Drehen); 
-            myPart.Update();
-
-            HybridShapeAssemble Verbindung_2 = HSF.AddNewJoin(Ref_Drehen, Ref_Drehen); 
-            myBody.InsertHybridShape(Verbindung_2); 
-            Reference Ref_Verbindung_2 = myPart.CreateReferenceFromObject(Verbindung_2); 
-            myPart.Update();
-
-            Loft myLoft = (Loft)SF.AddNewLoft(); 
-            HybridShapeLoft LoftH = (HybridShapeLoft)myLoft.HybridShape; 
-            LoftH.AddSectionToLoft(Ref_Verbindung, 1, (Reference)default(Type)); 
-            LoftH.AddSectionToLoft(Ref_Verbindung_2, 1, (Reference)default(Type)); 
-            myPart.Update();
-
-
-        }
+        
 
         private double Schnittpunkt_X(double xMittelpunkt, double yMittelpunkt, double Radius1, double xMittelpunkt2, double yMittelpunkt2, double Radius2)
         {
@@ -605,6 +543,39 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             }
 
             return l * (yMittelpunkt2 - yMittelpunkt) / d + h * (xMittelpunkt2 - xMittelpunkt) / d + yMittelpunkt;
+        }
+
+        public void ErzeugeBohrung(Zahnrad ZR1, Reference refVerbindung, ShapeFactory sf1,HybridBody hb1,Sketches s1)
+        {
+            Sketches sketchesBohrung = hb1.HybridSketches;
+            OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
+            Reference refmxPlaneX = (Reference)catoriginelements.PlaneYZ;
+            hsp_catiaProfil = s1.Add(refmxPlaneX);
+
+            ErzeugeAchsensystem();
+
+            hsp_catiaPart.Part.Update();
+
+            hsp_catiaProfil.set_Name("Bohrung");
+
+            Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
+
+            Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(0, 0, ZR1.BD / 2);
+
+            hsp_catiaProfil.CloseEdition();
+
+            hsp_catiaPart.Part.Update();
+
+            hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+            Pocket Tasche = sf1.AddNewPocket(hsp_catiaProfil, ZR1.Zahnbreite);
+            hsp_catiaPart.Part.Update();
+        }       //Funktioniert
+
+        public void ErzeugeTascheZahnrad(Zahnrad ZR1, Reference refVerbindung, ShapeFactory sf1)        //Funktioniert
+        {
+            hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+            Pocket catPocket1 = sf1.AddNewPocketFromRef(refVerbindung, -ZR1.Zahnbreite);
+            hsp_catiaPart.Part.Update();
         }
     }
 }
