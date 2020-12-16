@@ -585,23 +585,31 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         //Event Click CATIA Button (CAD Modell erzeugen)
         private void CATIA_BTN_Click(object sender, EventArgs e)
         {
-            
-            if(ZR1.Catiakonstruktionserlaubnis == true)
+            if(ZR1.Catiakonstruktionserlaubnis == true && ZR1.Verzahnung == 0)
             {
-                CatiaControl();
+                CatiaControl0();
             }
-            else
+            else if(ZR1.Catiakonstruktionserlaubnis == false)
+            {
+                MessageBox.Show("Zuerst korrekte Eingaben tätigen und Berechnung durchführen bevor CAD Modell erzeugt werden kann");
+            }
+
+            
+
+            if (ZR1.Catiakonstruktionserlaubnis == true && ZR1.Verzahnung == 1)
+            {
+                CatiaControl1();
+            }
+            else if (ZR1.Catiakonstruktionserlaubnis == false)
             {
                 MessageBox.Show("Zuerst korrekte Eingaben tätigen und Berechnung durchführen bevor CAD Modell erzeugt werden kann");
             }
 
             ZR1.Catiakonstruktionserlaubnis = false;
-            
-            
+
         }
-        //Catia Control
-        
-        public void CatiaControl()
+        //Catia Control1
+        public void CatiaControl0()
         {
             try
             {
@@ -612,6 +620,29 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 {
                     cc.ErzeugePart();
                     cc.GanzeZahnrad(ZR1);
+                }
+                else
+                {
+                    MessageBox.Show("Laufende Catia Application nicht gefunden");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception aufgetreten");
+            }
+
+        }
+        public void CatiaControl1()
+        {
+            try
+            {
+                CatiaConnection cc = new CatiaConnection();
+
+                // Finde Catia Prozess
+                if (cc.CATIALaeuft())
+                {
+                    cc.ErzeugePart();
+                    cc.GanzeInnenZahnrad(ZR1);
                 }
                 else
                 {

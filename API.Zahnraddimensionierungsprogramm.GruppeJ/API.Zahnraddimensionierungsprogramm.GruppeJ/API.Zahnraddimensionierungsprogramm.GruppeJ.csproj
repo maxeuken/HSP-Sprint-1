@@ -99,10 +99,6 @@
       <DependentUpon>Window3.xaml</DependentUpon>
     </Compile>
     <Compile Include="Zahnrad.cs" />
-    <Compile Include="Zahnrad_Außen_gerade.cs" />
-    <Compile Include="Zahnrad_Außen_schräg.cs" />
-    <Compile Include="Zahnrad_Innen_gerade.cs" />
-    <Compile Include="Zahnrad_Innen_schräg.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
