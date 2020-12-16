@@ -106,12 +106,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             double Totalangel = 360.0 / ZR1.z;
             double Totalangelrad = Math.PI * Totalangel / 180;
 
-            //Verzahnung = 0; = Aussenverzahnung
-            //Verzahnung = 1; = Innenverzahnung
-            //Verzahnung = 2; = Aussenverzahnung schräg
-            //Verzahnung = 3; = Innenverzahnung schräg
-
-            if (ZR1.Verzahnung==0)
+            if (ZR1.Verzahnung == 0)
             {
                 //Punkte
                 //LinkerEvolKreis Mittelp. Koordinaten
@@ -195,8 +190,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 KreisVerrundungRechts.CenterPoint = pointMittelpunktVerrundungRechts;
                 KreisVerrundungRechts.StartPoint = pointVerrundungEvolventeRechts;
                 KreisVerrundungRechts.EndPoint = pointFußkreisVerrundungRechts;
-            }
-            if (ZR1.Verzahnung==1)
+            }               //Aussenverzahnt
+            if (ZR1.Verzahnung == 1)
             { 
                 //LinkerEvolKreis Mittelp. Koordinaten
                 double xMittelpunktaufEvol_links = HilfskreisradiusInnen * Math.Cos(Gammarad);
@@ -277,7 +272,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 AussenkreisLinks.CenterPoint = point_Ursprung;
                 AussenkreisLinks.StartPoint = pointAnfangAussendurchmesser;
                 AussenkreisLinks.EndPoint = pointEnddurchmesser;
-            }
+            }               //Innenverzahnt
             if (ZR1.Verzahnung == 2)
             {
                 //Punkte
@@ -362,7 +357,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 KreisVerrundungRechts.CenterPoint = pointMittelpunktVerrundungRechts;
                 KreisVerrundungRechts.StartPoint = pointVerrundungEvolventeRechts;
                 KreisVerrundungRechts.EndPoint = pointFußkreisVerrundungRechts;
-            }
+
+            }               //Aussenverzahnt schräg
             if (ZR1.Verzahnung == 3)
             {
                 //LinkerEvolKreis Mittelp. Koordinaten
@@ -444,7 +440,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 AussenkreisLinks.CenterPoint = point_Ursprung;
                 AussenkreisLinks.StartPoint = pointAnfangAussendurchmesser;
                 AussenkreisLinks.EndPoint = pointEnddurchmesser;
-            }
+            }               //Innenverzahnt schräg
 
             hsp_catiaProfil.CloseEdition();
 
@@ -523,6 +519,47 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             hsp_catiaPart.Part.Update();
         }
 
+        public void Verdrehen()
+        {
+            myPart.InWorkObject = myBody;
+            HybridShapeDirection XDir = HSF.AddNewDirectionByCoord(1, 0, 0);
+            Reference RefXDir = myPart.CreateReferenceFromObject(XDir);
+            HybridShapeTranslate Verschieben = HSF.AddNewEmptyTranslate();
+            Verschieben.ElemToTranslate = Ref_Kreismuster;
+            Verschieben.VectorType = 0;
+            Verschieben.Direction = XDir;
+            Verschieben.DistanceValue = Dicke;
+            Verschieben.VolumeResult = false;
+            myBody.InsertHybridShape(Verschieben);
+            myPart.InWorkObject = Verschieben;
+            Reference Ref_Verschieben = myPart.CreateReferenceFromObject(Verschieben);
+            myPart.Update();
+
+            HybridShapeRotate Drehen = HSF.AddNewEmptyRotate(); 
+            Drehen.ElemToRotate = Ref_Verschieben; 
+            Drehen.VolumeResult = false; 
+            Drehen.RotationType = 0; 
+            Drehen.Axis = RefXDir; 
+            Drehen.AngleValue = RotationsWinkel; 
+            myBody.InsertHybridShape(Drehen); 
+            myPart.InWorkObject = Drehen; 
+            HSF.GSMVisibility(Ref_Verschieben, 0); 
+            Reference Ref_Drehen = myPart.CreateReferenceFromObject(Drehen); 
+            myPart.Update();
+
+            HybridShapeAssemble Verbindung_2 = HSF.AddNewJoin(Ref_Drehen, Ref_Drehen); 
+            myBody.InsertHybridShape(Verbindung_2); 
+            Reference Ref_Verbindung_2 = myPart.CreateReferenceFromObject(Verbindung_2); 
+            myPart.Update();
+
+            Loft myLoft = (Loft)SF.AddNewLoft(); 
+            HybridShapeLoft LoftH = (HybridShapeLoft)myLoft.HybridShape; 
+            LoftH.AddSectionToLoft(Ref_Verbindung, 1, (Reference)default(Type)); 
+            LoftH.AddSectionToLoft(Ref_Verbindung_2, 1, (Reference)default(Type)); 
+            myPart.Update();
+
+
+        }
 
         private double Schnittpunkt_X(double xMittelpunkt, double yMittelpunkt, double Radius1, double xMittelpunkt2, double yMittelpunkt2, double Radius2)
         {
