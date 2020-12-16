@@ -56,6 +56,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+            Verzahnung = 0;
         }
         internal void Berechnung_geradverzahnt_Außenverzahnung_m_und_z()                            //GERADVERZAHNT-AUßENVERZAHNUNG-M-UND-Z
         {
@@ -71,7 +72,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-         
+            Verzahnung = 0;
+
         }
         internal void Berechnung_geradverzahnt_Innenverzahnung_m_und_d()                            //GERADVERZAHNT-INNENVERZAHNUNG-M-UND-D 
         {
@@ -89,6 +91,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+            Verzahnung = 1;
         }
         internal void Berechnung_geradverzahnt_Innenverzahnung_m_und_z()                            //GERADVERZAHNT-INNENVERZAHNUNG-M-UND-Z 
         {
@@ -105,6 +108,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+            Verzahnung = 1;
         }
         internal void Berechnung_schrägverzahnt_Außenverzahnung_m_und_d()                           //SCHRÄGVERZAHNT-AUßENVERZAHNUNG-M-UND-D 
         {
@@ -124,6 +128,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+            Verzahnung = 2;
         }
         internal void Berechnung_schrägverzahnt_Außenverzahnung_m_und_z()                           //SCHRÄGVERZAHNT-AUßENVERZAHNUNG-M-UND-Z
         {
@@ -142,6 +147,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+            Verzahnung = 2;
         }
         internal void Berechnung_schrägverzahnt_Innenverzahnung_m_und_d()                           //SCHRÄGVERZAHNT-INNENVERZAHNUNG-M-UND-D 
         {
@@ -162,6 +168,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+            Verzahnung = 3;
         }
         internal void Berechnung_schrägverzahnt_Innenverzahnung_m_und_z()                           //SCHRÄGVERZAHNT-INNENVERZAHNUNG-M-UND-Z
         {
@@ -182,6 +189,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
+            Verzahnung = 3;
 
         }
 
