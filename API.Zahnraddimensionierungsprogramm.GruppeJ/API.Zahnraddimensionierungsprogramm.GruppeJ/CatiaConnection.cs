@@ -236,7 +236,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 Point2D pointEvolventenKopfkreisLinks = catfactory2D1.CreatePoint(xEvolventenkopfkreis_links, yEvolventenkopfkreis_links);
                 Point2D pointEvolventenKopfkreisRechts = catfactory2D1.CreatePoint(-xEvolventenkopfkreis_links, yEvolventenkopfkreis_links);
                 Point2D pointAnfangAussendurchmesser = catfactory2D1.CreatePoint(x0, ZR1.dm);
-                Point2D pointEnddurchmesser = catfactory2D1.CreatePoint(Math.Sin(Beta)*(ZR1.drz/2), -Math.Cos(Beta)*(ZR1.drz/2));
+                Point2D pointEnddurchmesser = catfactory2D1.CreatePoint(Math.Sin(14.4) * (ZR1.drz / 2), -Math.Sin(14.4) * (ZR1.drz / 2)); //Gesamte Klammer
 
                 Circle2D KreisFußkreis = catfactory2D1.CreateCircle(x0, y0, FußkreisradiusInnen, 0, Math.PI * 2);
                 KreisFußkreis.CenterPoint = point_Ursprung;
@@ -268,7 +268,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                 KreisKopfkreis.StartPoint = pointEvolventenKopfkreisLinks;
                 KreisKopfkreis.EndPoint = pointEvolventenKopfkreisRechts;
 
-                Circle2D AussenkreisLinks = catfactory2D1.CreateCircle(x0,y0,ZR1.dm/2, x0,Math.PI*2);
+                Circle2D AussenkreisLinks = catfactory2D1.CreateCircle(x0,y0,ZR1.dm/2, x0, Math.Sin(14.4) * (ZR1.drz / 2));     //Ganz rechter Term
                 AussenkreisLinks.CenterPoint = point_Ursprung;
                 AussenkreisLinks.StartPoint = pointAnfangAussendurchmesser;
                 AussenkreisLinks.EndPoint = pointEnddurchmesser;
@@ -486,7 +486,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
 
             ErzeugeBohrung(ZR1, refVerbindung, shapeFactory1,catHybridBody1,catSketches1);
 
-
+            ErzeugeZylinder(ZR1, refVerbindung, shapeFactory1, catHybridBody1, catSketches1);
         }
 
 
@@ -575,6 +575,32 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         {
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
             Pocket catPocket1 = sf1.AddNewPocketFromRef(refVerbindung, -ZR1.Zahnbreite);
+            hsp_catiaPart.Part.Update();
+        }
+
+        public void ErzeugeZylinder (Zahnrad ZR1, Reference refVerbindung, ShapeFactory sf1, HybridBody hb1, Sketches s1)
+        {
+            Sketches sketchesBohrung = hb1.HybridSketches;
+            OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
+            Reference refmxPlaneX = (Reference)catoriginelements.PlaneYZ;
+            hsp_catiaProfil = s1.Add(refmxPlaneX);
+
+            ErzeugeAchsensystem();
+
+            hsp_catiaPart.Part.Update();
+
+            hsp_catiaProfil.set_Name("Aussendurchmesser");
+
+            Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
+
+            Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(100, 100, 20);
+
+            hsp_catiaProfil.CloseEdition();
+
+            hsp_catiaPart.Part.Update();
+
+            hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+            Pad Block = sf1.AddNewPadFromRef((Reference)catfactory2D2, ZR1.Zahnbreite);
             hsp_catiaPart.Part.Update();
         }
     }
