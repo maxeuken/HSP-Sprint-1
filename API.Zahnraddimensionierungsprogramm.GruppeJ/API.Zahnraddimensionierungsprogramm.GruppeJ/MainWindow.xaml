@@ -125,7 +125,8 @@
                         <Label x:Name="db_txt_aus">Ø Grundkreis db:</Label>
                         <Label x:Name="da_txt_aus">Ø Kopfkreis da:</Label>
                         <Label x:Name="V_txt_aus">Volumen V:</Label>
-                        <Label x:Name="Masse_txt_aus">Masse:</Label>
+                        <Label x:Name="Masse_txt_aus">Masse m:</Label>
+                        <Label x:Name="Preis_txt_aus">Preis:</Label>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Margin="0,135,-43,-39" Grid.RowSpan="3" Grid.ColumnSpan="3" Width="150" HorizontalAlignment="Left">
                         <Label x:Name="m_aus"></Label>
@@ -141,6 +142,7 @@
                         <Label x:Name="da_aus"></Label>
                         <Label x:Name="V_aus"></Label>
                         <Label x:Name="Masse_aus"></Label>
+                        <Label x:Name="Preis_aus"></Label>
                     </StackPanel>
                 </Grid>
 
@@ -174,6 +176,7 @@
                         <Label x:Name="dm_txt_aus_Innen">Ø Min.Außen dm:</Label>
                         <Label x:Name="V_txt_aus_Innen">Volumen V:</Label>
                         <Label x:Name="Masse_txt_aus_Innen">Masse m:</Label>
+                        <Label x:Name="Preis_txt_aus_Innen">Preis:</Label>
 
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row ="1" Margin="0,-40,0,0" Grid.RowSpan="3" Grid.ColumnSpan="2" Width="150" HorizontalAlignment="Left">
@@ -191,6 +194,7 @@
                         <Label x:Name="dm_aus_Innen"></Label>
                         <Label x:Name="V_aus_Innen"></Label>
                         <Label x:Name="Masse_aus_Innen"></Label>
+                        <Label x:Name="Preis_aus_Innen"></Label>
                     </StackPanel>
 
                 </Grid>

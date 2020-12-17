@@ -29,7 +29,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         public double mt;                                                                           //Stirnmodul
         public double pt;                                                                           //Stirnteilung
         public double alphat;                                                                       //Stirneingriffswinkel
-        public int Verzahnung = 0;
+        public int Verzahnung = 0;                                                                  //Parameter zur Auswahl der Zahnradart
         public double Zahnbreite;                                                                   //Zahnbreite
         public double BD;                                                                           //Bohrungsdurchmesser
         public double A;                                                                            //Fläche
@@ -42,6 +42,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
         public double PassfederBreite;                                                              //Passfedernutbreite
         public double PassfederHöhe;                                                                //Passfederhöhe
         public double BR;                                                                           //Bohrungsradius
+        public double Preis;                                                                        //Preis
+        public double Preisfaktor;                                                                  //Preisfaktor
 
         //BERECHNUNGSMETHODEN
         public void Berechnung_geradverzahnt_Außenverzahnung_m_und_d()                            //GERADVERZAHNT-AUßENVERZAHNUNG-M-UND-D
@@ -59,8 +61,9 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((da * da) - (BD * BD)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-            Verzahnung = 0;
+            Verzahnung = 0;                                                                         //Parameter zur Auswahl der Zahnradart
             BR = BD / 2;                                                                            //Bohrungsradius
+            Preis = Masse * Preisfaktor;                                                            //Preis
         }
         public void Berechnung_geradverzahnt_Außenverzahnung_m_und_z()                            //GERADVERZAHNT-AUßENVERZAHNUNG-M-UND-Z
         {
@@ -77,7 +80,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
             BR = BD / 2;                                                                            //Bohrungsradius
-            Verzahnung = 0;
+            Verzahnung = 0;                                                                         //Parameter zur Auswahl der Zahnradart
+            Preis = Masse * Preisfaktor;                                                            //Preis
 
         }
         public void Berechnung_geradverzahnt_Innenverzahnung_m_und_d()                            //GERADVERZAHNT-INNENVERZAHNUNG-M-UND-D 
@@ -96,7 +100,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-            Verzahnung = 1;
+            Verzahnung = 1;                                                                         //Parameter zur Auswahl der Zahnradart
+            Preis = Masse * Preisfaktor;                                                            //Preis
         }
         public void Berechnung_geradverzahnt_Innenverzahnung_m_und_z()                            //GERADVERZAHNT-INNENVERZAHNUNG-M-UND-Z 
         {
@@ -113,7 +118,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-            Verzahnung = 1;
+            Verzahnung = 1;                                                                         //Parameter zur Auswahl der Zahnradart
+            Preis = Masse * Preisfaktor;                                                            //Preis
         }
         public void Berechnung_schrägverzahnt_Außenverzahnung_m_und_d()                           //SCHRÄGVERZAHNT-AUßENVERZAHNUNG-M-UND-D 
         {
@@ -134,7 +140,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
             BR = BD / 2;                                                                            //Bohrungsradius
-            Verzahnung = 2;
+            Verzahnung = 2;                                                                         //Parameter zur Auswahl der Zahnradart
+            Preis = Masse * Preisfaktor;                                                            //Preis
         }
         public void Berechnung_schrägverzahnt_Außenverzahnung_m_und_z()                           //SCHRÄGVERZAHNT-AUßENVERZAHNUNG-M-UND-Z
         {
@@ -154,7 +161,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
             BR = BD / 2;                                                                            //Bohrungsradius
-            Verzahnung = 2;
+            Verzahnung = 2;                                                                         //Parameter zur Auswahl der Zahnradart
+            Preis = Masse * Preisfaktor;                                                            //Preis
         }
         public void Berechnung_schrägverzahnt_Innenverzahnung_m_und_d()                           //SCHRÄGVERZAHNT-INNENVERZAHNUNG-M-UND-D 
         {
@@ -175,7 +183,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-            Verzahnung = 3;
+            Verzahnung = 3;                                                                         //Parameter zur Auswahl der Zahnradart
+            Preis = Masse * Preisfaktor;                                                            //Preis
         }
         public void Berechnung_schrägverzahnt_Innenverzahnung_m_und_z()                           //SCHRÄGVERZAHNT-INNENVERZAHNUNG-M-UND-Z
         {
@@ -196,7 +205,8 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             A = ((Math.PI * ((dm * dm) - (da * da)) / 4) - (Math.PI * m * h * z) / 2);              //Fläche
             V = Math.Round(A * Zahnbreite, dezimal);                                                //Volumen
             Masse = Math.Round(V * MTL_hlp, dezimal);                                               //Masse
-            Verzahnung = 3;
+            Verzahnung = 3;                                                                         //Parameter zur Auswahl der Zahnradart
+            Preis = Masse * Preisfaktor;                                                            //Preis
 
         }
         public void Passfederberechnung()

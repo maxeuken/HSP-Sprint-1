@@ -199,12 +199,15 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             {
                 case "Stahl":
                     ZR1.MTL_hlp = 0.00000785;
+                    ZR1.Preisfaktor = 2;
                     break;
                 case "Messing":
                     ZR1.MTL_hlp = 0.0000084;
+                    ZR1.Preisfaktor = 3;
                     break;
                 case "Kunststoff":
                     ZR1.MTL_hlp = 0.00000022;
+                    ZR1.Preisfaktor = 1;
                     break;
             }
             //AUSGABE
@@ -232,6 +235,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                             m_aus.Content = ZR1.m + " mm";
                             V_aus.Content = ZR1.V + " mm^3";
                             Masse_aus.Content = ZR1.Masse + " Kg";
+                            Preis_aus.Content = ZR1.Preis + " EUR";
                             d_txt.Text = Convert.ToString(ZR1.drz);
                         }
                         if (RB_MZ.IsChecked == true)                                            //Berechnung geradverzahnt Außenverzahnung m und z
@@ -250,6 +254,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                             m_aus.Content = ZR1.m + " mm";
                             V_aus.Content = ZR1.V + " mm^3";
                             Masse_aus.Content = ZR1.Masse + " Kg";
+                            Preis_aus.Content = ZR1.Preis + " EUR";
                         }
                     }
                     if (CB_SV.IsChecked == true)                                                //Berechnung schrägverzahnt Außenverzahnung
@@ -270,6 +275,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                             m_aus.Content = ZR1.m + " mm";
                             V_aus.Content = ZR1.V + " mm^3";
                             Masse_aus.Content = ZR1.Masse + " Kg";
+                            Preis_aus.Content = ZR1.Preis + " EUR";
                             d_txt.Text = Convert.ToString(ZR1.drz);
                         }
                         else
@@ -290,6 +296,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                                 m_aus.Content = ZR1.m + " mm";
                                 V_aus.Content = ZR1.V + " mm^3";
                                 Masse_aus.Content = ZR1.Masse + " Kg";
+                                Preis_aus.Content = ZR1.Preis + " EUR";
                             }
                         }
                     }
@@ -315,6 +322,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                             m_aus_Innen.Content = ZR1.m + " mm";
                             V_aus_Innen.Content = ZR1.V + " mm^3";
                             Masse_aus_Innen.Content = ZR1.Masse + " Kg";
+                            Preis_aus_Innen.Content = ZR1.Preis + " EUR";
                             d_txt.Text = Convert.ToString(ZR1.drz);
                         }
                         if (RB_MZ.IsChecked == true)                                            //Berechnung geradverzahnt Innenverzahnung m und z
@@ -334,6 +342,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                             m_aus_Innen.Content = ZR1.m + " mm";
                             V_aus_Innen.Content = ZR1.V + " mm^3";
                             Masse_aus_Innen.Content = ZR1.Masse + " Kg";
+                            Preis_aus_Innen.Content = ZR1.Preis + " EUR";
 
                         }
                     }
@@ -356,6 +365,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                             m_aus_Innen.Content = ZR1.m + " mm";
                             V_aus_Innen.Content = ZR1.V + " mm^3";
                             Masse_aus_Innen.Content = ZR1.Masse + " Kg";
+                            Preis_aus_Innen.Content = ZR1.Preis + " EUR";
                             d_txt.Text = Convert.ToString(ZR1.drz);
                         }
                         if (RB_MZ.IsChecked == true)                                            //Berechnung schrägverzahnt Innenverzahnung m und z
@@ -375,6 +385,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
                             m_aus_Innen.Content = ZR1.m + " mm";
                             V_aus_Innen.Content = ZR1.V + " mm^3";
                             Masse_aus_Innen.Content = ZR1.Masse + " Kg";
+                            Preis_aus_Innen.Content = ZR1.Preis + " EUR";
                         }
                     }
                 }
