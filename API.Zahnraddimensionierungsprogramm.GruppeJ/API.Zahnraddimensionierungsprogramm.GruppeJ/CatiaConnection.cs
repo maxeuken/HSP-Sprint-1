@@ -325,69 +325,69 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             }
 
             //Passfeder
-            if (ZR1.Verzahnung == 0 || ZR1.Verzahnung == 2)
-            {
+            //if (ZR1.Verzahnung == 0 || ZR1.Verzahnung == 2)
+            //{
                 //Koordinaten der Punkte
 
                 //KoordinatenPunkt Links Kreis-Anfang Passfeder
-                double x_AnfangkreisZuPassfeder = -ZR1.PassfederBreite / 2;
-                double y_AnfangkreisZuPassfeder = Math.Sqrt(Math.Pow(ZR1.BR, 2) - Math.Pow((ZR1.PassfederBreite / 2), 2));
+                //double x_AnfangkreisZuPassfeder = -ZR1.PassfederBreite / 2;
+                //double y_AnfangkreisZuPassfeder = Math.Sqrt(Math.Pow(ZR1.BR, 2) - Math.Pow((ZR1.PassfederBreite / 2), 2));
 
                 //KoordinatenPunkt LinksobenPassfeder
-                double x_Passfederecke = -ZR1.PassfederBreite / 2;
-                double y_Passfederecke = ZR1.PassfederHöhe;
+                //double x_Passfederecke = -ZR1.PassfederBreite / 2;
+                //double y_Passfederecke = ZR1.PassfederHöhe;
 
 
-                Sketches sketchesBohrung = catHybridBody1.HybridSketches;
-                OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
-                Reference refmxPlaneX = (Reference)catoriginelements.PlaneYZ;
-                hsp_catiaProfil = catSketches1.Add(refmxPlaneX);
+                //Sketches sketchesBohrung = catHybridBody1.HybridSketches;
+                //OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
+                //Reference refmxPlaneX = (Reference)catoriginelements.PlaneYZ;
+                //hsp_catiaProfil = catSketches1.Add(refmxPlaneX);
 
-                ErzeugeAchsensystem();
+                //ErzeugeAchsensystem();
 
-                hsp_catiaPart.Part.Update();
+                //hsp_catiaPart.Part.Update();
 
-                hsp_catiaProfil.set_Name("Passfederbohrung");
+                //hsp_catiaProfil.set_Name("Passfederbohrung");
 
-                Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
+                //Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
 
 
 
                 //Punkte in die Skizze
-                Point2D POINTLinksAnfangKreisZuPassfeder = catfactory2D2.CreatePoint(x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder);
-                Point2D POINTLinksPassfederEcke = catfactory2D2.CreatePoint(x_Passfederecke, y_Passfederecke);
-                Point2D POINTRechtsPassfederEcke = catfactory2D2.CreatePoint(-x_Passfederecke, y_Passfederecke);
-                Point2D POINTRechtsAnfangKreisZuPassfeder = catfactory2D2.CreatePoint(-x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder);
+                //Point2D POINTLinksAnfangKreisZuPassfeder = catfactory2D2.CreatePoint(x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder);
+                //Point2D POINTLinksPassfederEcke = catfactory2D2.CreatePoint(x_Passfederecke, y_Passfederecke);
+                //Point2D POINTRechtsPassfederEcke = catfactory2D2.CreatePoint(-x_Passfederecke, y_Passfederecke);
+                //Point2D POINTRechtsAnfangKreisZuPassfeder = catfactory2D2.CreatePoint(-x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder);
 
                 //Linen ziehen
-                Line2D PassfederKanteLinks = catfactory2D2.CreateLine(x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder, x_Passfederecke, y_Passfederecke);
-                PassfederKanteLinks.StartPoint = POINTLinksAnfangKreisZuPassfeder;
-                PassfederKanteLinks.EndPoint = POINTLinksPassfederEcke;
+                //Line2D PassfederKanteLinks = catfactory2D2.CreateLine(x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder, x_Passfederecke, y_Passfederecke);
+                //PassfederKanteLinks.StartPoint = POINTLinksAnfangKreisZuPassfeder;
+                //PassfederKanteLinks.EndPoint = POINTLinksPassfederEcke;
 
-                Line2D PassfederHöhenkante = catfactory2D2.CreateLine(x_Passfederecke, y_Passfederecke, -x_Passfederecke, y_Passfederecke);
-                PassfederHöhenkante.StartPoint = POINTLinksPassfederEcke;
-                PassfederHöhenkante.EndPoint = POINTRechtsPassfederEcke;
+                //Line2D PassfederHöhenkante = catfactory2D2.CreateLine(x_Passfederecke, y_Passfederecke, -x_Passfederecke, y_Passfederecke);
+                //PassfederHöhenkante.StartPoint = POINTLinksPassfederEcke;
+                //PassfederHöhenkante.EndPoint = POINTRechtsPassfederEcke;
 
-                Line2D PassfederKanteRechts = catfactory2D2.CreateLine(-x_Passfederecke, y_Passfederecke, -x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder);
-                PassfederKanteRechts.StartPoint = POINTRechtsPassfederEcke;
-                PassfederKanteRechts.EndPoint = POINTRechtsAnfangKreisZuPassfeder;
+                //Line2D PassfederKanteRechts = catfactory2D2.CreateLine(-x_Passfederecke, y_Passfederecke, -x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder);
+                //PassfederKanteRechts.StartPoint = POINTRechtsPassfederEcke;
+                //PassfederKanteRechts.EndPoint = POINTRechtsAnfangKreisZuPassfeder;
 
-                Circle2D KreisFürPassfeder = catfactory2D2.CreateCircle(x0, y0, ZR1.BR, 0, Math.PI * 2);
-                KreisFürPassfeder.CenterPoint = point_Ursprung;
-                KreisFürPassfeder.EndPoint = POINTRechtsAnfangKreisZuPassfeder;
-                KreisFürPassfeder.StartPoint = POINTLinksAnfangKreisZuPassfeder;
-
-
+                //Circle2D KreisFürPassfeder = catfactory2D2.CreateCircle(x0, y0, ZR1.BR, 0, Math.PI * 2);
+                //KreisFürPassfeder.CenterPoint = point_Ursprung;
+                //KreisFürPassfeder.EndPoint = POINTRechtsAnfangKreisZuPassfeder;
+                //KreisFürPassfeder.StartPoint = POINTLinksAnfangKreisZuPassfeder;
 
 
-                hsp_catiaProfil.CloseEdition();
 
-                hsp_catiaPart.Part.Update();
 
-                hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
-                Pocket Tasche = shapeFactory1.AddNewPocket(hsp_catiaProfil, ZR1.Zahnbreite);
-                hsp_catiaPart.Part.Update();
-            }
+                //hsp_catiaProfil.CloseEdition();
+
+                //hsp_catiaPart.Part.Update();
+
+                //hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+                //Pocket Tasche = shapeFactory1.AddNewPocket(hsp_catiaProfil, ZR1.Zahnbreite);
+                //hsp_catiaPart.Part.Update();
+            //}
 
 
 
