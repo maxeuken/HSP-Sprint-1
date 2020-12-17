@@ -111,6 +111,9 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
             Pad catPad1 = sf1.AddNewPadFromRef(refVerbindung, ZR1.Zahnbreite);
             hsp_catiaPart.Part.Update();
         }
+        public void Passfedererzeugung(Zahnrad ZR1)
+        { 
+        }
 
         public void GanzeZahnrad(Zahnrad ZR1)
         {

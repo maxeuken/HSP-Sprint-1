@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:API.Zahnraddimensionierungsprogramm.GruppeJ"
         mc:Ignorable="d"
-       Title="Info" Height="400" Width="400" Icon="Bild.ico">
+       Title="Info" Height="400" Width="400" Icon="Drawing1.jpg">
     <Grid>
         <Image Source="Drawing1.jpg"></Image>
     </Grid>
