@@ -394,7 +394,7 @@ namespace API.Zahnraddimensionierungsprogramm.GruppeJ
 
 
 
-            //AUßENVERZAHNUNG GERADE ENDE
+            //AUßENVERZAHNUNG GERADE ENDE0
         }
         //INNENVERZAHNUNG GERADE
         public void GanzeInnenZahnrad(Zahnrad ZR1)
